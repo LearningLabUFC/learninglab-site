@@ -18,7 +18,7 @@ Este é um tema do WordPress para o site do projeto de extensão LearningLab, da
 ### Passos para Instalação
 1. Faça o download do tema, ou clone este repositório:
    ```bash
-   git clone https://github.com/douglasnascimento/site-learninglab.git
+   git clone https://github.com/LearningLabUFC/Site-LearningLab-2.0.git
    ```
 
 2.	Carregue o tema na sua instalação WordPress:
