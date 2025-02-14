@@ -6,40 +6,33 @@
     margin-top: 25px;
 }
 
-/* Swiper ajustes */
 .swiper {
     width: 100%;
     height: auto;
 }
 
-/* Ajustando o container do swiper */
-/* Ajustando o container do swiper */
 .swiper.leitura-swiper {
     width: 100%;
     max-width: 1100px;
-    margin: 0 auto; /* Centraliza o slider */
-    padding: 1rem 0; /* Adiciona espaço ao redor */
+    margin: 0 auto;
+    padding: 1rem 0;
     padding-inline: 2.2rem;
 }
 
-/* Configurando os slides */
 .swiper-slide {
     display: flex;
-    justify-content: center; /* Centraliza o card horizontalmente */
-    align-items: center; /* Centraliza o card verticalmente */
-    align-items: stretch; /* Garante que os elementos preencham o espaço */
+    justify-content: center;
+    align-items: center;
+    align-items: stretch;
 }
-
-/* Ajuste dos cards dentro do slider */
-
 
 .card-leitura {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     text-align: left;
-    text-decoration: none; /* Remove o sublinhado padrão */
-    font-weight: inherit; /* Herda o peso da fonte */
+    text-decoration: none;
+    font-weight: inherit;
     max-width: 300px;
     height: 100%;
     background-color: #fff;
@@ -53,25 +46,19 @@
     color: inherit;
 }
 
-
-
 .card-leitura:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
-
 
 .card-leitura img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    aspect-ratio: 16/9; /* Defina a proporção desejada, por exemplo, 16:9 */
+    aspect-ratio: 16/9;
 }
 
-
-
-/* Estilo do conteúdo dentro do card */
 .conteudo-leitura {
     padding: 1rem;
     display: flex;
@@ -94,7 +81,6 @@
     margin: 0;
 }
 
-/* Opção 1: Posicionar as setas para fora do container */
 .container-leitura .swiper-button-next,
 .container-leitura .swiper-button-prev {
     position: absolute;
@@ -108,7 +94,6 @@
     align-items: center;
     justify-content: center;
     z-index: 10;
-    /* Garantir que as setas fiquem acima do conteúdo */
 }
 
 .container-leitura .swiper-button-next::after,
@@ -123,7 +108,6 @@
     display: flex;
     justify-content: center;
     z-index: 10;
-    /* Garantir que a paginação fique acima do conteúdo */
 }
 
 .container-leitura .swiper-pagination-bullet {
@@ -139,29 +123,20 @@
 }
 
 @media (max-width: 910px) {
-
-    
     .swiper-navBtn{
-      /*display:none;*/
       opacity: 0;
     }
  
 }
 
 @media (max-width: 767px) {
-
-  
     .card-leitura {
-
         max-width: 78%;
-        overflow: hidden; /* Remove qualquer borda extra ao redor do conteúdo */
+        overflow: hidden;
     }
 
-
-
     .card-leitura img {
-
-        aspect-ratio: 16/8; /* Mantem a proporção 16:9 */
+        aspect-ratio: 16/8;
     }
 
     .swiper.leitura-swiper {

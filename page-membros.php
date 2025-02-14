@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Template Name: Membros
- * Description: Página personalizada para exibir Membros (Líderes, Membros Atuais e Egressos)
- */
-
-get_header(); // Inclui o cabeçalho do tema
+get_header();
 ?>
 
 <div class="container-header">
@@ -18,7 +13,6 @@ get_header(); // Inclui o cabeçalho do tema
 
 <div class="container">
 
-    <!-- Seção Líderes -->
     <p>Mesmo tendo iniciado suas atividades em 2020, o LearningLab já possui uma equipe bastante completa, com membros distribuídos em seus vários clãs e setores. Nessa página, você poderá conhecer todo o nosso time e entender melhor quais atividades cada um dos integrantes desempenha!</p>
 
     <p>Dica: nossos membros ou ex-membros que já se formaram contam com uma borda verde em suas fotos!</p>
@@ -28,7 +22,6 @@ get_header(); // Inclui o cabeçalho do tema
         <p>Antes de conhecermos os membros líderes de cada setor, cabe destacar a principal posição de liderança no projeto, a nossa coordenadora:</p>
 
         <?php
-        // Consulta apenas para a categoria Egresso
         $egressos_query = new WP_Query([
             'post_type' => 'membro',
             'tax_query' => [
@@ -59,8 +52,6 @@ get_header(); // Inclui o cabeçalho do tema
         wp_reset_postdata();
         ?>
     </section>
-
-
 
     <section class="membros-lideres">
         <h2>Líderes</h2>
@@ -95,16 +86,16 @@ get_header(); // Inclui o cabeçalho do tema
             if ($lideres_query->have_posts()) :
         ?>
 
-
-
                 <div class="membros-grid">
                     <?php while ($lideres_query->have_posts()) : $lideres_query->the_post(); ?>
                         <div class="membro-item <?php echo is_membro_formado(get_the_ID()) ? 'formado' : ''; ?>">
                             <?php if (has_post_thumbnail()) : ?>
                                 <div class="membro-avatar"><?php the_post_thumbnail('thumbnail'); ?></div>
                             <?php endif; ?>
-                            <h4 class="membro-nome"><?php the_title(); ?></h4>
-
+                            <div class="membro-nome-wrapper">
+                                <h4 class="membro-nome"><?php the_title(); ?></h4>
+                                <i class="fa-solid fa-graduation-cap icon-formado"></i>
+                            </div>
                             <!-- Exibição de rótulos dos setores -->
                             <?php
                             $setores = get_the_terms(get_the_ID(), 'tipo_de_membro');
@@ -113,9 +104,8 @@ get_header(); // Inclui o cabeçalho do tema
                                 <div class="membro-setores">
                                     <?php foreach ($setores as $setor) : ?>
                                         <?php
-                                        // Exibe apenas os rótulos das subcategorias de "Líder"
                                         if (in_array($setor->term_id, $lider_subcategorias)) :
-                                            $rotulo = str_replace('Líder ', '', $setor->name); // Remove o prefixo "Líder "
+                                            $rotulo = str_replace('Líder ', '', $setor->name);
                                         ?>
                                             <span class="setor-<?php echo esc_attr($setor->slug); ?>">
                                                 <?php echo esc_html($rotulo); ?>
@@ -171,9 +161,11 @@ get_header(); // Inclui o cabeçalho do tema
                         <?php if (has_post_thumbnail()) : ?>
                             <div class="membro-avatar"><?php the_post_thumbnail('thumbnail'); ?></div>
                         <?php endif; ?>
-                        <h4 class="membro-nome"><?php the_title(); ?></h4>
-
-                        <!-- Exibição de rótulos (somente setores de Membros Atuais) -->
+                        <div class="membro-nome-wrapper">
+                            <h4 class="membro-nome"><?php the_title(); ?></h4>
+                            <i class="fa-solid fa-graduation-cap icon-formado"></i>
+                        </div>
+                        <!-- Exibição de rótulos -->
                         <?php
                         $setores = get_the_terms(get_the_ID(), 'tipo_de_membro');
                         if ($setores) :
@@ -181,7 +173,6 @@ get_header(); // Inclui o cabeçalho do tema
                             <div class="membro-setores">
                                 <?php foreach ($setores as $setor) : ?>
                                     <?php
-                                    // Filtra subcategorias de "membro-atual" apenas
                                     $is_setor_de_membro = term_is_ancestor_of(
                                         get_term_by('slug', 'membro-atual', 'tipo_de_membro')->term_id,
                                         $setor->term_id,
@@ -233,7 +224,10 @@ get_header(); // Inclui o cabeçalho do tema
                         <?php if (has_post_thumbnail()) : ?>
                             <div class="membro-avatar"><?php the_post_thumbnail('thumbnail'); ?></div>
                         <?php endif; ?>
-                        <h4 class="membro-nome"><?php the_title(); ?></h4>
+                        <div class="membro-nome-wrapper">
+                            <h4 class="membro-nome"><?php the_title(); ?></h4>
+                            <i class="fa-solid fa-graduation-cap icon-formado"></i>
+                        </div>
                     </div>
                 <?php endwhile; ?>
             </div>

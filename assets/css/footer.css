@@ -73,12 +73,9 @@ footer p {
     gap: 10px;
 }
 
-
-
 .social-media a {
     margin-right: 0.8rem;
     color: grey;
-    /* Cor inicial */
     text-decoration: none;
     font-size: 24px;
     transition: color 0.3s ease;
@@ -86,7 +83,6 @@ footer p {
 
 .social-media a:hover {
     color: #f2637e;
-    /* Cor ao passar o mouse */
 }
 
 @media (max-width: 768px) {
@@ -94,17 +90,17 @@ footer p {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center; /* Centraliza os itens dentro do container */
-        text-align: center; /* Centraliza o texto */
+        align-items: center;
+        text-align: center; 
     }
 
     .conteiner-footer > div {
         width: 70%;
-        text-align: center; /* Centraliza o conteúdo dentro de cada div */
+        text-align: center; 
     }
 
     .conteiner-footer div ul li,
     .conteiner-footer div ul li a {
-        justify-content: center; /* Centraliza os itens da lista */
+        justify-content: center; 
     }
 }

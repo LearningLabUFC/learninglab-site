@@ -9,14 +9,11 @@
   justify-content: center;
   align-items: center;
   min-height: 7rem;
-  /* Garantir um tamanho mínimo */
   background-color: #f2637e;
   width: 100%;
   margin-bottom: 2rem;
   padding: 1rem;
-  /* Opcional: adicionar padding para evitar que o texto encoste nas bordas */
   flex-wrap: wrap;
-  /* Para ajustar o conteúdo em várias linhas, se necessário */
 }
 
 .container-header .title {
@@ -51,19 +48,13 @@
 
 .container-header .author a:hover {
   border-bottom: 2px solid white;
-
 }
-
-
-
-
 
 h2 {
   color: #f2637e;
   font-weight: 700;
   font-size: 2rem;
   margin-block: 2rem;
-
 }
 
 h3 {
@@ -85,14 +76,11 @@ article img {
   margin-bottom: 1.5rem;
   padding: 0;
   text-align: justify;
-
 }
 
 .curso-item p {
   text-align: justify;
-
 }
-
 
 .image-container figcaption {
   text-align: center;
@@ -104,17 +92,15 @@ article img {
 /* Personalização da galeria do WordPress */
 
 .wp-block-gallery.has-nested-images figure.wp-block-image figcaption {
-  border-radius: 0 0 15px 15px; /* Arredonda apenas a parte inferior */
+  border-radius: 0 0 15px 15px; 
 
-  background: linear-gradient(#f2637d, #f2637e); /* Fundo mais escuro (preto com opacidade de 70%) */
+  background: linear-gradient(#f2637d, #f2637e);
 }
 
 .content ul li {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-
 }
-
 
 .content a {
   color: #f2637e;
@@ -123,8 +109,6 @@ article img {
 .content a:hover {
   color: #04bfbf;
 }
-
-
 
 .container-citacao {
   display: flex;
@@ -138,7 +122,6 @@ article img {
   margin-inline: auto;
   margin-block: 15px;
   gap: 30px;
-
 }
 
 .container-citacao img.profile {
@@ -156,9 +139,7 @@ article img {
   font-size: 1.2em;
   font-style: italic;
   color: rgb(131, 130, 130);
-
 }
-
 
 .nome {
   font-weight: bold;
@@ -176,17 +157,12 @@ article img {
   margin-top: 10px;
 }
 
-
 /* Estilo geral para o container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
-
-
-
-
 
 /* Estilos para a página de cursos */
 
@@ -206,12 +182,12 @@ article img {
   background-color: #fff;
   border-radius: 8px;
   padding: 0;
-  overflow: hidden; /* Impede que conteúdo ultrapasse o bloco */
+  overflow: hidden; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   display: flex;
-  flex-direction: column; /* Para garantir que os itens se alinhem na coluna */
-  height: 100%; /* Adicione esta linha */
+  flex-direction: column;
+  height: 100%;
 
 }
 
@@ -231,22 +207,20 @@ article img {
   text-decoration: none;
   flex-direction: column;
   color: inherit;
-  height: 100%; /* Garante que o link cubra todo o bloco */
+  height: 100%;
 }
-
-
 
 .curso-content {
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Adicione esta linha */
+  flex-grow: 1; 
 }
 
 /* Imagem do curso */
 .curso-item img {
   width: 100%;
-  height: 200px; /* Altura fixa para todas as imagens */
-  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+  height: 200px;
+  object-fit: cover; 
   display: block;
 }
 
@@ -265,12 +239,11 @@ article img {
   margin: 0 1rem 1rem;
 }
 
-/* Badge (inscrição aberta ou em breve) */
 .curso-status {
   display: flex;
   justify-content: center;
-  margin-top: auto; /* Isso faz o badge ser empurrado para o final do bloco */
-  padding: 0 2rem 2rem 1rem; /* Espaçamento para o badge na parte inferior */
+  margin-top: auto; 
+  padding: 0 2rem 2rem 1rem;
 }
 
 /* Estilo geral dos badges */
@@ -291,8 +264,6 @@ article img {
 .curso-badge.em-breve {
   background-color: #b0b0b0; /* Amarelo */
 }
-
-
 
 /* Estilos para o mobile */
 
@@ -316,22 +287,14 @@ article img {
   .container-citacao {
     flex-direction: column;
     max-width: none;
-
-
   }
 
   .container-citacao img.profile {
     width: 130px;
     height: 130px;
-
   }
 
   .nome {
     text-align: center;
-
   }
-
-
-
-
 }

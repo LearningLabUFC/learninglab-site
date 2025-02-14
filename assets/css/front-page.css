@@ -46,7 +46,6 @@
     font-weight: bold;
 }
 
-/* estilização para a seção sobre */
 
 .container-sobre {
     display: flex;
@@ -61,11 +60,8 @@
 
 .sobre-imagem {
     flex: 1;
-    /* Permite flexibilidade na largura */
     max-width: 500px;
-    /* Limite máximo da largura */
     width: 40%;
-    /* O container ocupa 40% do espaço total */
 }
 
 .container-sobre h2 {
@@ -76,20 +72,14 @@
 
 .container-sobre div {
     flex: 2;
-    /* O texto ocupa mais espaço */
 }
 
 .container-sobre img {
     width: 100%;
-    /* Preenche o container */
     height: auto;
-    /* Mantém a proporção */
     object-fit: cover;
-    /* Garante que a imagem não distorça */
     border-radius: 8px;
-    /* Para bordas arredondadas */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Sombra suave */
 
 }
 
@@ -109,7 +99,6 @@
 .container-sobre button {
     background-color: #009a9a;
     color: #fff;
-    /* mesma cor do fundo para manter a identidade */
 
 }
 
@@ -119,8 +108,6 @@
     border-radius: 10px;
 }
 
-
-/* Estilização para os cursos */
 
 .container-cursos {
     width: 90%;
@@ -190,7 +177,6 @@
 .painel-curso {
     position: relative;
     overflow: hidden;
-    /* Garante que o conteúdo não ultrapasse os limites do painel */
 }
 
 
@@ -201,11 +187,8 @@
 
 .status {
     position: absolute;
-    /* Posicionamento absoluto em relação ao painel */
     bottom: 2rem;
-    /* Distância da parte inferior do painel */
     margin-bottom: 0;
-    /* Remove a margem inferior */
 }
 
 .status .inscricoes-abertas,
@@ -217,17 +200,12 @@
 }
 
 
-
-/* Badge para "Inscreva-se" */
 .status .inscricoes-abertas {
     background-color: #f2637e;
-    /* Verde */
 }
 
-/* Badge para "Em Breve" */
 .status .em-breve {
     background-color: #b0b0b0;
-    /* Amarelo */
 }
 
 .mais-cursos {
@@ -244,46 +222,34 @@
 .container-leitura button {
     background-color: #fff;
     color: #f2637e;
-    /* mesma cor do fundo para manter a identidade */
 }
 
 .mais-cursos button:hover,
 .container-leitura button:hover {
     background-color: #f2f2f2;
-    /* um tom claro para destacar no hover */
     color: #c05266;
-    /* leve variação no texto */
 }
 
 
 .container-leitura button {
     background-color: #009a9a;
     color: #fff;
-    /* mesma cor do fundo para manter a identidade */
 }
 
 .container-leitura button:hover {
     background-color: #018989;
-    /* um tom claro para destacar no hover */
     color: #fff;
-    /* leve variação no texto */
 }
-
-/* Estilização para o quadro de blogs */
-
 
 .container-leitura button {
     margin-bottom: 1.2rem;
 }
-
-
 
 .container-leitura {
     text-align: center;
     width: 90%;
     max-width: 1100px;
     margin: auto;
-
 }
 
 .container-leitura h3 {
@@ -298,8 +264,6 @@
 
 .quadro-de-avaliacoes {
     margin-top: -500px;
-
-    
 }
 
 .quadro-de-avaliacoes h2 {
@@ -320,9 +284,6 @@
     padding-top: 40px;
     color: #009a9a;
 }
-
-
-
 
 
 @media (max-width: 1165px) {
@@ -355,14 +316,11 @@
     .container-sobre p {
         margin: auto;
         margin-bottom: 30px;
-
     }
 
     .sobre-imagem {
         width: 100%;
-
     }
-
 
     .background-container-cursos {
         width: 80%;

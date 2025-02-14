@@ -177,7 +177,6 @@ body .cabecalho {
 
 }
 
-/* Estiliza os links */
 .nav-links .page-numbers {
     display: inline-block;
     padding: 10px 15px;
@@ -188,7 +187,6 @@ body .cabecalho {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Página atual */
 .nav-links .current {
     background-color: #009a9a;
     color: #fff;
@@ -196,13 +194,11 @@ body .cabecalho {
     font-weight: bold;
 }
 
-/* Hover para os links */
 .nav-links .page-numbers:hover {
     background-color: #009a9a;
     color: #fff;
 }
 
-/* Botões "Anterior" e "Próximo" */
 .nav-links .prev, .nav-links .next {
     font-weight: bold;
 }
@@ -213,29 +209,23 @@ body .cabecalho {
   }
   .social-media a:hover {
     color: #04bfbf;
-    /* Cor ao passar o mouse */
   }
-
-  /* Estilizando o campo de input */
 
   button {
     background-color: #009a9a;
   }
-/* Foco no campo de input */
-.wp-block-search__input:focus {
-    border-color: #009a9a; /* Cor da borda ao focar */
+
+  .wp-block-search__input:focus {
+    border-color: #009a9a;
 }
 
-/* Estilizando o botão de busca */
 .wp-block-search__button {
-
-    background-color: #009a9a; /* Cor de fundo do botão */
+    background-color: #009a9a;
 }
 
 
-/* Efeito hover no botão */
 .wp-block-search__button:hover {
-    background-color: #009a9a; /* Cor mais escura ao passar o mouse */
+    background-color: #009a9a;
 }
 
 
@@ -261,7 +251,7 @@ body .cabecalho {
 
     .container-blog-with-sidebar,
     .container-post-with-sidebar {
-        grid-template-columns: 1fr; /* Coluna única */
+        grid-template-columns: 1fr;
     }
 
     .sidebar {
