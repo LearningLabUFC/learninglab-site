@@ -1,0 +1,419 @@
+.background-container-inicial {
+    background-color: rgb(242, 99, 126);
+    width: 100%;
+}
+
+
+.container-inicial {
+    display: flex;
+    align-items: center;
+    padding-top: 130px;
+    padding-bottom: 50px;
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.container-inicial h2 {
+    font-family: "montserrat";
+    font-weight: 700;
+    font-size: 45px;
+    margin: auto;
+    color: white;
+}
+
+.container-inicial img {
+    width: 100%;
+}
+
+#circulo {
+    position: absolute;
+    display: flex;
+    background-color: #04bfbfb3;
+    width: 5vw;
+    height: 20vh;
+    border-radius: 0px 150px 150px 0px;
+    margin-top: 170px;
+    margin-left: -20px;
+}
+
+.container-sobre h2,
+.container-comentarios h2,
+.container-leitura h2,
+.container-cursos h2 {
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+
+/* estilização para a seção sobre */
+
+.container-sobre {
+    display: flex;
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 3rem;
+    justify-content: space-between;
+}
+
+.sobre-imagem {
+    flex: 1;
+    /* Permite flexibilidade na largura */
+    max-width: 500px;
+    /* Limite máximo da largura */
+    width: 40%;
+    /* O container ocupa 40% do espaço total */
+}
+
+.container-sobre h2 {
+    color: #009a9a;
+    font-weight: 700;
+    line-height: 50px;
+}
+
+.container-sobre div {
+    flex: 2;
+    /* O texto ocupa mais espaço */
+}
+
+.container-sobre img {
+    width: 100%;
+    /* Preenche o container */
+    height: auto;
+    /* Mantém a proporção */
+    object-fit: cover;
+    /* Garante que a imagem não distorça */
+    border-radius: 8px;
+    /* Para bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+
+}
+
+.container-sobre p {
+    text-align: left;
+    width: 90%;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.15px;
+    color: #464646;
+    opacity: 0.9;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.container-sobre button {
+    background-color: #009a9a;
+    color: #fff;
+    /* mesma cor do fundo para manter a identidade */
+
+}
+
+.container-sobre img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+/* Estilização para os cursos */
+
+.container-cursos {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding-bottom: 2rem;
+}
+
+.background-container-cursos {
+    background-color: #f2637e;
+    width: 85%;
+    height: 620px;
+}
+
+.paineis-de-cursos {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -560px;
+
+}
+
+.painel-curso {
+    width: 33%;
+    height: 500px;
+    border-radius: 10px;
+    background-color: white;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.painel-curso img {
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.painel-descricao {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+}
+
+.painel-curso h3 {
+    margin-bottom: .5rem;
+    font-weight: bold;
+}
+
+.painel-curso p {
+    font-size: 1rem;
+    color: grey;
+    text-align: justify;
+    margin-bottom: 1rem;
+}
+
+.link-curso {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Adiciona uma transição suave */
+}
+
+.painel-curso {
+    position: relative;
+    overflow: hidden;
+    /* Garante que o conteúdo não ultrapasse os limites do painel */
+}
+
+
+.painel-curso:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.status {
+    position: absolute;
+    /* Posicionamento absoluto em relação ao painel */
+    bottom: 2rem;
+    /* Distância da parte inferior do painel */
+    margin-bottom: 0;
+    /* Remove a margem inferior */
+}
+
+.status .inscricoes-abertas,
+.status .em-breve {
+    font-size: 0.9rem;
+    padding: 3px 7px;
+    color: #fff;
+    border-radius: 20px;
+}
+
+
+
+/* Badge para "Inscreva-se" */
+.status .inscricoes-abertas {
+    background-color: #f2637e;
+    /* Verde */
+}
+
+/* Badge para "Em Breve" */
+.status .em-breve {
+    background-color: #b0b0b0;
+    /* Amarelo */
+}
+
+.mais-cursos {
+    width: 32%;
+    text-align: center;
+}
+
+.mais-cursos h2 {
+    color: white;
+    padding: 20px;
+}
+
+.mais-cursos button,
+.container-leitura button {
+    background-color: #fff;
+    color: #f2637e;
+    /* mesma cor do fundo para manter a identidade */
+}
+
+.mais-cursos button:hover,
+.container-leitura button:hover {
+    background-color: #f2f2f2;
+    /* um tom claro para destacar no hover */
+    color: #c05266;
+    /* leve variação no texto */
+}
+
+
+.container-leitura button {
+    background-color: #009a9a;
+    color: #fff;
+    /* mesma cor do fundo para manter a identidade */
+}
+
+.container-leitura button:hover {
+    background-color: #018989;
+    /* um tom claro para destacar no hover */
+    color: #fff;
+    /* leve variação no texto */
+}
+
+/* Estilização para o quadro de blogs */
+
+
+.container-leitura button {
+    margin-bottom: 1.2rem;
+}
+
+
+
+.container-leitura {
+    text-align: center;
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+
+}
+
+.container-leitura h3 {
+    color: #009a9a;
+}
+
+.background-container-avaliacoes {
+    width: 100%;
+    height: 500px;
+    background-color: #f2637e;
+}
+
+.quadro-de-avaliacoes {
+    margin-top: -500px;
+
+    
+}
+
+.quadro-de-avaliacoes h2 {
+    color: white;
+}
+
+.conteudo-avaliacoes h3 {
+    color: #009a9a;
+}
+
+
+.mais-noticias {
+    width: 80%;
+    margin: auto;
+}
+
+.mais-noticias h2 {
+    padding-top: 40px;
+    color: #009a9a;
+}
+
+
+
+
+
+@media (max-width: 1165px) {
+
+    .container-inicial {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .container-inicial h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    #circulo {
+        display: none;
+    }
+
+    .container-sobre {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 80%;
+        text-align: center;
+        margin: auto;
+        gap: 20px;
+    }
+
+    .container-sobre p {
+        margin: auto;
+        margin-bottom: 30px;
+
+    }
+
+    .sobre-imagem {
+        width: 100%;
+
+    }
+
+
+    .background-container-cursos {
+        width: 80%;
+        max-width: 520px;
+        height: 300px;
+        margin: auto;
+    }
+
+    .paineis-de-cursos {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        gap: 30px;
+        margin-top: -300px;
+    }
+
+    .mais-cursos {
+        width: 90%;
+    }
+
+    .painel-curso {
+        width: 100%;
+        height: 100%;
+        max-width: 700px;
+    }
+
+    .painel-curso p {
+
+        margin-bottom: 2rem;
+    }
+
+    .background-container-avaliacoes {
+        width: 80%;
+        max-width: 520px;
+        margin: auto;
+    }
+
+    .container-comentarios {
+        margin-bottom: 5rem;
+    }
+
+}
+
+@media (max-width: 605px) {
+    .container-sobre h2 {
+        font-size: 30px;
+    }
+
+    .container-sobre p {
+        font-size: 20px;
+        text-align: justify;
+    }
+}

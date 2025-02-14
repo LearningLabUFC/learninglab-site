@@ -1,0 +1,263 @@
+body .cabecalho {
+  background-color: #009a9a;
+}
+
+.cabecalho #search-form button {
+  background: #009a9a;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.container-header {
+
+  background-color: #009a9a;
+  width: 100%;
+
+}
+
+.content-header {
+  display: block;
+  justify-content: left;
+  min-height: 15rem; /* Garantir um tamanho mínimo */
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 1rem; /* Opcional: adicionar padding para evitar que o texto encoste nas bordas */
+  flex-wrap: wrap; /* Para ajustar o conteúdo em várias linhas, se necessário */
+}
+
+.content-header .title {
+  max-width: 1100px;
+  margin: auto;
+  padding-bottom: 1em;
+}
+
+.content-header h1 {
+  color: white;
+  font-weight: 700;
+  font-size: 2.4rem;
+  text-align: left;
+  margin-top: .7em;
+}
+
+.content-header .post-data {
+  color: white;
+  margin-bottom: .8em;
+  max-width: 1100px;
+  margin: auto;
+
+}
+
+.content-header .author a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.content-header .author a:hover {
+  border-bottom:  2px solid white;
+
+}
+
+
+.content {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  text-align: justify;
+}
+
+.content h1, h2, h3, h4, h5, h6 {
+  color: #009a9a;
+  margin-bottom: 1rem;
+}
+
+.content h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  padding-top: 1rem;
+}
+
+.content h3 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding-top: 1rem;
+}
+
+.content p {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  line-height: 2rem;
+  color: #3d3d3d;
+}
+
+.content li {
+  color: #3d3d3d;
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
+
+.content ul {
+  list-style-position: inside; /* Move as bolinhas para dentro do conteúdo */
+  padding-left: 2rem; /* Remove o padding padrão */
+  margin-block: 1rem;
+}
+
+
+.wp-block-image {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.wp-block-image {
+  text-align: center;
+}
+
+.wp-block-image img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90%;
+  height: auto;
+  border-radius: 1%;
+}
+
+.wp-block-image figcaption {
+  text-align: center;
+  margin-top: 0.3rem;
+  font-style: italic;
+  color: rgb(131, 130, 130);
+}
+
+
+
+.content a {
+  color: #009a9a;
+}
+
+.content a:hover {
+  color: #f2637e;
+}
+
+
+
+
+.nome {
+  font-weight: bold;
+  color: #009a9a;
+}
+
+.conteiner-footer h4 {
+  color: #009a9a;
+  margin-bottom: 1rem;
+}
+.social-media a:hover {
+  color: #009a9a;
+  /* Cor ao passar o mouse */
+}
+
+button {
+  background-color: #009a9a;
+}
+/* Foco no campo de input */
+.wp-block-search__input:focus {
+  border-color: #007a7a; /* Cor da borda ao focar */
+}
+
+/* Estilizando o botão de busca */
+.wp-block-search__button {
+
+  background-color: #009a9a; /* Cor de fundo do botão */
+}
+
+
+/* Efeito hover no botão */
+.wp-block-search__button:hover {
+  background-color: #009a9a; /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilos para Blockquote */
+blockquote {
+  width: 85%;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #555;
+  border-left: 5px solid #009a9a;
+  padding: 1rem 1.5rem;
+  margin: 2rem auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+blockquote:before {
+  content: "“";
+  font-size: 4rem;
+  font-weight: bold;
+  color: #009a9a;
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  opacity: 0.3;
+}
+blockquote p {
+  margin: 0;
+  margin-top: 1.5rem;
+}
+cite {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #777;
+  text-align: left;
+  font-style: normal;
+}
+cite:before {
+  content: "— ";
+  font-weight: bold;
+  color: #555;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .container-header h1 {
+
+    font-size: 2rem;
+    margin: auto;
+  }
+
+  body {
+    font-size: 1rem;
+  }
+
+  .image-container img {
+    max-width: 95%;
+  }
+
+  .container-citacao {
+    flex-direction: column;
+    max-width: none;
+
+
+  }
+
+  .container-citacao img.profile {
+    width: 130px;
+    height: 130px;
+
+  }
+
+  .nome {
+    text-align: center;
+
+  }
+
+
+
+
+}

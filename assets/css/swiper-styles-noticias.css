@@ -1,0 +1,177 @@
+.container-leitura {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 55vh;
+    margin: auto;
+    margin-top: 25px;
+}
+
+/* Swiper ajustes */
+.swiper {
+    width: 100%;
+    height: auto;
+}
+
+/* Ajustando o container do swiper */
+/* Ajustando o container do swiper */
+.swiper.leitura-swiper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto; /* Centraliza o slider */
+    padding: 1rem 0; /* Adiciona espaço ao redor */
+    padding-inline: 2.2rem;
+}
+
+/* Configurando os slides */
+.swiper-slide {
+    display: flex;
+    justify-content: center; /* Centraliza o card horizontalmente */
+    align-items: center; /* Centraliza o card verticalmente */
+    align-items: stretch; /* Garante que os elementos preencham o espaço */
+}
+
+/* Ajuste dos cards dentro do slider */
+
+
+.card-leitura {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    text-decoration: none; /* Remove o sublinhado padrão */
+    font-weight: inherit; /* Herda o peso da fonte */
+    max-width: 300px;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-leitura, .card-leitura:visited, .card-leitura:active {
+    color: inherit;
+}
+
+
+
+.card-leitura:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.card-leitura img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 16/9; /* Defina a proporção desejada, por exemplo, 16:9 */
+}
+
+
+
+/* Estilo do conteúdo dentro do card */
+.conteudo-leitura {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-leitura h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    padding-top: 0;
+}
+
+.card-leitura p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Opção 1: Posicionar as setas para fora do container */
+.container-leitura .swiper-button-next,
+.container-leitura .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #009a9a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    /* Garantir que as setas fiquem acima do conteúdo */
+}
+
+.container-leitura .swiper-button-next::after,
+.container-leitura .swiper-button-prev::after {
+    font-size: 17px;
+    color: #fff;
+}
+
+.container-leitura .swiper-pagination {
+    position: relative;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    /* Garantir que a paginação fique acima do conteúdo */
+}
+
+.container-leitura .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    margin: 0 6px;
+    background-color: #009a9a;
+    opacity: 0.5;
+}
+
+.container-leitura .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+@media (max-width: 910px) {
+
+    
+    .swiper-navBtn{
+      /*display:none;*/
+      opacity: 0;
+    }
+ 
+}
+
+@media (max-width: 767px) {
+
+  
+    .card-leitura {
+
+        max-width: 78%;
+        overflow: hidden; /* Remove qualquer borda extra ao redor do conteúdo */
+    }
+
+
+
+    .card-leitura img {
+
+        aspect-ratio: 16/8; /* Mantem a proporção 16:9 */
+    }
+
+    .swiper.leitura-swiper {
+        padding-inline: 1rem;
+    }
+
+    .container-leitura .swiper-button-next,
+    .container-leitura .swiper-button-prev {
+        display: none;
+    }
+}
+
+

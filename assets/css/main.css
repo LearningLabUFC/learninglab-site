@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Montserrat:wght@700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body .cabecalho {
+    background-color: #f2637e;
+}
+
+body {
+    background-color: rgb(239, 246, 245);
+    font-family: "montserrat";
+}
+
+header li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    all: unset; /* Remove todos os estilos padrões */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* sombra para profundidade */
+    transition: all 0.3s ease;
+    background-color: #f2637e;
+    color: #fff;
+}
+
+button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px); /* efeito de "pressionado" */
+}
+
+button:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* sombra mais forte no hover */
+    transform: scale(1.05);
+}
+
+
+/* Estilizando o campo de input */
+.wp-block-search__input {
+    border: 1px solid #ccc; /* Borda cinza */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    height: 2rem;
+    transition: border-color 0.3s ease;
+}
+
+/* Foco no campo de input */
+.wp-block-search__input:focus {
+    outline: none;
+    border-color: #e76f81; /* Cor da borda ao focar */
+    box-shadow: 0 0 5px rgba(231, 111, 129, 0.5);
+}
+
+/* Estilizando o botão de busca */
+.wp-block-search__button {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    background-color: #e76f81; /* Cor de fundo do botão */
+    border: none;
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor ao passar o mouse */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    height: 0.75rem;
+}
+
+
+.search-icon {
+    /* estilos para o ícone de pesquisa */
+}
+
+/* Efeito hover no botão */
+.wp-block-search__button:hover {
+    background-color: #d35465; /* Cor mais escura ao passar o mouse */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+@media (max-width: 605px) {
+    .nav-menu {
+        width: 90%;
+    }
+
+}

@@ -1,0 +1,110 @@
+footer {
+
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.logo {
+    width: 170px;
+    height: 110px;
+}
+
+.conteiner-footer {
+    display: flex;
+    margin-block: 50px;
+    justify-content: space-between;
+}
+
+.conteiner-footer > div {
+    width: 220px;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+.conteiner-footer div ul {
+
+    list-style: none;
+    margin-top: 15px;
+    padding-left: 0;
+
+}
+
+.conteiner-footer div ul li,
+.conteiner-footer div ul li a {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.conteiner-footer a {
+    color: gray;
+}
+
+.conteiner-footer h4 {
+    color: #f2637e;
+    margin-bottom: 1rem;
+}
+
+footer p {
+    color: grey;
+}
+
+.footer-widget {
+    margin-bottom: 0;
+}
+
+.footer-menu a:hover {
+    color: black;
+}
+
+.icone-redeSocial {
+    margin-top: 10px;
+}
+
+.icone-inicial {
+    width: 50px;
+    height: 70px;
+    margin-left: auto;
+
+}
+
+.social-media {
+    gap: 10px;
+}
+
+
+
+.social-media a {
+    margin-right: 0.8rem;
+    color: grey;
+    /* Cor inicial */
+    text-decoration: none;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: #f2637e;
+    /* Cor ao passar o mouse */
+}
+
+@media (max-width: 768px) {
+    .conteiner-footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Centraliza os itens dentro do container */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .conteiner-footer > div {
+        width: 70%;
+        text-align: center; /* Centraliza o conteúdo dentro de cada div */
+    }
+
+    .conteiner-footer div ul li,
+    .conteiner-footer div ul li a {
+        justify-content: center; /* Centraliza os itens da lista */
+    }
+}

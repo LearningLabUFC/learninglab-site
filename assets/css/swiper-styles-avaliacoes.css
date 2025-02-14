@@ -1,0 +1,174 @@
+.container-comentarios {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.container-comentarios h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #f2637e;
+}
+
+/* Swiper ajustes */
+.swiper {
+    width: 100%;
+    height: auto;
+}
+
+/* Ajustando o container do swiper */
+.swiper.avaliacao-swiper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    /* Centraliza o slider */
+    padding: 1rem 0;
+    /* Adiciona espaço ao redor */
+    padding-inline: 2.2rem;
+}
+
+/* Configurando os slides */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    /* Centraliza o card horizontalmente */
+    align-items: center;
+    /* Centraliza o card verticalmente */
+}
+
+/* Ajuste dos cards dentro do slider */
+.card-avaliacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 300px;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.imagem-avaliacao img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.conteudo-avaliacao h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.conteudo-avaliacao p {
+    font-size: 1rem;
+    color: grey;
+}
+
+/* Opção 1: Posicionar as setas para fora do container */
+.container-comentarios .swiper-button-next,
+.container-comentarios .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f2637e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    /* Garantir que as setas fiquem acima do conteúdo */
+}
+
+.container-comentarios .swiper-button-next::after,
+.container-comentarios .swiper-button-prev::after {
+    font-size: 17px;
+    color: white;
+}
+
+.container-comentarios .swiper-pagination {
+    position: relative;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    /* Garantir que a paginação fique acima do conteúdo */
+}
+
+.container-comentarios .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    margin: 0 6px;
+    background-color: #f2637e;
+    opacity: 0.5;
+}
+
+.container-comentarios .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+@media (max-width: 767px) {
+    .card-avaliacao {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .imagem-avaliacao {
+        margin-right: 1rem;
+    }
+
+    .imagem-avaliacao img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .swiper-slide {
+        justify-content: flex-start;
+    }
+
+    .swiper.avaliacao-swiper {
+        padding-inline: 1rem;
+    }
+
+    .container-comentarios .swiper-button-next,
+    .container-comentarios .swiper-button-prev {
+        display: none;
+    }
+
+    .conteudo-avaliacao h3 {
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 605px) {
+
+
+    .slide,
+    .comentarios {
+        height: 60vh;
+    }
+
+
+    .container-comentarios h2 {
+        font-size: 1.5rem;
+    }
+}
+
+
+@media (max-width: 280px) {
+    .container-comentarios{
+        height: 90vh;
+    }
+    .slide, .comentarios{
+        height: 85vh;
+    }
+}

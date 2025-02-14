@@ -1,0 +1,144 @@
+.container-contato {
+    display: flex;
+    justify-content: space-between;
+    /* Espaço entre os elementos */
+    gap: 50px;
+}
+.canais {
+    margin-block: 3rem;
+    display: flex;
+    flex-direction: column; /* Faz com que os itens fiquem em uma coluna */
+    gap: 25px; /* Espaço entre os links */
+}
+
+.canais a {
+    display: flex; /* Para alinhar o ícone e o texto na horizontal */
+    align-items: center; /* Alinha o ícone com o texto */
+    text-decoration: none; /* Remove o sublinhado */
+    color: #f2637e; /* Cor do texto */
+    font-size: 1.2rem;
+}
+
+.canais a:hover {
+    color: #c5465d; /* Cor do texto */
+}
+
+.canais a i {
+    margin-right: 8px; /* Adiciona espaço entre o ícone e o texto */
+}
+
+.container-contato .conteudo, .container-contato .formulario {
+    max-width: 50%;
+    /* Limita a largura da área de texto */
+}
+
+/* Estilo geral do formulário */
+.formulario {
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo dos campos de input */
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="email"],
+.wpcf7-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+/* Efeito hover nos campos */
+.wpcf7-form input[type="text"]:hover,
+.wpcf7-form input[type="email"]:hover,
+.wpcf7-form textarea:hover {
+    border-color: #f2637e;
+}
+
+/* Efeito focus nos campos */
+.wpcf7-form input[type="text"]:focus,
+.wpcf7-form input[type="email"]:focus,
+.wpcf7-form textarea:focus {
+    outline: none;
+    border-color: #f2637e;
+    box-shadow: 0 0 5px rgba(242, 99, 126, 0.3);
+}
+
+/* Estilo do botão */
+.wpcf7-submit {
+    background-color: #f2637e;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Efeito hover no botão */
+.wpcf7-submit:hover {
+    background-color: #e0526d;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(242, 99, 126, 0.3);
+}
+
+/* Esconder labels originais */
+.wpcf7-form label {
+    display: none;
+}
+
+/* Estilo do spinner de loading */
+.wpcf7-spinner {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* Mensagens de resposta */
+.wpcf7-response-output {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Placeholder personalizado */
+.wpcf7-form input::placeholder,
+.wpcf7-form textarea::placeholder {
+    color: #666;
+    opacity: 1;
+}
+
+/* Ajuste de espaçamento para o formulário */
+.wpcf7-form p {
+    margin: 0 0 15px 0;
+}
+
+/* Estilo para mensagens de erro */
+.wpcf7-not-valid-tip {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .container-contato {
+        display: block;
+    }
+
+    .container-contato .conteudo, .container-contato .formulario {
+        max-width: none;
+        /* Limita a largura da área de texto */
+    }
+}
