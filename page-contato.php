@@ -22,7 +22,7 @@
         </div>
 
         <div class="formulario">
-            <?php echo do_shortcode('[contact-form-7 id="6104283" title="Formulário de contato 1"]'); ?>
+            <?php echo do_shortcode('[contact-form-7 id="ccb2b69" title="Formulário de contato"]'); ?>
         </div>
     </section>
 

@@ -4,6 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="<?php the_title(); ?>">
+    <meta property="og:description" content="<?php echo get_the_excerpt(); ?>">
+    <meta property="og:image" content="<?php echo get_the_post_thumbnail_url(); ?>">
+    <meta property="og:url" content="<?php the_permalink(); ?>">
+    <meta property="og:site_name" content="LearningLab">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php the_title(); ?>">
+    <meta name="twitter:description" content="<?php echo get_the_excerpt(); ?>">
+    <meta name="twitter:image" content="<?php echo get_the_post_thumbnail_url(); ?>">
 
     <?php
     wp_head();
@@ -63,4 +73,3 @@
             </nav>
         </header>
     </div>
-
