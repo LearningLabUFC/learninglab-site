@@ -84,6 +84,54 @@ button:hover {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
+/* Estilos para os palestrantes */
+
+.instrutor-bloco {
+    display: flex;
+    flex-direction: row;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding-inline: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 0.3rem;
+
+    margin: 20px auto; /* margens automáticas para centralizar */
+    border-radius: 8px;
+    align-items: center;
+    gap: 20px;
+    max-width: 1000px; /* limite na largura */
+    width: 90%; /* para responsividade */
+}
+
+.instrutor-imagem img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* deixa redonda */
+    margin-bottom: 0;
+}
+
+.instrutor-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.instrutor-info h2 {
+    margin: 0;
+}
+
+
+@media (max-width: 768px) {
+    .instrutor-bloco {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .instrutor-imagem img {
+        width: 120px;
+        height: 120px;
+    }
+}
 
 @media (max-width: 605px) {
     .nav-menu {
