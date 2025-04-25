@@ -264,7 +264,7 @@ function registrar_cpt_cursos()
     $args = array(
         'labels'             => $labels,
         'public'             => true,
-        'show_in_rest'       => false,
+        'show_in_rest'       => true,
         'has_archive'        => true,
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-welcome-learn-more',
@@ -413,6 +413,43 @@ function membros_shortcode($atts) {
     return $output;
 }
 add_shortcode('membros', 'membros_shortcode');
+
+// Shortcode para instrutores nas páginas de cursos
+
+function instrutor_shortcode($atts, $content = null) {
+    // Define os atributos com valores padrão
+    $atts = shortcode_atts(array(
+        'nome' => 'Nome do Instrutor',
+        'imagem' => '', // URL ou nome da imagem na biblioteca
+        'descricao' => ''
+    ), $atts, 'instrutor');
+
+    // Se for o nome de uma imagem da biblioteca, pega a URL
+    if (!filter_var($atts['imagem'], FILTER_VALIDATE_URL)) {
+        $img = get_page_by_title($atts['imagem'], OBJECT, 'attachment');
+        if ($img) {
+            $atts['imagem'] = wp_get_attachment_url($img->ID);
+        }
+    }
+
+    // HTML do bloco
+    ob_start();
+    ?>
+    <div class="instrutor-bloco">
+        <?php if ($atts['imagem']) : ?>
+            <div class="instrutor-imagem">
+                <img src="<?php echo esc_url($atts['imagem']); ?>" alt="<?php echo esc_attr($atts['nome']); ?>">
+            </div>
+        <?php endif; ?>
+        <div class="instrutor-info">
+            <h2><?php echo esc_html($atts['nome']); ?></h2>
+            <p><?php echo esc_html($atts['descricao']); ?></p>
+        </div>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('instrutor', 'instrutor_shortcode');
 
 // Função auxiliar para verificar se um membro é formado na página de membros
 
