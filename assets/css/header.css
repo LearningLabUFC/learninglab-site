@@ -18,8 +18,27 @@ header .custom-logo { /* classe criada automaticamente pelo WordPress */
   height: 80px;
 }
 
-header nav a:hover{
-  border-bottom:  2px solid white;
+header nav a {
+  position: relative;
+  text-decoration: none;
+}
+
+header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 5px; /* distância do texto */
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+header nav a:hover::after,
+header nav .current-menu-item a::after {
+  transform: scaleX(1);
 }
 
 .menu-item a:active{
