@@ -36,6 +36,10 @@ function learninglab_register_styles()
     if (is_page('contato')) {
         wp_enqueue_style('learninglab_contato_style', get_template_directory_uri() . "/assets/css/contato.css", array(), $version, 'all');
     }
+    
+    if (is_page('artigos')) {
+        wp_enqueue_style('learninglab_artigos_style', get_template_directory_uri() . "/assets/css/artigos.css", array(), $version, 'all');
+    }
 
     // Estilos específicos para a página inicial (front-page.php)
     if (is_front_page()) {
