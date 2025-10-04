@@ -31,5 +31,8 @@ require_once get_template_directory() . '/inc/search-filter.php';
 // Adição de metatags Open Graph no <head>
 require_once get_template_directory() . '/inc/og-tags.php';
 
+// Campos personalizados do autor
+require_once get_template_directory() . '/inc/author-fields.php';
+
 // Funções auxiliares
 require_once get_template_directory() . '/inc/helpers.php';
