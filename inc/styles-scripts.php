@@ -19,9 +19,15 @@ function learninglab_register_styles()
     // Estilo específico para páginas single.php
     if (is_singular('post')) {
         wp_enqueue_style('learninglab_single_style', get_template_directory_uri() . "/assets/css/single.css", array(), $version, 'all');
+        wp_enqueue_style('learninglab_author_style', get_template_directory_uri() . "/assets/css/author.css", array(), $version, 'all');
     }
 
     if (is_archive() || is_home() || is_search()) {
+        wp_enqueue_style('learninglab_archive_style', get_template_directory_uri() . "/assets/css/archive.css", array(), $version, 'all');
+    }
+
+    if (is_author()) {
+        wp_enqueue_style('learninglab_author_style', get_template_directory_uri() . "/assets/css/author.css", array(), $version, 'all');
         wp_enqueue_style('learninglab_archive_style', get_template_directory_uri() . "/assets/css/archive.css", array(), $version, 'all');
     }
 
