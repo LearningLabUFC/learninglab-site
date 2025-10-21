@@ -269,20 +269,19 @@
   margin-top: 8px;
 }
 
-.autor-avatar {
+.autor-avatar a {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #f1f5f9;
-  padding: 6px 12px 6px 6px;
-  border-radius: 24px;
-  border: 1px solid #e2e8f0;
-  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  padding: 5px;
 }
 
 .autor-avatar:hover {
   background: #e2e8f0;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
 }
 
 .avatar-circle {
