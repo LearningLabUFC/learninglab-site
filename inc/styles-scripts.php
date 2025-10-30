@@ -45,6 +45,13 @@ function learninglab_register_styles()
     
     if (is_page('artigos')) {
         wp_enqueue_style('learninglab_artigos_style', get_template_directory_uri() . "/assets/css/artigos.css", array(), $version, 'all');
+        wp_enqueue_script(
+            'filter-form-cleaner',
+            get_template_directory_uri() . '/assets/js/filter-form-cleaner.js',
+            array('jquery'),
+            $version,
+            true
+        );
     }
 
     // Estilos específicos para a página inicial (front-page.php)
