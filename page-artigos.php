@@ -148,11 +148,11 @@ get_header();
     $premio = get_post_meta(get_the_ID(), 'premio', true);
     $eventos_term = get_the_terms(get_the_ID(), 'evento_artigo');
     if (!empty($eventos_term) && !is_wp_error($eventos_term)) {
-    $evento_slug = $eventos_term[0]->slug; // This is the slug
+    $evento_slug = $eventos_term[0]->slug;
     $evento_name = $eventos_term[0]->name;
     } else {
-    $evento_slug = 'sbc-brasil'; // Default slug if no term is found
-    $evento_name = 'SBC BRASIL'; // Default name if no term is found
+    $evento_slug = 'sbc-brasil';
+    $evento_name = 'SBC BRASIL';
     }
     ?>
     <article class="artigo-card">
@@ -168,10 +168,14 @@ get_header();
           <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
         </h2>
         <div class="artigo-excerpt">
-          <?php 
+          <?php
           $content = strip_shortcodes(strip_tags(get_the_content()));
           $paragraphs = array_filter(explode("\n\n", $content));
-          foreach(array_slice($paragraphs, 0, 2) as $p) echo trim($p);
+          $excerpt_parts = [];
+          foreach (array_slice($paragraphs, 0, 2) as $p) {
+            $excerpt_parts[] = trim($p);
+          }
+          echo implode(' ', $excerpt_parts);
           ?>
         </div>
         <?php

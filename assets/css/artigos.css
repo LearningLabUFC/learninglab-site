@@ -271,6 +271,7 @@
 
 .autor-avatar {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
   background: #f1f5f9;
