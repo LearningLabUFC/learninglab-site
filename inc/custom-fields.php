@@ -89,12 +89,10 @@ function adicionar_meta_box_autores_artigo() {
 }
 add_action('add_meta_boxes', 'adicionar_meta_box_autores_artigo');
 
-// Mostra a meta box para selecionar autores
+// Mostra a meta box para selecionar e ordenar autores
 function mostrar_meta_box_autores_artigo($post) {
-    // Adiciona um nonce
     wp_nonce_field('salvar_autores_artigo', 'autores_artigo_nonce');
 
-    // Obtém todos os membros
     $membros = get_posts(array(
         'post_type' => 'membro',
         'numberposts' => -1,
@@ -102,26 +100,64 @@ function mostrar_meta_box_autores_artigo($post) {
         'order' => 'ASC',
     ));
 
-    // Obtém os autores já selecionados
-    $autores_selecionados = get_post_meta($post->ID, '_artigo_autores', true);
-    if (!is_array($autores_selecionados)) {
-        $autores_selecionados = array();
+    $autores_selecionados_ids = get_post_meta($post->ID, '_artigo_autores', true);
+    if (!is_array($autores_selecionados_ids)) {
+        $autores_selecionados_ids = array();
     }
 
-    echo '<ul>';
+    // Create an associative array of all members for easy lookup
+    $all_membros_map = array();
     foreach ($membros as $membro) {
-        $checked = in_array($membro->ID, $autores_selecionados) ? 'checked' : '';
-        echo '<li>';
-        echo '<label>';
-        echo '<input type="checkbox" name="artigo_autores[]" value="' . $membro->ID . '" ' . $checked . '> ';
-        echo esc_html($membro->post_title);
-        echo '</label>';
-        echo '</li>';
+        $all_membros_map[$membro->ID] = $membro;
     }
-    echo '</ul>';
+
+    ?>
+    <style>
+        .author-sort-container { display: flex; gap: 20px; }
+        .author-sort-list-wrapper { width: 50%; }
+        .author-sort-list { border: 1px solid #ccd0d4; padding: 10px; min-height: 150px; background: #fff; }
+        .author-sort-list h4 { margin: 0 0 10px; padding-bottom: 5px; border-bottom: 1px solid #ccd0d4; font-size: 14px; }
+        .author-sort-list li { cursor: move; background: #f8f9fa; padding: 8px; border: 1px solid #e9e9e9; margin-bottom: 5px; border-radius: 3px; }
+        .author-sort-list li:hover { background: #f1f1f1; }
+        .author-sort-list.selected-authors li { background: #e8f6ff; }
+        .ui-sortable-placeholder { border: 1px dashed #f00; background: #fff9c4; height: 36px; margin-bottom: 5px; }
+    </style>
+
+    <div class="author-sort-container">
+        <div class="author-sort-list-wrapper">
+            <h4>Autores Disponíveis</h4>
+            <ul id="available-authors-list" class="author-sort-list">
+                <?php
+                foreach ($membros as $membro) {
+                    if (!in_array($membro->ID, $autores_selecionados_ids)) {
+                        echo '<li data-id="' . $membro->ID . '">' . esc_html($membro->post_title) . '</li>';
+                    }
+                }
+                ?>
+            </ul>
+        </div>
+
+        <div class="author-sort-list-wrapper">
+            <h4>Autores Selecionados (arraste para ordenar)</h4>
+            <ul id="selected-authors-list" class="author-sort-list selected-authors">
+                <?php
+                // Ensure we display authors in the saved order
+                foreach ($autores_selecionados_ids as $autor_id) {
+                    if (isset($all_membros_map[$autor_id])) {
+                        $membro = $all_membros_map[$autor_id];
+                        echo '<li data-id="' . $membro->ID . '">' . esc_html($membro->post_title) . '</li>';
+                    }
+                }
+                ?>
+            </ul>
+        </div>
+    </div>
+
+    <input type="hidden" id="artigo_autores_order" name="artigo_autores" value="<?php echo implode(',', $autores_selecionados_ids); ?>">
+    <?php
 }
 
-// Salva os autores selecionados
+// Salva os autores selecionados e ordenados
 function salvar_autores_artigo($post_id) {
     // Verifica o nonce
     if (!isset($_POST['autores_artigo_nonce']) || !wp_verify_nonce($_POST['autores_artigo_nonce'], 'salvar_autores_artigo')) {
@@ -146,10 +182,15 @@ function salvar_autores_artigo($post_id) {
 
     // Salva os autores
     if (isset($_POST['artigo_autores'])) {
-        $autores = array_map('intval', $_POST['artigo_autores']);
-        update_post_meta($post_id, '_artigo_autores', $autores);
+        $autores_ids_str = sanitize_text_field($_POST['artigo_autores']);
+        if (empty($autores_ids_str)) {
+            delete_post_meta($post_id, '_artigo_autores');
+        } else {
+            $autores = array_map('intval', explode(',', $autores_ids_str));
+            update_post_meta($post_id, '_artigo_autores', $autores);
+        }
     } else {
-        // Se nenhum autor for selecionado, remove o meta
+        // Se o campo oculto não estiver presente, remove o meta para limpar os autores
         delete_post_meta($post_id, '_artigo_autores');
     }
 }
