@@ -29,8 +29,6 @@ function mostrar_meta_box_artigos($post) {
     echo '<input type="text" id="ano_publicacao" name="ano_publicacao" value="' . esc_attr($ano) . '" size="25" />';
     echo '</p>';
 
-
-
     // Campo para o prêmio
     echo '<p>';
     echo '<label for="premio">Prêmio (opcional):</label><br>';
@@ -199,12 +197,6 @@ function salvar_autores_artigo($post_id) {
     }
 }
 add_action('save_post', 'salvar_autores_artigo');
-
-// Remove a meta box padrão da taxonomia 'evento_artigo'
-function remover_meta_box_evento_artigo() {
-    remove_meta_box('tagsdiv-evento_artigo', 'artigo', 'normal');
-}
-add_action('add_meta_boxes', 'remover_meta_box_evento_artigo', 999);
 
 add_action('add_meta_boxes', 'adicionar_meta_box_evento_artigo_personalizada');
 
