@@ -99,9 +99,9 @@ function learninglab_admin_enqueue_scripts($hook) {
             'admin-authors-order',
             get_template_directory_uri() . '/assets/js/admin-authors-order.js',
             array('jquery', 'jquery-ui-sortable'),
-            '1.0.0',
             true
         );
+        wp_enqueue_style('learninglab-admin-style', get_template_directory_uri() . '/assets/css/admin.css', array(), '1.0.0', 'all');
     }
 }
 add_action('admin_enqueue_scripts', 'learninglab_admin_enqueue_scripts');

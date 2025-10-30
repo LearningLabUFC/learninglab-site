@@ -20,8 +20,8 @@ function mostrar_meta_box_artigos($post) {
 
     // Obtém os valores atuais dos campos
     $ano = get_post_meta($post->ID, 'ano_publicacao', true);
-    $evento = get_post_meta($post->ID, 'evento', true);
     $premio = get_post_meta($post->ID, 'premio', true);
+    $artigo_url_externa = get_post_meta($post->ID, 'artigo_url_externa', true);
 
     // Campo para o ano de publicação
     echo '<p>';
@@ -35,6 +35,12 @@ function mostrar_meta_box_artigos($post) {
     echo '<p>';
     echo '<label for="premio">Prêmio (opcional):</label><br>';
     echo '<input type="text" id="premio" name="premio" value="' . esc_attr($premio) . '" size="25" />';
+    echo '</p>';
+
+    // Campo para a URL externa do artigo
+    echo '<p>';
+    echo '<label for="artigo_url_externa">URL Externa do Artigo (opcional):</label><br>';
+    echo '<input type="url" id="artigo_url_externa" name="artigo_url_externa" value="' . esc_attr($artigo_url_externa) . '" size="50" />';
     echo '</p>';
 }
 
@@ -65,6 +71,11 @@ function salvar_meta_box_artigos($post_id) {
     // Salva o campo 'premio'
     if (isset($_POST['premio'])) {
         update_post_meta($post_id, 'premio', sanitize_text_field($_POST['premio']));
+    }
+
+    // Salva o campo 'artigo_url_externa'
+    if (isset($_POST['artigo_url_externa'])) {
+        update_post_meta($post_id, 'artigo_url_externa', esc_url_raw($_POST['artigo_url_externa']));
     }
 }
 add_action('save_post', 'salvar_meta_box_artigos');
@@ -193,7 +204,9 @@ add_action('save_post', 'salvar_autores_artigo');
 function remover_meta_box_evento_artigo() {
     remove_meta_box('tagsdiv-evento_artigo', 'artigo', 'normal');
 }
-add_action('admin_menu', 'remover_meta_box_evento_artigo', 999);
+add_action('add_meta_boxes', 'remover_meta_box_evento_artigo', 999);
+
+add_action('add_meta_boxes', 'adicionar_meta_box_evento_artigo_personalizada');
 
 // Adiciona uma meta box personalizada para a taxonomia 'evento_artigo'
 function adicionar_meta_box_evento_artigo_personalizada() {
@@ -206,7 +219,6 @@ function adicionar_meta_box_evento_artigo_personalizada() {
         'high'
     );
 }
-add_action('add_meta_boxes', 'adicionar_meta_box_evento_artigo_personalizada');
 
 // Mostra a meta box personalizada como um select dropdown
 function mostrar_meta_box_evento_artigo_checklist($post) {

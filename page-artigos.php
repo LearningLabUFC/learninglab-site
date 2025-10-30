@@ -172,10 +172,14 @@ get_header();
                         <?php endif; ?>
                     </div>
                     <div class="artigo-content">
-                        <h2 class="artigo-title">
-                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                        </h2>
-                        <div class="artigo-excerpt">
+                                    <h2 class="artigo-title">
+                                      <?php
+                                      $external_url = get_post_meta(get_the_ID(), 'artigo_url_externa', true);
+                                      $link_url = $external_url ? esc_url($external_url) : get_the_permalink();
+                                      $target_attr = $external_url ? ' target="_blank" rel="noopener noreferrer"' : '';
+                                      ?>
+                                      <a href="<?php echo $link_url; ?>"<?php echo $target_attr; ?>><?php the_title(); ?></a>
+                                    </h2>                        <div class="artigo-excerpt">
                             <?php
                             $content = strip_shortcodes(strip_tags(get_the_content()));
                             $paragraphs = array_filter(explode("\n\n", $content));
