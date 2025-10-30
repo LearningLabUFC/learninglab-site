@@ -82,12 +82,12 @@ function registrar_taxonomia_evento_artigo() {
     $args = array(
         'hierarchical'      => false,
         'labels'            => $labels,
-        'show_ui'           => true,
+        'show_ui'           => false,
         'show_in_rest'      => true,
         'show_admin_column' => true,
         'query_var'         => true,
         'rewrite'           => array('slug' => 'evento-artigo'),
-        'meta_box_cb'       => false, // Set this to false
+        'meta_box_cb'       => false,
     );
 
     register_taxonomy('evento_artigo', array('artigo'), $args);
