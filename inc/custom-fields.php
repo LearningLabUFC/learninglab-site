@@ -29,11 +29,7 @@ function mostrar_meta_box_artigos($post) {
     echo '<input type="text" id="ano_publicacao" name="ano_publicacao" value="' . esc_attr($ano) . '" size="25" />';
     echo '</p>';
 
-    // Campo para o evento
-    echo '<p>';
-    echo '<label for="evento">Evento:</label><br>';
-    echo '<input type="text" id="evento" name="evento" value="' . esc_attr($evento) . '" size="25" />';
-    echo '</p>';
+
 
     // Campo para o prêmio
     echo '<p>';
@@ -64,10 +60,7 @@ function salvar_meta_box_artigos($post_id) {
         update_post_meta($post_id, 'ano_publicacao', sanitize_text_field($_POST['ano_publicacao']));
     }
 
-    // Salva o campo 'evento'
-    if (isset($_POST['evento'])) {
-        update_post_meta($post_id, 'evento', sanitize_text_field($_POST['evento']));
-    }
+
 
     // Salva o campo 'premio'
     if (isset($_POST['premio'])) {
@@ -231,4 +224,5 @@ function mostrar_meta_box_evento_artigo_checklist($post) {
         echo '<option value="' . esc_attr($term->slug) . '" ' . $selected . '>' . esc_html($term->name) . '</option>';
     }
     echo '</select>';
+    echo '<p style="margin-top: 10px;"><a href="' . admin_url('edit-tags.php?taxonomy=evento_artigo&post_type=artigo') . '" target="_blank">Adicionar ou editar eventos</a></p>';
 }
