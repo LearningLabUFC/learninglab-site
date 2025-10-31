@@ -6,4 +6,3 @@ function limitar_busca_apenas_posts($query) {
     }
     return $query;
 }
-add_action('pre_get_posts', 'limitar_busca_apenas_posts');

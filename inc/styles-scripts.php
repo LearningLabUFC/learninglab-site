@@ -42,6 +42,17 @@ function learninglab_register_styles()
     if (is_page('contato')) {
         wp_enqueue_style('learninglab_contato_style', get_template_directory_uri() . "/assets/css/contato.css", array(), $version, 'all');
     }
+    
+    if (is_page('artigos')) {
+        wp_enqueue_style('learninglab_artigos_style', get_template_directory_uri() . "/assets/css/artigos.css", array(), $version, 'all');
+        wp_enqueue_script(
+            'filter-form-cleaner',
+            get_template_directory_uri() . '/assets/js/filter-form-cleaner.js',
+            array('jquery'),
+            $version,
+            true
+        );
+    }
 
     // Estilos específicos para a página inicial (front-page.php)
     if (is_front_page()) {
@@ -77,3 +88,20 @@ function learninglab_register_scripts()
 }
 
 add_action('wp_enqueue_scripts', 'learninglab_register_scripts');
+
+// Enfileirando scripts para o painel de administração
+function learninglab_admin_enqueue_scripts($hook) {
+    global $pagenow, $typenow;
+
+    if (($pagenow == 'post.php' || $pagenow == 'post-new.php') && $typenow == 'artigo') {
+        wp_enqueue_script('jquery-ui-sortable');
+        wp_enqueue_script(
+            'admin-authors-order',
+            get_template_directory_uri() . '/assets/js/admin-authors-order.js',
+            array('jquery', 'jquery-ui-sortable'),
+            true
+        );
+        wp_enqueue_style('learninglab-admin-style', get_template_directory_uri() . '/assets/css/admin.css', array(), '1.0.0', 'all');
+    }
+}
+add_action('admin_enqueue_scripts', 'learninglab_admin_enqueue_scripts');
