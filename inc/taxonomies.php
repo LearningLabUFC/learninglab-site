@@ -1,7 +1,5 @@
 <?php
-
 // Registrando a taxonomia para o CPT de membros
-
 function registrar_taxonomia_tipo_de_membro()
 {
     $labels = array(
@@ -17,7 +15,6 @@ function registrar_taxonomia_tipo_de_membro()
         'new_item_name'     => 'Novo Nome do Tipo',
         'menu_name'         => 'Tipo de Membro',
     );
-
     $args = array(
         'hierarchical'      => true,
         'labels'            => $labels,
@@ -26,14 +23,11 @@ function registrar_taxonomia_tipo_de_membro()
         'query_var'         => true,
         'rewrite'           => array('slug' => 'tipo-de-membro'),
     );
-
     register_taxonomy('tipo_de_membro', array('membro'), $args);
 }
-
 add_action('init', 'registrar_taxonomia_tipo_de_membro');
 
 // Registrando a taxonomia para o CPT de cursos
-
 function registrar_taxonomia_status_curso()
 {
     $labels = array(
@@ -49,23 +43,19 @@ function registrar_taxonomia_status_curso()
         'new_item_name'     => 'Novo Nome de Status',
         'menu_name'         => 'Status do Curso',
     );
-
     $args = array(
-        'hierarchical'      => true, // Para permitir subcategorias
+        'hierarchical'      => true,
         'labels'            => $labels,
         'show_ui'           => true,
         'show_admin_column' => true,
         'query_var'         => true,
         'rewrite'           => array('slug' => 'status-do-curso'),
     );
-
     register_taxonomy('status_curso', array('curso'), $args);
 }
-
 add_action('init', 'registrar_taxonomia_status_curso');
 
-// Registrando a taxonomia para Evento de artigos
-
+// Registrando a taxonomia para Evento de artigos - CORRIGIDA
 function registrar_taxonomia_evento_artigo() {
     $labels = array(
         'name'              => 'Eventos',
@@ -78,7 +68,6 @@ function registrar_taxonomia_evento_artigo() {
         'new_item_name'     => 'Nome do Novo Evento',
         'menu_name'         => 'Eventos',
     );
-
     $args = array(
         'hierarchical'      => false,
         'labels'            => $labels,
@@ -87,9 +76,8 @@ function registrar_taxonomia_evento_artigo() {
         'show_admin_column' => true,
         'query_var'         => true,
         'rewrite'           => array('slug' => 'evento-artigo'),
-        'meta_box_cb'       => false, // Set this to false
+        'show_in_quick_edit' => true, // Adiciona edição rápida
     );
-
     register_taxonomy('evento_artigo', array('artigo'), $args);
 }
 add_action('init', 'registrar_taxonomia_evento_artigo');
