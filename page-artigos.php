@@ -115,9 +115,17 @@ get_header();
   // Autor
   if ($autor_get) {
     $meta_query[] = array(
-      'key' => '_artigo_autores',
-      'value' => '"' . $autor_get . '"', // Busca serializada
-      'compare' => 'LIKE'
+      'relation' => 'OR',
+      array(
+        'key' => '_artigo_autores',
+        'value' => '"' . $autor_get . '"',
+        'compare' => 'LIKE'
+      ),
+      array(
+        'key' => '_artigo_autores',
+        'value' => ':' . $autor_get . ';',
+        'compare' => 'LIKE'
+      )
     );
   }
 
@@ -139,16 +147,12 @@ get_header();
   // Busca - CORRIGIDA para buscar apenas em artigos
   if ($buscar_get) {
     $args['s'] = $buscar_get;
-    // Garante que só busca em artigos
-    add_filter('posts_search', 'buscar_apenas_artigos', 10, 2);
+
   }
 
   $artigos_query = new WP_Query($args);
 
-  // Remove o filtro após a query
-  if ($buscar_get) {
-    remove_filter('posts_search', 'buscar_apenas_artigos', 10);
-  }
+
   ?>
 
   <div class="artigos-container" id="artigos-results">
