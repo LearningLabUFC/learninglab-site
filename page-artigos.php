@@ -8,7 +8,7 @@ get_header();
 <div class="container-header">
   <div class="content-header">
     <div class="title">
-      <h1>Confira nossos artigos</h1>
+      <h1>Artigos</h1>
     </div>
   </div>
 </div>
@@ -26,14 +26,21 @@ get_header();
     <div class="artigos-filters">
 
       <!-- Ano -->
-      <div class="filter-group">
+<div class="filter-group">
         <label for="filter-ano">Ano</label>
         <select id="filter-ano" name="ano">
           <option value="">Todos</option>
           <?php
-          for ($y = 2025; $y >= 2021; $y--) {
-            $selected = ($ano_get == $y) ? 'selected' : '';
-            echo '<option value="' . $y . '" ' . $selected . '>' . $y . '</option>';
+          // Pega os anos cadastrados na nova taxonomia
+          $anos = get_terms(array(
+            'taxonomy' => 'ano_artigo',
+            'hide_empty' => true, // Só mostra anos que têm artigos
+            'order' => 'DESC'
+          ));
+          foreach ($anos as $term) {
+             // Compara pelo slug
+            $selected = ($ano_get == $term->slug) ? 'selected' : '';
+            echo '<option value="' . esc_attr($term->slug) . '" ' . $selected . '>' . esc_html($term->name) . '</option>';
           }
           ?>
         </select>
@@ -60,14 +67,14 @@ get_header();
       </div>
 
       <!-- Evento -->
-      <div class="filter-group">
+<div class="filter-group">
         <label for="filter-evento">Evento</label>
         <select id="filter-evento" name="evento">
           <option value="">Todos os eventos</option>
           <?php
           $eventos = get_terms(array(
             'taxonomy' => 'evento_artigo',
-            'hide_empty' => false, // Alterado para false para mostrar todos
+            'hide_empty' => true, 
           ));
           if (!is_wp_error($eventos) && !empty($eventos)) {
             foreach ($eventos as $evento) {
@@ -93,22 +100,22 @@ get_header();
   // Query WP com filtros - CORRIGIDA
   $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-  $args = array(
-    'post_type' => 'artigo', // Apenas artigos, não posts do blog
+$args = array(
+    'post_type' => 'artigo',
     'posts_per_page' => 5,
     'paged' => $paged,
     'orderby' => 'date',
     'order' => 'DESC',
+    'tax_query' => array('relation' => 'AND'), // Prepara para receber múltiplas taxonomias
   );
-
   $meta_query = array('relation' => 'AND');
 
   // Ano
-  if ($ano_get) {
-    $meta_query[] = array(
-      'key' => 'ano_publicacao',
-      'value' => $ano_get,
-      'compare' => '='
+if ($ano_get) {
+    $args['tax_query'][] = array(
+      'taxonomy' => 'ano_artigo',
+      'field'    => 'slug',
+      'terms'    => $ano_get,
     );
   }
 
@@ -134,13 +141,12 @@ get_header();
   }
 
   // Evento (taxonomia)
+// Filtro de Evento (Taxonomia)
   if ($evento_get) {
-    $args['tax_query'] = array(
-      array(
-        'taxonomy' => 'evento_artigo',
-        'field'    => 'slug',
-        'terms'    => $evento_get,
-      ),
+    $args['tax_query'][] = array(
+      'taxonomy' => 'evento_artigo',
+      'field'    => 'slug',
+      'terms'    => $evento_get,
     );
   }
 
@@ -156,44 +162,85 @@ get_header();
   ?>
 
   <div class="artigos-container" id="artigos-results">
+<?php
+  $artigos_query = new WP_Query($args);
+
+  // --- CORREÇÃO: Pegar a URL da página "Artigos" ANTES de entrar no loop ---
+  // Isso garante que os links dos filtros apontem para a lista, e não para o post individual
+  $base_url = get_permalink(); 
+  ?>
+
+  <div class="artigos-container" id="artigos-results">
     <?php
     if ($artigos_query->have_posts()) :
       while ($artigos_query->have_posts()) : $artigos_query->the_post();
-        $ano = get_post_meta(get_the_ID(), 'ano_publicacao', true) ?: date('Y');
+        
+        // --- 1. RECUPERAÇÃO DE DADOS E GERAÇÃO DOS LINKS ---
+
+        // ANO
+        $anos_term = get_the_terms(get_the_ID(), 'ano_artigo');
+        $ano_label = date('Y'); // Valor padrão (texto)
+        $ano_link = null;       // Valor padrão (link)
+
+        // Se tiver ano cadastrado, cria o link usando a $base_url da página + o parâmetro ?ano=slug
+        if (!empty($anos_term) && !is_wp_error($anos_term)) {
+            $ano_label = $anos_term[0]->name;
+            $ano_link = add_query_arg('ano', $anos_term[0]->slug, $base_url);
+        }
+
+        // EVENTO
+        $eventos_term = get_the_terms(get_the_ID(), 'evento_artigo');
+        $evento_label = 'SBC BRASIL';
+        $evento_link = null;
+
+        if (!empty($eventos_term) && !is_wp_error($eventos_term)) {
+            $evento_label = $eventos_term[0]->name;
+            $evento_link = add_query_arg('evento', $eventos_term[0]->slug, $base_url);
+        }
+
+        // DADOS PADRÃO (Prêmio e Link Externo)
         $premio = get_post_meta(get_the_ID(), 'premio', true);
         $link_externo = get_post_meta(get_the_ID(), '_link_externo_artigo', true);
         
-        // Usa link externo se disponível, senão usa permalink
-        $link_artigo = !empty($link_externo) ? $link_externo : get_permalink();
+        // Link do título (esse sim deve levar para o artigo ou link externo)
+        $link_artigo_destino = !empty($link_externo) ? $link_externo : get_permalink(get_the_ID());
         $target_link = !empty($link_externo) ? '_blank' : '_self';
         $rel_link = !empty($link_externo) ? 'noopener noreferrer' : '';
-        
-        $eventos_term = get_the_terms(get_the_ID(), 'evento_artigo');
-        if (!empty($eventos_term) && !is_wp_error($eventos_term)) {
-          $evento_slug = $eventos_term[0]->slug;
-          $evento_name = $eventos_term[0]->name;
-        } else {
-          $evento_slug = 'sbc-brasil';
-          $evento_name = 'SBC BRASIL';
-        }
     ?>
+
     <article class="artigo-card">
       <div class="artigo-badges">
-        <span class="badge ano-badge"><?php echo esc_html($ano); ?></span>
-        <span class="badge evento-badge"><?php echo esc_html($evento_name); ?></span>
+        
+        <?php if ($ano_link) : ?>
+            <a href="<?php echo esc_url($ano_link); ?>" class="badge ano-badge" title="Filtrar por <?php echo esc_attr($ano_label); ?>">
+                <?php echo esc_html($ano_label); ?>
+            </a>
+        <?php else : ?>
+            <span class="badge ano-badge"><?php echo esc_html($ano_label); ?></span>
+        <?php endif; ?>
+        
+        <?php if ($evento_link) : ?>
+            <a href="<?php echo esc_url($evento_link); ?>" class="badge evento-badge" title="Filtrar por <?php echo esc_attr($evento_label); ?>">
+                <?php echo esc_html($evento_label); ?>
+            </a>
+        <?php else : ?>
+            <span class="badge evento-badge"><?php echo esc_html($evento_label); ?></span>
+        <?php endif; ?>
+        
         <?php if ($premio) : ?>
           <span class="badge premio-badge">🥇 <?php echo esc_html($premio); ?></span>
         <?php endif; ?>
-
       </div>
+
       <div class="artigo-content">
         <h2 class="artigo-title">
-          <a href="<?php echo esc_url($link_artigo); ?>" 
+          <a href="<?php echo esc_url($link_artigo_destino); ?>" 
              target="<?php echo $target_link; ?>" 
              <?php if ($rel_link) echo 'rel="' . $rel_link . '"'; ?>>
             <?php the_title(); ?>
           </a>
         </h2>
+
         <div class="artigo-excerpt">
           <?php 
           $content = strip_shortcodes(strip_tags(get_the_content()));
@@ -203,7 +250,9 @@ get_header();
           }
           ?>
         </div>
+
         <?php
+        // AUTORES
         $autores_ids = get_post_meta(get_the_ID(), '_artigo_autores', true);
         if (!empty($autores_ids) && is_array($autores_ids)) :
         ?>
@@ -211,6 +260,9 @@ get_header();
           <?php foreach ($autores_ids as $autor_id) :
             $autor_nome = get_the_title($autor_id);
             $autor_foto_url = get_the_post_thumbnail_url($autor_id, 'thumbnail');
+            
+            // Link de Filtro por Autor
+            $autor_link = add_query_arg('autor', $autor_id, $base_url);
           ?>
           <div class="autor-avatar">
             <div class="avatar-circle">
@@ -220,19 +272,24 @@ get_header();
                 <?php echo strtoupper(substr($autor_nome, 0, 1)); ?>
               <?php endif; ?>
             </div>
-            <span class="autor-nome"><?php echo esc_html($autor_nome); ?></span>
+            
+            <a href="<?php echo esc_url($autor_link); ?>" class="autor-link autor-nome" title="Ver artigos de <?php echo esc_attr($autor_nome); ?>">
+                <?php echo esc_html($autor_nome); ?>
+            </a>
           </div>
           <?php endforeach; ?>
         </div>
         <?php endif; ?>
       </div>
     </article>
+
     <?php
       endwhile;
       wp_reset_postdata();
     else : ?>
       <p class="no-articles">Não há artigos disponíveis no momento.</p>
     <?php endif; ?>
+  </div>
   </div>
 
   <?php

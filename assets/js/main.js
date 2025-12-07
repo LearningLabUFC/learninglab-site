@@ -20,12 +20,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            // Constrói a URL final
+            // Constrói a URL final e redireciona
             const queryString = params.toString();
             const actionUrl = filterForm.getAttribute('action');
-            
-            // Redireciona para a URL limpa
             window.location.href = queryString ? `${actionUrl}?${queryString}` : actionUrl;
         });
     }
 });
+

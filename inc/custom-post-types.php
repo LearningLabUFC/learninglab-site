@@ -106,7 +106,6 @@ function criar_cpt_avaliacoes()
 add_action('init', 'criar_cpt_avaliacoes');
 
 // Registrando um Custom Post Type para adicionar artigos
-
 function registrar_cpt_artigos()
 {
     $labels = array(
@@ -122,7 +121,6 @@ function registrar_cpt_artigos()
         'all_items'          => 'Todos os Artigos',
         'search_items'       => 'Procurar Artigos',
         'not_found'          => 'Nenhum artigo encontrado.',
-        'not_found_in_trash' => 'Nenhum artigo encontrado na lixeira.',
     );
 
     $args = array(

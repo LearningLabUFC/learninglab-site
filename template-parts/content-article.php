@@ -16,7 +16,6 @@
 
 
     <?php
-    // Condicional para exibir a imagem de destaque se a opção estiver marcada
     if (get_post_meta(get_the_ID(), '_featured_image_display_option', true) === 'yes') {
     ?>
         <div class="featured-image">
@@ -26,7 +25,12 @@
     }
     ?>
 
-    <div class="content"><?php the_content(); ?></div>
+    <div class="content">
+        <?php the_content(); ?>
+        
+        <?php
+        get_template_part('template-parts/author-section');
+        ?>
+    </div>
 
 </article>
-

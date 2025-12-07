@@ -19,9 +19,15 @@ function learninglab_register_styles()
     // Estilo específico para páginas single.php
     if (is_singular('post')) {
         wp_enqueue_style('learninglab_single_style', get_template_directory_uri() . "/assets/css/single.css", array(), $version, 'all');
+        wp_enqueue_style('learninglab_author_style', get_template_directory_uri() . "/assets/css/author.css", array(), $version, 'all');
     }
 
     if (is_archive() || is_home() || is_search()) {
+        wp_enqueue_style('learninglab_archive_style', get_template_directory_uri() . "/assets/css/archive.css", array(), $version, 'all');
+    }
+
+    if (is_author()) {
+        wp_enqueue_style('learninglab_author_style', get_template_directory_uri() . "/assets/css/author.css", array(), $version, 'all');
         wp_enqueue_style('learninglab_archive_style', get_template_directory_uri() . "/assets/css/archive.css", array(), $version, 'all');
     }
 
@@ -36,17 +42,13 @@ function learninglab_register_styles()
     if (is_page('contato')) {
         wp_enqueue_style('learninglab_contato_style', get_template_directory_uri() . "/assets/css/contato.css", array(), $version, 'all');
     }
-    
-    if (is_page('artigos')) {
-        wp_enqueue_style('learninglab_artigos_style', get_template_directory_uri() . "/assets/css/artigos.css", array(), $version, 'all');
-    }
 
     // Estilos específicos para a página inicial (front-page.php)
     if (is_front_page()) {
         wp_enqueue_style('learninglab_frontpage_style', get_template_directory_uri() . "/assets/css/front-page.css", array(), $version, 'all');
         // estilo geral do Swiper (retirar dessa condicional caso vá usar o swiper em outra página)
-        wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css', array(), null, 'all');
-        // Swiper Avaliações
+// estilo geral do Swiper (Travado na versão 10 para combinar com o JS)
+wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css', array(), '10.0', 'all');        // Swiper Avaliações
         wp_enqueue_style('swiper-avaliacoes-style', get_template_directory_uri() . "/assets/css/swiper-styles-avaliacoes.css", array('swiper-css'), $version, 'all');
         // Swiper Notícias
         wp_enqueue_style('swiper-noticias-style', get_template_directory_uri() . "/assets/css/swiper-styles-noticias.css", array('swiper-css'), $version, 'all');
@@ -54,6 +56,10 @@ function learninglab_register_styles()
 
     if (is_singular('post') || is_page()) {
         wp_enqueue_style('learninglab_membro_style', get_template_directory_uri() . "/assets/css/membro.css", array(), $version, 'all');
+    }
+
+    if (is_page('artigos')) {
+        wp_enqueue_style('learninglab_artigos_style', get_template_directory_uri() . "/assets/css/artigos.css", array(), $version, 'all');
     }
 }
 
