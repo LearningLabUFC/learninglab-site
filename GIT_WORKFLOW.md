@@ -67,7 +67,7 @@ cd LearningLab
 O projeto LearningLab possui duas branches principais:
 
 1. **main** - Branch de produção, contém o código estável
-2. **developer** - Branch de desenvolvimento, recebe novas funcionalidades antes da produção
+2. **develop** - Branch de desenvolvimento, recebe novas funcionalidades antes da produção
 
 ### Visualizando branches
 
@@ -95,7 +95,7 @@ O fluxo de trabalho recomendado segue estas etapas:
 **Via linha de comando:**
 
 ```bash
-# Mudar para a branch developer
+# Mudar para a branch develop
 git checkout develop
 
 # Atualizar a branch com as últimas alterações do repositório remoto
@@ -161,7 +161,7 @@ git push origin feature/nome-da-funcionalidade
 
 ### 5. Crie um Pull Request
 
-Quando sua funcionalidade estiver pronta, crie um Pull Request da sua branch para a branch developer.
+Quando sua funcionalidade estiver pronta, crie um Pull Request da sua branch para a branch develop.
 
 ## Convenções de Nomenclatura
 
@@ -338,7 +338,7 @@ git commit  # Finalize o merge
 
 1. Acesse o repositório no GitHub
 2. Clique em "Pull Requests" e depois em "New Pull Request"
-3. Escolha sua branch como "compare" e "developer" como "base"
+3. Escolha sua branch como "compare" e "develop" como "base"
 4. Clique em "Create Pull Request"
 5. Preencha:
    - **Título**: Breve descrição da funcionalidade
@@ -357,11 +357,11 @@ git commit  # Finalize o merge
 
 ### Ciclo de Trabalho Diário
 
-1. Atualize a branch developer: `git checkout developer && git pull`
+1. Atualize a branch develop: `git checkout develop && git pull`
 2. Crie sua branch de trabalho: `git checkout -b feature/sua-funcionalidade`
 3. Faça alterações e commits frequentes
 4. Envie sua branch para o repositório: `git push origin feature/sua-funcionalidade`
-5. Crie um Pull Request para a branch developer quando finalizar
+5. Crie um Pull Request para a branch develop quando finalizar
 
 ### Convenções Importantes
 
@@ -384,7 +384,7 @@ git commit  # Finalize o merge
 
 Este guia foi desenvolvido para padronizar e facilitar o trabalho da equipe no projeto LearningLab. Lembre-se:
 
-- **Sempre** trabalhe em uma branch separada, nunca diretamente na main ou developer
+- **Sempre** trabalhe em uma branch separada, nunca diretamente na main ou develop
 - **Faça commits frequentes** com mensagens claras e descritivas
 - **Mantenha suas branches atualizadas** antes de começar a trabalhar
 - **Comunique-se com a equipe** sobre o que está desenvolvendo

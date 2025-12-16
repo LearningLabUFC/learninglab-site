@@ -16,27 +16,27 @@ body .cabecalho {
     max-width: 1100px;
     margin: auto;
     text-align: justify;
-  }
+}
 
-  .content p {
+.content p {
     font-size: 1.2rem;
     line-height: 1.7;
     color: #414141;
     margin-block: 1.5rem;
     padding: 0;
     text-align: justify;
-  
-  }
 
-  .content p > a {
+}
+
+.content p>a {
     color: #04bfbf;
     font-weight: bold;
-  }
-  
-  .content p > a:hover {
+}
+
+.content p>a:hover {
     color: #f2637e;
-  }
-  
+}
+
 
 .container-inicial-blog {
     background-color: #009a9a;
@@ -69,8 +69,8 @@ body .cabecalho {
 
 
 .conteiner-destaque:hover {
-    transform: scale(1.05);
-    box-shadow: 15px 15px 80px rgba(0, 0, 0, 0.2);
+    transform: scale(1.005);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .conteiner-destaque img {
@@ -104,7 +104,7 @@ body .cabecalho {
     font-size: 1.9rem;
 }
 
-.descricao p{
+.descricao p {
     color: #5a5a5a;
     text-decoration: none;
 }
@@ -133,8 +133,8 @@ body .cabecalho {
 }
 
 .painel-blogs:hover {
-    transform: scale(1.05);
-    box-shadow: 15px 15px 80px rgba(0, 0, 0, 0.2);
+    transform: scale(1.005);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .painel-blogs img {
@@ -199,23 +199,25 @@ body .cabecalho {
     color: #fff;
 }
 
-.nav-links .prev, .nav-links .next {
+.nav-links .prev,
+.nav-links .next {
     font-weight: bold;
 }
 
 .conteiner-footer h4 {
     color: #04bfbf;
     margin-bottom: 1rem;
-  }
-  .social-media a:hover {
+}
+
+.social-media a:hover {
     color: #04bfbf;
-  }
+}
 
-  button {
+button {
     background-color: #009a9a;
-  }
+}
 
-  .wp-block-search__input:focus {
+.wp-block-search__input:focus {
     border-color: #009a9a;
 }
 
@@ -258,4 +260,3 @@ body .cabecalho {
         margin-top: 20px;
     }
 }
-

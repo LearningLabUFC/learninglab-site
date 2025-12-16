@@ -16,6 +16,9 @@ require_once get_template_directory() . '/inc/widgets.php';
 // Registro de Custom Post Types
 require_once get_template_directory() . '/inc/custom-post-types.php';
 
+// Registro de campos personalizados
+require_once get_template_directory() . '/inc/custom-fields.php';
+
 // Registro de taxonomias personalizadas
 require_once get_template_directory() . '/inc/taxonomies.php';
 
