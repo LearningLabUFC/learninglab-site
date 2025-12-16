@@ -74,7 +74,7 @@
     align-items: center;
     justify-content: center;
     z-index: 10;
- 
+
 }
 
 .container-comentarios .swiper-button-next::after,
@@ -102,6 +102,8 @@
 .container-comentarios .swiper-pagination-bullet-active {
     opacity: 1;
 }
+
+
 
 @media (max-width: 767px) {
     .card-avaliacao {
@@ -141,6 +143,7 @@
 }
 
 @media (max-width: 605px) {
+
     .slide,
     .comentarios {
         height: 60vh;
@@ -152,10 +155,12 @@
 }
 
 @media (max-width: 280px) {
-    .container-comentarios{
+    .container-comentarios {
         height: 90vh;
     }
-    .slide, .comentarios{
+
+    .slide,
+    .comentarios {
         height: 85vh;
     }
 }

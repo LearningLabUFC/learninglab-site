@@ -90,38 +90,7 @@
     color: white !important;
 }
 
-@media (max-width: 768px) {
-    .author-info {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-        align-items: center;
-        /* Adicionado para centralizar todos os itens */
-    }
 
-    .author-avatar {
-        align-self: center;
-        /* Garante que o avatar fique centralizado */
-    }
-
-    .author-avatar img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .author-details h3 {
-        font-size: 1.5rem;
-    }
-
-    .author-social {
-        justify-content: center;
-    }
-
-    .author-section {
-        padding: 1.5rem;
-        margin: 2rem 0 1rem 0;
-    }
-}
 
 /* Estilos para a página de arquivo do autor */
 .author-header {
@@ -200,6 +169,35 @@
 }
 
 @media (max-width: 768px) {
+
+    .author-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        align-items: center;
+        /* Adicionado para centralizar todos os itens */
+    }
+
+    .author-avatar {
+        align-self: center;
+        /* Garante que o avatar fique centralizado */
+    }
+
+    .author-avatar img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .author-details h3 {
+        font-size: 1.5rem;
+    }
+
+
+    .author-section {
+        padding: 1.5rem;
+        margin: 2rem 0 1rem 0;
+    }
+
     .author-header-content {
         flex-direction: column;
         text-align: center;
@@ -210,6 +208,13 @@
         width: 120px;
         height: 120px;
     }
+
+
+    .author-social,
+    .author-header-social {
+        justify-content: center;
+    }
+
 
     .author-header-info h1 {
         font-size: 2rem;
