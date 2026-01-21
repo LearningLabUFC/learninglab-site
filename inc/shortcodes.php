@@ -112,3 +112,34 @@ function instrutor_shortcode($atts, $content = null) {
 }
 
 add_shortcode('instrutor', 'instrutor_shortcode');
+
+// Shortcode para caixa de destaque colorida
+function color_box_shortcode($atts) {
+    // 1. Define default values (Attributes)
+    $atts = shortcode_atts(
+        array(
+            'text'     => '28 artigos publicados', // Default text
+            'bg_color' => '#f2637e',               // Default pink background
+            'color'    => 'white',                 // Default text color
+        ),
+        $atts,
+        'caixa_destaque' // The name of the shortcode
+    );
+
+    // 2. Prepare the inline CSS based on the attributes
+    // We sanitize color inputs to ensure they are safe
+    $bg_color = esc_attr($atts['bg_color']);
+    $text_color = esc_attr($atts['color']);
+
+    // 3. Build the HTML output
+    // I moved the styles into variables to keep the code clean
+    $style_container = "background-color: {$bg_color}; min-height: 13.5rem; display: flex; align-items: center; justify-content: center; border-radius: 15px;";
+    $style_text = "margin-bottom: 0; font-weight: bold; padding: 2rem; color: {$text_color}; text-align: center;";
+
+    $output = '<div class="custom-box" style="' . $style_container . '">';
+    $output .= '<p style="' . $style_text . '">' . esc_html($atts['text']) . '</p>';
+    $output .= '</div>';
+
+    return $output;
+}
+add_shortcode('caixa_destaque', 'color_box_shortcode');
