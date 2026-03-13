@@ -22,7 +22,7 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           protocol: ftp
           local-dir: ./
-          remote-dir: /public_html/wp-content/themes/site-learninglab/
+          server-dir: /public_html/wp-content/themes/site-learninglab/
           exclude: |
             **/.git*
             **/.git*/**
