@@ -44,6 +44,7 @@ get_header();
                             <div class="membro-avatar"><?php the_post_thumbnail('thumbnail'); ?></div>
                         <?php endif; ?>
                         <h4 class="membro-nome"><?php the_title(); ?></h4>
+                        <?php learninglab_render_membro_socials(get_the_ID()); ?>
                     </div>
                 <?php endwhile; ?>
             </div>
@@ -96,6 +97,7 @@ get_header();
                                 <h4 class="membro-nome"><?php the_title(); ?></h4>
                                 <i class="fa-solid fa-graduation-cap icon-formado"></i>
                             </div>
+                            <?php learninglab_render_membro_socials(get_the_ID()); ?>
                             <!-- Exibição de rótulos dos setores -->
                             <?php
                             $setores = get_the_terms(get_the_ID(), 'tipo_de_membro');
@@ -165,6 +167,7 @@ get_header();
                             <h4 class="membro-nome"><?php the_title(); ?></h4>
                             <i class="fa-solid fa-graduation-cap icon-formado"></i>
                         </div>
+                        <?php learninglab_render_membro_socials(get_the_ID()); ?>
                         <!-- Exibição de rótulos -->
                         <?php
                         $setores = get_the_terms(get_the_ID(), 'tipo_de_membro');
@@ -228,7 +231,7 @@ get_header();
                             <h4 class="membro-nome"><?php the_title(); ?></h4>
                             <i class="fa-solid fa-graduation-cap icon-formado"></i>
                         </div>
-                    </div>
+<?php // learninglab_render_membro_socials(get_the_ID()); ?>                    </div>
                 <?php endwhile; ?>
             </div>
         <?php
