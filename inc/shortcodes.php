@@ -1,43 +1,34 @@
-<?php 
+<?php
 
-// Shortcode para membros
-
-function membros_shortcode($atts) {
-    // Extrair os atributos do shortcode e aceitar múltiplos slugs separados por vírgula
+function membros_shortcode($atts)
+{
     $atts = shortcode_atts(
         array(
-            'slugs' => '', // Atributo para receber os slugs
+            'slugs' => '',
         ),
         $atts,
         'membros'
     );
 
-    // Converter a string de slugs em um array
     $slugs = array_map('trim', explode(',', $atts['slugs']));
 
-    // Se não houver slugs, retorna vazio
     if (empty($slugs)) {
         return '';
     }
 
-    // Iniciar a saída HTML
     $output = '<div class="membros-grid">';
 
-    // Contar quantos membros são retornados
     $membros_count = 0;
 
-    // Loop através dos slugs
     foreach ($slugs as $slug) {
-        // Buscar o post pelo slug
         $args = array(
             'name'        => $slug,
-            'post_type'   => 'membro', // Altere para o post type correto, se necessário
+            'post_type'   => 'membro',
             'post_status' => 'publish',
             'numberposts' => 1,
         );
         $membro = get_posts($args);
 
-        // Se o post existir, gerar a estrutura
         if ($membro) {
             $post = $membro[0];
             $nome = get_the_title($post->ID);
@@ -48,12 +39,9 @@ function membros_shortcode($atts) {
             $output .= '<h4 class="membro-nome">' . esc_html($nome) . '</h4>';
             $output .= '</div>';
 
-            // Incrementa a contagem de membros
             $membros_count++;
         }
     }
-
-    // Adicionar a classe dependendo do número de membros
     if ($membros_count === 2) {
         $output = str_replace('<div class="membros-grid">', '<div class="membros-grid limite-2">', $output);
     } elseif ($membros_count === 3) {
@@ -66,26 +54,22 @@ function membros_shortcode($atts) {
         $output = str_replace('<div class="membros-grid">', '<div class="membros-grid limite-mais-de-5">', $output);
     }
 
-    // Fechar a estrutura da grid
     $output .= '</div>';
 
-    // Retornar o HTML gerado
     return $output;
 }
 add_shortcode('membros', 'membros_shortcode');
 
 
-// Shortcode para instrutores nas páginas de cursos
 
-function instrutor_shortcode($atts, $content = null) {
-    // Define os atributos com valores padrão
+function instrutor_shortcode($atts, $content = null)
+{
     $atts = shortcode_atts(array(
         'nome' => 'Nome do Instrutor',
-        'imagem' => '', // URL ou nome da imagem na biblioteca
+        'imagem' => '',
         'descricao' => ''
     ), $atts, 'instrutor');
 
-    // Se for o nome de uma imagem da biblioteca, pega a URL
     if (!filter_var($atts['imagem'], FILTER_VALIDATE_URL)) {
         $img = get_page_by_title($atts['imagem'], OBJECT, 'attachment');
         if ($img) {
@@ -93,9 +77,8 @@ function instrutor_shortcode($atts, $content = null) {
         }
     }
 
-    // HTML do bloco
     ob_start();
-    ?>
+?>
     <div class="instrutor-bloco">
         <?php if ($atts['imagem']) : ?>
             <div class="instrutor-imagem">
@@ -107,35 +90,29 @@ function instrutor_shortcode($atts, $content = null) {
             <p><?php echo esc_html($atts['descricao']); ?></p>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 
 add_shortcode('instrutor', 'instrutor_shortcode');
 
-// Shortcode para caixa de destaque colorida
-function color_box_shortcode($atts) {
-    // 1. Define default values (Attributes)
+function color_box_shortcode($atts)
+{
     $atts = shortcode_atts(
         array(
-            'text'     => '28 artigos publicados', // Default text
-            'bg_color' => '#f2637e',               // Default pink background
-            'color'    => 'white',                 // Default text color
+            'text'     => '28 artigos publicados',
+            'bg_color' => '#f2637e',
+            'color'    => 'white',
         ),
         $atts,
-        'caixa_destaque' // The name of the shortcode
+        'caixa_destaque'
     );
 
-    // 2. Prepare the inline CSS based on the attributes
-    // We sanitize color inputs to ensure they are safe
     $bg_color = esc_attr($atts['bg_color']);
     $text_color = esc_attr($atts['color']);
 
-    // 3. Build the HTML output
-    // I moved the styles into variables to keep the code clean
     $style_container = "background-color: {$bg_color}; min-height: 13.5rem; display: flex; align-items: center; justify-content: center; border-radius: 15px;";
-    $style_text = "margin-bottom: 0; font-weight: bold; padding: 2rem; color: {$text_color}; text-align: center;";
-
+    $style_text = "margin-bottom: 0; font-weight: bold; padding: 2rem; color: white !important; text-align: center;";
     $output = '<div class="custom-box" style="' . $style_container . '">';
     $output .= '<p style="' . $style_text . '">' . esc_html($atts['text']) . '</p>';
     $output .= '</div>';
