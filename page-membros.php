@@ -231,8 +231,7 @@ get_header();
                             <h4 class="membro-nome"><?php the_title(); ?></h4>
                             <i class="fa-solid fa-graduation-cap icon-formado"></i>
                         </div>
-                        <?php learninglab_render_membro_socials(get_the_ID()); ?>
-                    </div>
+<?php // learninglab_render_membro_socials(get_the_ID()); ?>                    </div>
                 <?php endwhile; ?>
             </div>
         <?php
