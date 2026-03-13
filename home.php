@@ -1,5 +1,4 @@
 <?php
-// home.php
 get_header();
 ?>
 
