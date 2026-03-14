@@ -1,7 +1,5 @@
 <?php
-/*
- * Página de Artigos
- */
+
 get_header();
 ?>
 
@@ -15,7 +13,7 @@ get_header();
 
 <div class="container">
   <?php
-  // Parâmetros da URL
+  
   $ano_get    = isset($_GET['ano']) ? sanitize_text_field($_GET['ano']) : '';
   $autor_get  = isset($_GET['autor']) ? sanitize_text_field($_GET['autor']) : '';
   $evento_get = isset($_GET['evento']) ? sanitize_text_field($_GET['evento']) : '';
@@ -25,20 +23,20 @@ get_header();
   <form id="filter-form" method="get" action="<?php echo esc_url(get_permalink()); ?>">
     <div class="artigos-filters">
 
-      <!-- Ano -->
+      
       <div class="filter-group">
         <label for="filter-ano">Ano</label>
         <select id="filter-ano" name="ano">
           <option value="">Todos</option>
           <?php
-          // Pega os anos cadastrados na nova taxonomia
+          
           $anos = get_terms(array(
             'taxonomy' => 'ano_artigo',
-            'hide_empty' => true, // Só mostra anos que têm artigos
+            'hide_empty' => true, 
             'order' => 'DESC'
           ));
           foreach ($anos as $term) {
-            // Compara pelo slug
+            
             $selected = ($ano_get == $term->slug) ? 'selected' : '';
             echo '<option value="' . esc_attr($term->slug) . '" ' . $selected . '>' . esc_html($term->name) . '</option>';
           }
@@ -46,7 +44,7 @@ get_header();
         </select>
       </div>
 
-      <!-- Autor -->
+      
 
 
       <div class="filter-group">
@@ -89,7 +87,7 @@ get_header();
         </select>
       </div>
 
-      <!-- Evento -->
+      
       <div class="filter-group">
         <label for="filter-evento">Evento</label>
         <select id="filter-evento" name="evento">
@@ -109,7 +107,7 @@ get_header();
         </select>
       </div>
 
-      <!-- Buscar -->
+      
       <div class="filter-group search-group">
         <label for="filter-buscar">Buscar</label>
         <input type="text" id="filter-buscar" name="buscar" placeholder="Busque o termo desejado" value="<?php echo esc_attr($buscar_get); ?>">
@@ -120,7 +118,7 @@ get_header();
   </form>
 
   <?php
-  // Query WP com filtros - CORRIGIDA
+  
   $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
   $args = array(
@@ -133,7 +131,7 @@ get_header();
   );
   $meta_query = array('relation' => 'AND');
 
-  // Ano
+  
   if ($ano_get) {
     $args['tax_query'][] = array(
       'taxonomy' => 'ano_artigo',
@@ -142,7 +140,7 @@ get_header();
     );
   }
 
-  // Autor
+  
   if ($autor_get) {
     $meta_query[] = array(
       'relation' => 'OR',
@@ -163,7 +161,7 @@ get_header();
     $args['meta_query'] = $meta_query;
   }
 
-  // Filtro de Evento (Taxonomia)
+  
   if ($evento_get) {
     $args['tax_query'][] = array(
       'taxonomy' => 'evento_artigo',
@@ -195,7 +193,7 @@ get_header();
         while ($artigos_query->have_posts()) : $artigos_query->the_post();
 
 
-          // ANO
+          
           $anos_term = get_the_terms(get_the_ID(), 'ano_artigo');
           $ano_label = date('Y');
           $ano_link = null;
@@ -266,7 +264,7 @@ get_header();
               </div>
 
               <?php
-              // AUTORES
+              
               $autores_ids = get_post_meta(get_the_ID(), '_artigo_autores', true);
               if (!empty($autores_ids) && is_array($autores_ids)) :
               ?>

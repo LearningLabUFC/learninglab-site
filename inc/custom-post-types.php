@@ -1,6 +1,6 @@
 <?php 
 
-// Registrando um Custom Post Type para adicionar membros
+
 
 function registrar_cpt_membros()
 {
@@ -35,7 +35,7 @@ function registrar_cpt_membros()
 
 add_action('init', 'registrar_cpt_membros');
 
-// Registrando um Custom Post Type para adicionar cursos
+
 
 function registrar_cpt_cursos()
 {
@@ -58,7 +58,7 @@ function registrar_cpt_cursos()
     $args = array(
         'labels'             => $labels,
         'public'             => true,
-        'show_in_rest'       => true, // ativa o editor Gutemberg
+        'show_in_rest'       => true, 
         'has_archive'        => true,
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-welcome-learn-more',
@@ -70,50 +70,6 @@ function registrar_cpt_cursos()
 }
 
 add_action('init', 'registrar_cpt_cursos');
-
-// Adicionando Meta Box para Redes Sociais no CPT Membros
-function registrar_meta_boxes_membros() {
-    add_meta_box('redes_sociais_membro', 'Redes Sociais', 'render_meta_box_redes_sociais', 'membro', 'normal', 'high');
-}
-add_action('add_meta_boxes', 'registrar_meta_boxes_membros');
-
-function render_meta_box_redes_sociais($post) {
-    $instagram = get_post_meta($post->ID, 'instagram_url', true);
-    $linkedin = get_post_meta($post->ID, 'linkedin_url', true);
-    $lattes = get_post_meta($post->ID, 'lattes_url', true);
-    ?>
-    <p>
-        <label for="linkedin_url"><strong>LinkedIn URL:</strong></label><br>
-        <input type="url" name="linkedin_url" id="linkedin_url" value="<?php echo esc_attr($linkedin); ?>" style="width:100%;">
-    </p>
-    <p>
-        <label for="instagram_url"><strong>Instagram URL:</strong></label><br>
-        <input type="url" name="instagram_url" id="instagram_url" value="<?php echo esc_attr($instagram); ?>" style="width:100%;">
-    </p>
-    <p>
-        <label for="lattes_url"><strong>Currículo Lattes URL:</strong></label><br>
-        <input type="url" name="lattes_url" id="lattes_url" value="<?php echo esc_attr($lattes); ?>" style="width:100%;">
-    </p>
-    <?php
-}
-
-function salvar_meta_boxes_membros($post_id) {
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
-    if (!current_user_can('edit_post', $post_id)) return;
-
-    if (isset($_POST['instagram_url'])) {
-        update_post_meta($post_id, 'instagram_url', sanitize_text_field($_POST['instagram_url']));
-    }
-    if (isset($_POST['linkedin_url'])) {
-        update_post_meta($post_id, 'linkedin_url', sanitize_text_field($_POST['linkedin_url']));
-    }
-    if (isset($_POST['lattes_url'])) {
-        update_post_meta($post_id, 'lattes_url', sanitize_text_field($_POST['lattes_url']));
-    }
-}
-add_action('save_post_membro', 'salvar_meta_boxes_membros');
-
-// Registrando um Custom Post Type para adicionar avaliações (aquelas opiniões que ficam na home)
 
 function criar_cpt_avaliacoes()
 {
@@ -137,9 +93,9 @@ function criar_cpt_avaliacoes()
         'labels'                => $labels,
         'public'                => true,
         'has_archive'           => false,
-        'show_in_rest'          => true, // Ativa o suporte para o editor Gutenberg
-        'menu_icon'             => 'dashicons-format-quote', // Ícone para o menu no admin
-        'supports'              => array('title', 'editor', 'thumbnail'), // Suporta título, editor (conteúdo) e imagem destacada
+        'show_in_rest'          => true, 
+        'menu_icon'             => 'dashicons-format-quote', 
+        'supports'              => array('title', 'editor', 'thumbnail'), 
     );
 
     register_post_type('avaliacoes', $args);
@@ -147,7 +103,7 @@ function criar_cpt_avaliacoes()
 
 add_action('init', 'criar_cpt_avaliacoes');
 
-// Registrando um Custom Post Type para adicionar artigos
+
 function registrar_cpt_artigos()
 {
     $labels = array(

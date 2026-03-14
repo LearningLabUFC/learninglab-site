@@ -3,21 +3,21 @@
 
 get_header();
 
-// Obter informações do autor
+
 $author_id = get_queried_object_id();
 $author_name = get_the_author_meta('display_name', $author_id);
 $author_bio = get_the_author_meta('description', $author_id);
 $author_avatar = get_avatar_url($author_id, array('size' => 150));
 $author_title = get_the_author_meta('user_title', $author_id);
 
-// Redes sociais do autor
+
 $author_facebook = get_the_author_meta('facebook', $author_id);
 $author_twitter = get_the_author_meta('twitter', $author_id);
 $author_instagram = get_the_author_meta('instagram', $author_id);
 $author_linkedin = get_the_author_meta('linkedin', $author_id);
 $author_website = get_the_author_meta('url', $author_id);
 
-// Contar posts do autor
+
 $post_count = count_user_posts($author_id, 'post');
 ?>
 
@@ -98,7 +98,7 @@ $post_count = count_user_posts($author_id, 'post');
 
     <?php
     if (have_posts()) :
-        // Post em destaque apenas na primeira página
+        
         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         
         if ($paged == 1) :
@@ -110,16 +110,16 @@ $post_count = count_user_posts($author_id, 'post');
             <?php
         endif;
 
-        // Resetando o loop para os próximos posts
+        
         rewind_posts();
 
-        // Posts regulares
+        
         ?>
         <section class="conteiner-conteudos">
             <?php
             $post_count = 0;
             while (have_posts()) : the_post();
-                // Se for primeira página, pula o primeiro post (que já foi exibido como destaque)
+                
                 if ($paged == 1 && $post_count == 0) :
                     $post_count++;
                     continue;
@@ -135,7 +135,7 @@ $post_count = count_user_posts($author_id, 'post');
         </section>
 
         <?php
-        // Paginação
+        
         the_posts_pagination(array(
             'mid_size' => 2,
             'prev_text' => __('&laquo; Anterior', 'textdomain'),

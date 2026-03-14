@@ -87,7 +87,7 @@ button:hover {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos para os palestrantes */
+
 
 .instrutor-bloco {
     display: flex;
@@ -99,14 +99,14 @@ button:hover {
     padding-bottom: 0.3rem;
 
     margin: 20px auto;
-    /* margens automáticas para centralizar */
+    
     border-radius: 8px;
     align-items: center;
     gap: 20px;
     max-width: 1000px;
-    /* limite na largura */
+    
     width: 90%;
-    /* para responsividade */
+    
 }
 
 .instrutor-imagem img {
@@ -114,7 +114,7 @@ button:hover {
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
-    /* deixa redonda */
+    
     margin-bottom: 0;
 }
 

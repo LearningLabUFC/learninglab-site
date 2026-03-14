@@ -2,13 +2,13 @@
 
 function learninglab_customizer_settings($wp_customize)
 {
-    // Seção para Redes Sociais
+    
     $wp_customize->add_section('social_media_section', array(
         'title'    => __('Redes Sociais', 'theme_textdomain'),
         'priority' => 30,
     ));
 
-    // Redes Sociais
+    
     $social_networks = array(
         'facebook'  => 'Facebook',
         'twitter'   => 'Twitter',
