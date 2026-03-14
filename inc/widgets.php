@@ -2,7 +2,7 @@
 
 function learninglab_widget_areas()
 {
-    // Primeira área de widget no rodapé
+    
     register_sidebar(
         array(
             'name'          => 'Rodapé - Área 1',
@@ -15,7 +15,7 @@ function learninglab_widget_areas()
         )
     );
 
-    // Segunda área de widget no rodapé
+    
     register_sidebar(
         array(
             'name'          => 'Rodapé - Área 2',

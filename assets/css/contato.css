@@ -30,14 +30,14 @@
     
 }
 
-/* Estilo geral do formulário */
+
 .formulario {
     max-width: 600px;
     padding: 20px;
     border-radius: 10px;
 }
 
-/* Estilo dos campos de input */
+
 .wpcf7-form input[type="text"],
 .wpcf7-form input[type="email"],
 .wpcf7-form textarea {
@@ -53,14 +53,14 @@
 
 }
 
-/* Efeito hover nos campos */
+
 .wpcf7-form input[type="text"]:hover,
 .wpcf7-form input[type="email"]:hover,
 .wpcf7-form textarea:hover {
     border-color: #f2637e;
 }
 
-/* Efeito focus nos campos */
+
 .wpcf7-form input[type="text"]:focus,
 .wpcf7-form input[type="email"]:focus,
 .wpcf7-form textarea:focus {
@@ -69,7 +69,7 @@
     box-shadow: 0 0 5px rgba(242, 99, 126, 0.3);
 }
 
-/* Estilo do botão */
+
 .wpcf7-submit {
     background-color: #f2637e;
     color: white;
@@ -84,25 +84,25 @@
     margin-top: 10px;
 }
 
-/* Efeito hover no botão */
+
 .wpcf7-submit:hover {
     background-color: #e0526d;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(242, 99, 126, 0.3);
 }
 
-/* Esconder labels originais */
+
 .wpcf7-form label {
     display: none;
 }
 
-/* Estilo do spinner de loading */
+
 .wpcf7-spinner {
     display: inline-block;
     margin-left: 10px;
 }
 
-/* Mensagens de resposta */
+
 .wpcf7-response-output {
     margin-top: 20px;
     padding: 10px;
@@ -110,19 +110,19 @@
     text-align: center;
 }
 
-/* Placeholder personalizado */
+
 .wpcf7-form input::placeholder,
 .wpcf7-form textarea::placeholder {
     color: #666;
     opacity: 1;
 }
 
-/* Ajuste de espaçamento para o formulário */
+
 .wpcf7-form p {
     margin: 0 0 15px 0;
 }
 
-/* Estilo para mensagens de erro */
+
 .wpcf7-not-valid-tip {
     color: #dc3545;
     font-size: 14px;

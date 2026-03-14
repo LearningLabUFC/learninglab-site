@@ -1,6 +1,6 @@
 <?php
 
-// Registrando a taxonomia para o CPT de membros
+
 
 function registrar_taxonomia_tipo_de_membro()
 {
@@ -32,7 +32,7 @@ function registrar_taxonomia_tipo_de_membro()
 
 add_action('init', 'registrar_taxonomia_tipo_de_membro');
 
-// Registrando a taxonomia para o CPT de cursos
+
 
 function registrar_taxonomia_status_curso()
 {
@@ -51,7 +51,7 @@ function registrar_taxonomia_status_curso()
     );
 
     $args = array(
-        'hierarchical'      => true, // Para permitir subcategorias
+        'hierarchical'      => true, 
         'labels'            => $labels,
         'show_ui'           => true,
         'show_admin_column' => true,
@@ -64,15 +64,15 @@ function registrar_taxonomia_status_curso()
 
 add_action('init', 'registrar_taxonomia_status_curso');
 
-// Registrando a taxonomia para Evento de artigos
+
 function registrar_taxonomia_evento_artigo() {
     $labels = array(
         'name'              => 'Eventos',
         'singular_name'     => 'Evento',
         'search_items'      => 'Buscar Eventos',
         'all_items'         => 'Todos os Eventos',
-        'parent_item'       => 'Evento Pai',       // Adicionado para hierarquia
-        'parent_item_colon' => 'Evento Pai:',      // Adicionado para hierarquia
+        'parent_item'       => 'Evento Pai',       
+        'parent_item_colon' => 'Evento Pai:',      
         'edit_item'         => 'Editar Evento',
         'update_item'       => 'Atualizar Evento',
         'add_new_item'      => 'Adicionar Novo Evento',
@@ -80,10 +80,10 @@ function registrar_taxonomia_evento_artigo() {
         'menu_name'         => 'Eventos',
     );
     $args = array(
-        'hierarchical'      => true,  // MUDANÇA: true deixa igual a Categorias (checkbox)
+        'hierarchical'      => true,  
         'labels'            => $labels,
         'show_ui'           => true,
-        'show_in_rest'      => true,  // Necessário para aparecer no editor novo
+        'show_in_rest'      => true,  
         'show_admin_column' => true,
         'query_var'         => true,
         'rewrite'           => array('slug' => 'evento-artigo'),
@@ -92,7 +92,7 @@ function registrar_taxonomia_evento_artigo() {
 }
 add_action('init', 'registrar_taxonomia_evento_artigo');
 
-// Registrando a taxonomia para Anos dos Artigos
+
 function registrar_taxonomia_ano_artigo()
 {
     $labels = array(
@@ -109,13 +109,13 @@ function registrar_taxonomia_ano_artigo()
         'menu_name'         => 'Anos',
     );
     $args = array(
-        'hierarchical'      => true, // True deixa igual a Categorias (checkbox list)
+        'hierarchical'      => true, 
         'labels'            => $labels,
         'show_ui'           => true,
         'show_admin_column' => true,
         'query_var'         => true,
         'rewrite'           => array('slug' => 'ano-artigo'),
-        'show_in_rest'      => true, // Importante para o editor de blocos
+        'show_in_rest'      => true, 
     );
     register_taxonomy('ano_artigo', array('artigo'), $args);
 }

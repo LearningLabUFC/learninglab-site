@@ -28,7 +28,7 @@ get_header();
                 [
                     'taxonomy' => 'tipo_de_membro',
                     'field'    => 'slug',
-                    'terms'    => 'coordenador', // Apenas a categoria "Coordenador"
+                    'terms'    => 'coordenador', 
                 ],
             ],
             'posts_per_page' => -1,
@@ -61,14 +61,14 @@ get_header();
         <p>Conheça abaixo os líderes do LearningLab, bem como os setores os quais eles lideram.</p>
 
         <?php
-        // Obtém a categoria principal "Líder"
+        
         $lider_categoria = get_term_by('slug', 'lider', 'tipo_de_membro');
 
         if ($lider_categoria) {
-            // Busca todas as subcategorias de "Líder"
+            
             $lider_subcategorias = get_term_children($lider_categoria->term_id, 'tipo_de_membro');
 
-            // Cria a consulta para pegar todos os membros dessas subcategorias
+            
             $lideres_query = new WP_Query([
                 'post_type' => 'membro',
                 'tax_query' => [
@@ -98,7 +98,7 @@ get_header();
                                 <i class="fa-solid fa-graduation-cap icon-formado"></i>
                             </div>
                             <?php learninglab_render_membro_socials(get_the_ID()); ?>
-                            <!-- Exibição de rótulos dos setores -->
+                            
                             <?php
                             $setores = get_the_terms(get_the_ID(), 'tipo_de_membro');
                             if ($setores) :
@@ -132,13 +132,13 @@ get_header();
 
 
 
-    <!-- Seção Membros Atuais -->
+    
     <section class="membros-atuais">
         <h2>Membros atuais</h2>
         <p>Nesta seção, vamos conhecer todos os membros que fazem parte atualmente do LearningLab (inclusive os líderes), bem como quais os setores nos quais eles fazem parte!</p>
 
         <?php
-        // Consulta todos os membros marcados como "membro-atual"
+        
         $atuais_query = new WP_Query([
             'post_type' => 'membro',
             'tax_query' => [
@@ -168,7 +168,7 @@ get_header();
                             <i class="fa-solid fa-graduation-cap icon-formado"></i>
                         </div>
                         <?php learninglab_render_membro_socials(get_the_ID()); ?>
-                        <!-- Exibição de rótulos -->
+                        
                         <?php
                         $setores = get_the_terms(get_the_ID(), 'tipo_de_membro');
                         if ($setores) :
@@ -199,20 +199,20 @@ get_header();
         ?>
     </section>
 
-    <!-- Seção Egressos -->
+    
     <section class="membros-egressos">
         <h2>Egressos</h2>
         <p>Ao longo desses aninhos de existência, muita gente boa já passou pelo Learning! Confira abaixo os membros egressos do projeto — ou seja, aqueles que já não fazem mais parte do nosso time.</p>
 
         <?php
-        // Consulta apenas para a categoria Egresso
+        
         $egressos_query = new WP_Query([
             'post_type' => 'membro',
             'tax_query' => [
                 [
                     'taxonomy' => 'tipo_de_membro',
                     'field'    => 'slug',
-                    'terms'    => 'egresso', // Apenas a categoria "Egresso"
+                    'terms'    => 'egresso', 
                 ],
             ],
             'posts_per_page' => -1,
@@ -231,7 +231,7 @@ get_header();
                             <h4 class="membro-nome"><?php the_title(); ?></h4>
                             <i class="fa-solid fa-graduation-cap icon-formado"></i>
                         </div>
-<?php // learninglab_render_membro_socials(get_the_ID()); ?>                    </div>
+<?php ?>                    </div>
                 <?php endwhile; ?>
             </div>
         <?php
@@ -242,5 +242,5 @@ get_header();
 </div>
 
 <?php
-get_footer(); // Inclui o rodapé do tema
+get_footer(); 
 ?>

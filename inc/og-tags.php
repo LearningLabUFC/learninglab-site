@@ -1,6 +1,6 @@
 <?php 
 
-// Neste arquivo ficam as metatags Open Graph, que são adicionadas no <head> para que o tema suporte a pré-visualização de links
+
 
 function add_custom_og_tags() {
     if (is_front_page() || is_home()) {

@@ -294,12 +294,12 @@
     }
 }
 
-/* --- Paginação Estilo Archive (Cor Rosa) --- */
+
 .artigos-pagination {
     display: flex;
     justify-content: center;
     gap: 10px;
-    /* Igual ao archive */
+    
     margin-top: 50px;
     width: 90%;
     max-width: 1100px;
@@ -310,19 +310,19 @@
 .artigos-pagination .page-numbers {
     display: inline-block;
     padding: 10px 15px;
-    /* Preenchimento igual ao archive */
+    
     border: 1px solid #f2637e;
-    /* Cor rosa, borda fina */
+    
     border-radius: 5px;
-    /* Borda levemente arredondada (5px) */
+    
     color: #f2637e;
-    /* Texto rosa */
+    
     text-decoration: none;
     font-size: 1rem;
     font-weight: normal;
     transition: background-color 0.3s, color 0.3s;
 
-    /* Removemos as propriedades antigas que forçavam quadrado */
+    
     min-width: auto;
     height: auto;
 }
@@ -333,7 +333,7 @@
     color: white;
     border-color: #f2637e;
     font-weight: bold;
-    /* Negrito no ativo */
+    
 }
 
 .artigos-pagination .prev,

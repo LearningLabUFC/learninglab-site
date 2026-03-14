@@ -1,7 +1,7 @@
 <?php
 
 
-// Adicionar campos personalizados ao perfil do usuário
+
 function learninglab_add_author_fields($user) {
     ?>
     <h3>Informações Adicionais do Autor</h3>
@@ -55,11 +55,11 @@ function learninglab_add_author_fields($user) {
     <?php
 }
 
-// Adicionar os campos no perfil do usuário
+
 add_action('show_user_profile', 'learninglab_add_author_fields');
 add_action('edit_user_profile', 'learninglab_add_author_fields');
 
-// Salvar os campos personalizados
+
 function learninglab_save_author_fields($user_id) {
     if (!current_user_can('edit_user', $user_id)) {
         return false;
@@ -74,6 +74,6 @@ function learninglab_save_author_fields($user_id) {
     }
 }
 
-// Salvar os campos quando o perfil for atualizado
+
 add_action('personal_options_update', 'learninglab_save_author_fields');
 add_action('edit_user_profile_update', 'learninglab_save_author_fields');

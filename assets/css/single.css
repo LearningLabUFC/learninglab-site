@@ -66,7 +66,12 @@ body .cabecalho {
   text-align: justify;
 }
 
-.content h1, h2, h3, h4, h5, h6 {
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
   color: #009a9a;
   margin-bottom: 1rem;
 }
@@ -99,11 +104,70 @@ body .cabecalho {
   line-height: 2rem;
 }
 
-
 .content ul {
-  list-style-position: inside; 
-  padding-left: 2rem;
-  margin-block: 1rem;
+  list-style-type: disc;
+}
+
+.content ol {
+  list-style-type: decimal;
+}
+
+.content ul,
+.content ol {
+  margin: 0 0 1.5rem 0;
+  padding-left: 1.5rem;
+  list-style-position: outside;
+  text-align: left;
+}
+
+.content li {
+  margin-bottom: 0.5rem;
+}
+
+.content li:last-child {
+  margin-bottom: 0;
+}
+
+.content ul ul,
+.content ul ol,
+.content ol ul,
+.content ol ol {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+.content .wp-block-table {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.content .wp-block-table table {
+  margin: 0;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.content table th,
+.content table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  vertical-align: top;
+}
+
+.content table thead th {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.content table caption {
+  caption-side: bottom;
+  text-align: left;
+  margin-top: 0.75rem;
+  font-style: italic;
+  color: rgb(131, 130, 130);
 }
 
 
@@ -150,7 +214,7 @@ body .cabecalho {
 }
 .social-media a:hover {
   color: #009a9a;
-  /* Cor ao passar o mouse */
+  
 }
 
 button {
@@ -169,7 +233,7 @@ button {
   background-color: #009a9a;
 }
 
-/* Estilos para Blockquote */
+
 blockquote {
   width: 85%;
   font-size: 1.5rem;

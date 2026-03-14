@@ -1,10 +1,10 @@
 <?php
 
-// ========================================
-// META BOX: INFORMAÇÕES DO ARTIGO
-// ========================================
 
-// Adiciona a meta box para os campos personalizados dos artigos
+
+
+
+
 function adicionar_meta_box_artigos() {
     add_meta_box(
         'artigo_custom_fields',
@@ -17,47 +17,47 @@ function adicionar_meta_box_artigos() {
 }
 add_action('add_meta_boxes', 'adicionar_meta_box_artigos');
 
-// Mostra os campos da meta box
+
 function mostrar_meta_box_artigos($post) {
     wp_nonce_field('salvar_meta_box_artigos', 'artigos_nonce');
 
-    // Removemos Ano e Evento daqui, pois agora são taxonomias laterais
+    
     $premio = get_post_meta($post->ID, 'premio', true);
 
-    // Campo para o prêmio
+    
     echo '<p>';
     echo '<label for="premio">Prêmio (opcional):</label><br>';
     echo '<input type="text" id="premio" name="premio" value="' . esc_attr($premio) . '" size="25" />';
     echo '</p>';
 }
 
-// Salva os dados da meta box
+
 function salvar_meta_box_artigos($post_id) {
-    // Verifica o nonce
+    
     if (!isset($_POST['artigos_nonce']) || !wp_verify_nonce($_POST['artigos_nonce'], 'salvar_meta_box_artigos')) {
         return;
     }
 
-    // Verifica se é um autosave
+    
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
         return;
     }
 
-    // Verifica as permissões do usuário
+    
     if (!current_user_can('edit_post', $post_id)) {
         return;
     }
 
-    // Salva o campo 'premio' (Ano e Evento foram removidos daqui pois agora são taxonomias)
+    
     if (isset($_POST['premio'])) {
         update_post_meta($post_id, 'premio', sanitize_text_field($_POST['premio']));
     }
 }
 add_action('save_post', 'salvar_meta_box_artigos');
 
-// ========================================
-// META BOX: AUTORES DO ARTIGO
-// ========================================
+
+
+
 
 function adicionar_meta_box_autores_artigo() {
     add_meta_box(
@@ -71,12 +71,12 @@ function adicionar_meta_box_autores_artigo() {
 }
 add_action('add_meta_boxes', 'adicionar_meta_box_autores_artigo');
 
-// Mostra a meta box para selecionar autores com ordenação (Versão Corrigida para Sidebar)
+
 function mostrar_meta_box_autores_artigo($post) {
-    // Adiciona o nonce de segurança
+    
     wp_nonce_field('salvar_autores_artigo', 'autores_artigo_nonce');
 
-    // Obtém todos os membros
+    
     $todos_membros = get_posts(array(
         'post_type' => 'membro',
         'numberposts' => -1,
@@ -84,7 +84,7 @@ function mostrar_meta_box_autores_artigo($post) {
         'order' => 'ASC',
     ));
 
-    // Obtém os IDs dos autores já salvos
+    
     $autores_selecionados_ids = get_post_meta($post->ID, '_artigo_autores', true);
     if (!is_array($autores_selecionados_ids)) {
         $autores_selecionados_ids = array();
@@ -92,7 +92,7 @@ function mostrar_meta_box_autores_artigo($post) {
     ?>
 
     <style>
-        /* Estilos ajustados para a barra lateral estreita */
+        
         #container-autores-wrapper {
             margin-top: 10px;
         }
@@ -103,7 +103,7 @@ function mostrar_meta_box_autores_artigo($post) {
             background: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 4px;
-            min-height: 40px; /* Garante altura mesmo vazia */
+            min-height: 40px; 
         }
         #lista-autores-selecionados li {
             display: flex;
@@ -139,9 +139,9 @@ function mostrar_meta_box_autores_artigo($post) {
         .remove-autor:hover {
             color: #ff0000;
         }
-        /* Layout dos controles */
+        
         .controles-adicao {
-            display: block; /* Garante que fiquem um abaixo do outro */
+            display: block; 
         }
         #select-novos-autores {
             width: 100%;
@@ -166,7 +166,7 @@ function mostrar_meta_box_autores_artigo($post) {
     jQuery(document).ready(function($){
         var lista = $('#lista-autores-selecionados');
 
-        // Ativa o Drag & Drop
+        
         lista.sortable({
             handle: '.autor-handle, .autor-nome',
             placeholder: "ui-state-highlight",
@@ -175,7 +175,7 @@ function mostrar_meta_box_autores_artigo($post) {
             }
         });
 
-        // Verifica se a lista está vazia para mostrar mensagem
+        
         function checkEmpty() {
             if(lista.children('li').length === 0) {
                 if(lista.find('.placeholder-msg').length === 0) {
@@ -186,12 +186,12 @@ function mostrar_meta_box_autores_artigo($post) {
             }
         }
         
-        // Roda ao carregar para verificar estado inicial
+        
         checkEmpty();
 
-        // Botão Adicionar
+        
         $('#btn-add-autor').click(function(e){
-            e.preventDefault(); // Impede de salvar o post ao clicar
+            e.preventDefault(); 
             
             var select = $('#select-novos-autores');
             var id = select.val();
@@ -202,16 +202,16 @@ function mostrar_meta_box_autores_artigo($post) {
                 return;
             }
 
-            // Evita duplicatas checando se o ID já existe na lista
+            
             if(lista.find('input[value="'+id+'"]').length > 0) {
                 alert('Este autor já está na lista.');
                 return;
             }
 
-            // Remove mensagem de vazio se existir
+            
             lista.find('.placeholder-msg').remove();
 
-            // HTML do item
+            
             var html = '<li>';
             html += '<span class="dashicons dashicons-menu autor-handle"></span> ';
             html += '<span class="autor-nome">' + nome + '</span>';
@@ -220,10 +220,10 @@ function mostrar_meta_box_autores_artigo($post) {
             html += '</li>';
 
             lista.append(html);
-            select.val(''); // Reseta o select
+            select.val(''); 
         });
 
-        // Botão Remover
+        
         $(document).on('click', '.remove-autor', function(){
             $(this).closest('li').remove();
             checkEmpty();
@@ -285,9 +285,9 @@ add_action('save_post', 'salvar_autores_artigo');
 
 
 
-// ========================================
-// META BOX: LINK EXTERNO DO ARTIGO
-// ========================================
+
+
+
 
 function adicionar_meta_box_link_externo() {
     add_meta_box(

@@ -57,19 +57,19 @@
 
 
             <?php
-            // Query para os dois últimos cursos, sem considerar a taxonomia
+            
             $cursos_args = array(
                 'post_type' => 'curso',
-                'posts_per_page' => 2, // Pega os dois últimos cursos
-                'orderby' => 'date', // Ordena pela data
-                'order' => 'DESC', // Mais recentes primeiro
+                'posts_per_page' => 2, 
+                'orderby' => 'date', 
+                'order' => 'DESC', 
             );
 
             $cursos_query = new WP_Query($cursos_args);
 
             if ($cursos_query->have_posts()) :
                 while ($cursos_query->have_posts()) : $cursos_query->the_post();
-                    // Verifica as categorias (status) do curso
+                    
                     $terms = get_the_terms(get_the_ID(), 'status_curso');
                     $inscricoes_abertas = false;
 
@@ -85,18 +85,18 @@
 
                     <div class="painel-curso">
                         <a href="<?php the_permalink(); ?>" class="link-curso">
-                            <!-- Imagem destacada do curso -->
+                            
                             <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>">
                             <div class="painel-descricao">
-                                <!-- Título do curso -->
+                                
                                 <h3><?php the_title(); ?></h3>
-                                <!-- Excerpt do curso -->
+                                
                                 <p><?php the_excerpt(); ?></p>
 
-                                <!-- Status do curso (Em breve ou Inscrições abertas) -->
+                                
                                 <div class="status">
                                     <?php
-                                    // Verifica se o curso tem a taxonomia "Curso Passado"
+                                    
                                     $terms = get_the_terms(get_the_ID(), 'status_curso');
                                     $curso_passado = false;
 
@@ -109,11 +109,11 @@
                                         }
                                     }
 
-                                    // Se o curso for "Curso Passado", não exibe nada
+                                    
                                     if ($curso_passado) {
                                         echo '';
                                     } else {
-                                        // Caso contrário, verifica se as inscrições estão abertas
+                                        
                                         if ($inscricoes_abertas) {
                                             echo '<span class="inscricoes-abertas">inscrições abertas</span>';
                                         } else {
@@ -149,10 +149,10 @@
         <div class="swiper leitura-swiper">
             <div class="swiper-wrapper">
                 <?php
-                // Consulta para pegar as últimas publicações do blog
+                
                 $args = array(
                     'post_type' => 'post',
-                    'posts_per_page' => 6, // Número de publicações exibidas
+                    'posts_per_page' => 6, 
                 );
                 $query = new WP_Query($args);
 
@@ -181,7 +181,7 @@
 
             </div>
 
-            <!-- Botões e paginação -->
+            
             <div class="swiper-button-next swiper-navBtn"></div>
             <div class="swiper-button-prev swiper-navBtn"></div>
             <div class="swiper-pagination"></div>
@@ -194,10 +194,10 @@
         <div class="swiper avaliacao-swiper">
             <div class="swiper-wrapper">
                 <?php
-                // Query para pegar os posts do CPT "avaliacoes"
+                
                 $args = array(
-                    'post_type' => 'avaliacoes', // CPT de avaliações
-                    'posts_per_page' => -1 // Pega todas as avaliações
+                    'post_type' => 'avaliacoes', 
+                    'posts_per_page' => -1 
                 );
 
                 $query = new WP_Query($args);
@@ -208,12 +208,12 @@
                         <div class="swiper-slide">
                             <div class="card-avaliacao">
                                 <div class="imagem-avaliacao">
-                                    <?php the_post_thumbnail('thumbnail'); // Imagem destacada 
+                                    <?php the_post_thumbnail('thumbnail'); 
                                     ?>
                                 </div>
                                 <div class="conteudo-avaliacao">
-                                    <h3><?php the_title(); ?></h3> <!-- Nome da pessoa -->
-                                    <p><?php the_content(); ?></p> <!-- Comentário -->
+                                    <h3><?php the_title(); ?></h3> 
+                                    <p><?php the_content(); ?></p> 
                                 </div>
                             </div>
                         </div>
@@ -225,10 +225,10 @@
                 endif;
                 ?>
             </div>
-            <!-- Botões de navegação -->
+            
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-            <!-- Paginação -->
+            
             <div class="swiper-pagination"></div>
         </div>
 
