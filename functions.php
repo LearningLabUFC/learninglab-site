@@ -16,6 +16,8 @@ require_once get_template_directory() . '/inc/widgets.php';
 
 require_once get_template_directory() . '/inc/custom-post-types.php';
 
+require_once get_template_directory() . '/inc/meta-boxes/membro.php';
+
 
 require_once get_template_directory() . '/inc/custom-fields.php';
 
