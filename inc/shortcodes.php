@@ -108,11 +108,40 @@ function color_box_shortcode($atts)
         'caixa_destaque'
     );
 
-    $bg_color = esc_attr($atts['bg_color']);
-    $text_color = esc_attr($atts['color']);
+    $palette = array(
+        'rosa'  => '#f2637e',
+        'f2637e' => '#f2637e',
+        '#f2637e' => '#f2637e',
+        'roxo'  => '#9747ff',
+        '9747ff' => '#9747ff',
+        '#9747ff' => '#9747ff',
+        'verde' => '#04BFBF',
+        '04bfbf' => '#04BFBF',
+        '#04bfbf' => '#04BFBF',
+        '#04BFBF' => '#04BFBF',
+        'azul'  => '#0b67c6',
+        '0b67c6' => '#0b67c6',
+        '#0b67c6' => '#0b67c6',
+        '#0B67C6' => '#0b67c6',
+    );
+
+    $raw_bg = strtolower(trim((string) $atts['bg_color']));
+    $raw_color = strtolower(trim((string) $atts['color']));
+
+    $used_color_as_bg = false;
+    if (isset($palette[$raw_bg])) {
+        $bg_color = $palette[$raw_bg];
+    } elseif (isset($palette[$raw_color]) && ($raw_bg === '' || $raw_bg === '#f2637e' || $raw_bg === 'f2637e')) {
+        $bg_color = $palette[$raw_color];
+        $used_color_as_bg = true;
+    } else {
+        $bg_color = '#f2637e';
+    }
+
+    $text_color = $used_color_as_bg ? 'white' : esc_attr($atts['color']);
 
     $style_container = "background-color: {$bg_color}; min-height: 13.5rem; display: flex; align-items: center; justify-content: center; border-radius: 15px;";
-    $style_text = "margin-bottom: 0; font-weight: bold; padding: 2rem; color: white !important; text-align: center;";
+    $style_text = "margin-bottom: 0; font-weight: bold; padding: 2rem; color: {$text_color} !important; text-align: center;";
     $output = '<div class="custom-box" style="' . $style_container . '">';
     $output .= '<p style="' . $style_text . '">' . esc_html($atts['text']) . '</p>';
     $output .= '</div>';

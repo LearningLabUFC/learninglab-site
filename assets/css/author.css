@@ -1,4 +1,4 @@
-/* Estilos para a seção do autor no final dos posts */
+
 .author-section {
     background-color: #fff;
     border: 1px solid #e0e0e0;
@@ -92,7 +92,7 @@
 
 
 
-/* Estilos para a página de arquivo do autor */
+
 .author-header {
     background-color: #009a9a;
     padding: 3rem 0;
@@ -175,12 +175,12 @@
         text-align: center;
         gap: 1rem;
         align-items: center;
-        /* Adicionado para centralizar todos os itens */
+        
     }
 
     .author-avatar {
         align-self: center;
-        /* Garante que o avatar fique centralizado */
+        
     }
 
     .author-avatar img {

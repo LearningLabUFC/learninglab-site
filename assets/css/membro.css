@@ -23,7 +23,7 @@
   justify-content: flex-start;
 }
 
-/* Estilo quando o número de membros for menor ou igual a 5 */
+
 .membros-grid.limite-5 {
   max-width: 850px;
   margin: 40px auto;
@@ -44,7 +44,7 @@
   margin: 40px auto;
 }
 
-/* Avatar do membro */
+
 .membro-avatar img {
   border-radius: 50%;
   max-width: 100px;
@@ -66,7 +66,7 @@
 }
 
 
-/* Nome do membro */
+
 .membro-nome {
   font-size: 18px;
   font-weight: bold;
@@ -90,7 +90,7 @@
   box-sizing: border-box;
 }
 
-/* Setores do membro */
+
 .membro-setores span {
   display: inline-block;
   margin: 5px 5px 0 0;
@@ -115,7 +115,7 @@
   color: #fff;
 }
 
-/* Redes Sociais do Membro */
+
 .membro-redes-sociais {
   display: flex;
   justify-content: center;
@@ -139,6 +139,7 @@
 }
 
 .membro-redes-sociais a.social-icon:hover {
-  background-color: #009a9a; /* theme color */
+  background-color: #009a9a;
+  
   color: #fff;
 }

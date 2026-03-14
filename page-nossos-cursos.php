@@ -1,7 +1,5 @@
 <?php
-/*
-Template Name: Cursos
-*/
+
 
 get_header(); ?>
 
@@ -21,12 +19,12 @@ get_header(); ?>
 
     <p><strong>Dica útil:</strong> clique ou toque sobre um curso para realizar a inscrição (caso ela esteja aberta) ou visualizar detalhes sobre ele.</p>
 
-    <!-- Seção: Cursos Futuros -->
+    
     <section class="cursos-futuros">
         <h2>Cursos futuros</h2>
         <div class="cursos-grid">
             <?php
-            // Query para Cursos Futuros
+            
             $futuros_args = array(
                 'post_type' => 'curso',
                 'posts_per_page' => -1,
@@ -37,8 +35,8 @@ get_header(); ?>
                         'terms'    => 'curso-futuro',
                     ),
                 ),
-                'orderby' => 'date', // Ordenar pela data
-                'order' => 'DESC',   // Mais recentes primeiro
+                'orderby' => 'date', 
+                'order' => 'DESC',   
             );
 
             $futuros_query = new WP_Query($futuros_args);
@@ -46,7 +44,7 @@ get_header(); ?>
             if ($futuros_query->have_posts()) :
                 while ($futuros_query->have_posts()) : $futuros_query->the_post();
 
-                    // Verificar se o curso está na subcategoria 'Inscrições abertas'
+                    
                     $terms = get_the_terms(get_the_ID(), 'status_curso');
                     $inscricoes_abertas = false;
 
@@ -88,12 +86,12 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- Seção: Cursos Passados -->
+    
     <section class="cursos-passados">
         <h2>Cursos passados</h2>
         <div class="cursos-grid">
             <?php
-            // Query para Cursos Passados
+            
             $passados_args = array(
                 'post_type' => 'curso',
                 'posts_per_page' => -1,

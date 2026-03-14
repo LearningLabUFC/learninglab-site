@@ -78,6 +78,75 @@ article img {
   text-align: justify;
 }
 
+.container ul,
+.container ol {
+  margin: 0 0 1.5rem 0;
+  padding-left: 1.5rem;
+  list-style-position: outside;
+  text-align: left;
+}
+
+.container ul {
+  list-style-type: disc;
+}
+
+.container ol {
+  list-style-type: decimal;
+}
+
+.container li {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #414141;
+  margin-bottom: 0.5rem;
+}
+
+.container li:last-child {
+  margin-bottom: 0;
+}
+
+.container ul ul,
+.container ul ol,
+.container ol ul,
+.container ol ol {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+.container .wp-block-table {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.container .wp-block-table table {
+  margin: 0;
+}
+
+.container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.container table th,
+.container table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  vertical-align: top;
+}
+
+.container table thead th {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.container table caption {
+  caption-side: bottom;
+  text-align: left;
+  margin-top: 0.75rem;
+  font-style: italic;
+  color: rgb(131, 130, 130);
+}
+
 .curso-item p {
   text-align: justify;
 }
@@ -89,7 +158,7 @@ article img {
   color: rgb(131, 130, 130);
 }
 
-/* Personalização da galeria do WordPress */
+
 
 .wp-block-gallery.has-nested-images figure.wp-block-image figcaption {
   border-radius: 0 0 15px 15px; 
@@ -114,7 +183,7 @@ article img {
   display: flex;
   align-items: center;
   background-color: #fff;
-  /* cinza claro */
+  
   padding: 30px;
   border-radius: 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -146,7 +215,7 @@ article img {
   color: #f2637e;
 }
 
-/* Estilos para a página de membros */
+
 
 .membro-setores span {
   text-transform: lowercase !important;
@@ -157,27 +226,27 @@ article img {
   margin-top: 10px;
 }
 
-/* Estilo geral para o container */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Estilos para a página de cursos */
+
 
 .container .cursos-futuros, .cursos-passados {
   text-align: center;
 }
 
-/* Grid dos cursos */
+
 .cursos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
 }
 
-/* Bloco individual de curso */
+
 .curso-item {
   background-color: #fff;
   border-radius: 8px;
@@ -195,13 +264,13 @@ article img {
   padding-inline: 1rem;
 }
 
-/* Hover para efeito de destaque */
+
 .curso-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* Torna todo o bloco clicável */
+
 .curso-item a {
   display: flex;
   text-decoration: none;
@@ -216,7 +285,7 @@ article img {
   flex-grow: 1; 
 }
 
-/* Imagem do curso */
+
 .curso-item img {
   width: 100%;
   height: 200px;
@@ -224,7 +293,7 @@ article img {
   display: block;
 }
 
-/* Título do curso */
+
 .curso-item h3 {
   font-size: 1.5rem;
   color: #333;
@@ -232,7 +301,7 @@ article img {
   font-weight: bold;
 }
 
-/* Excerpt do curso */
+
 .curso-item p {
   font-size: 1rem;
   color: #646464;
@@ -246,7 +315,7 @@ article img {
   padding: 0 2rem 2rem 1rem;
 }
 
-/* Estilo geral dos badges */
+
 .curso-badge {
   font-size: 0.9rem;
   padding: 3px 7px;
@@ -255,17 +324,17 @@ article img {
   
 }
 
-/* Badge para "Inscreva-se" */
+
 .curso-badge.aberto {
-  background-color: #f2637e; /* Verde */
+  background-color: #f2637e; 
 }
 
-/* Badge para "Em Breve" */
+
 .curso-badge.em-breve {
-  background-color: #b0b0b0; /* Amarelo */
+  background-color: #b0b0b0; 
 }
 
-/* Estilos para o mobile */
+
 
 @media only screen and (max-width: 768px) {
 

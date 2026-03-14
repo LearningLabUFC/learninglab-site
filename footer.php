@@ -39,20 +39,20 @@
 
         <div class="footer-menu">
             <?php
-            // Obtém o objeto do menu baseado no slug ou local de registro
-            $menu_location = 'footer'; // Substitua pelo local do menu
+            
+            $menu_location = 'footer'; 
             $locations = get_nav_menu_locations();
 
             if (isset($locations[$menu_location])) {
                 $menu_id = $locations[$menu_location];
                 $menu_object = wp_get_nav_menu_object($menu_id);
 
-                // Exibe o título do menu
+                
                 if ($menu_object) {
                     echo '<h4>' . esc_html($menu_object->name) . '</h4>';
                 }
 
-                // Exibe o menu
+                
                 wp_nav_menu(
                     array(
                         'menu' => $menu_object->slug,
