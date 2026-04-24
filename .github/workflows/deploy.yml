@@ -1,4 +1,4 @@
-name: Deploy do Tema WordPress
+name: Deploy do Tema WordPress via FTP
 
 on:
   push:
@@ -6,23 +6,22 @@ on:
 
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configurar SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-
-      - name: Deploy com rsync
-        run: |
-          rsync -avz --delete \
-            --exclude=".git" \
-            --exclude=".github" \
-            --exclude="node_modules" \
-            -e "ssh -p 2222 -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" \
-            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home2/gestll05/learninglab.com.br/wp-content/themes/site-learninglab/
+      - name: Sincronizar arquivos via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: ./learninglab.com.br/wp-content/themes/site-learninglab/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
