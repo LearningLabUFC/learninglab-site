@@ -26,6 +26,11 @@ function learninglab_register_styles()
         wp_enqueue_style('learninglab_archive_style', get_template_directory_uri() . "/assets/css/archive.css", array(), $version, 'all');
     }
 
+    // CSS unificado dos cards (blog, cursos, subprojetos)
+    if (is_home() || is_page('nossos-cursos') || is_page('subprojetos')) {
+        wp_enqueue_style('learninglab_cards_style', get_template_directory_uri() . "/assets/css/cards.css", array(), $version, 'all');
+    }
+
     if (is_author()) {
         wp_enqueue_style('learninglab_author_style', get_template_directory_uri() . "/assets/css/author.css", array(), $version, 'all');
         wp_enqueue_style('learninglab_archive_style', get_template_directory_uri() . "/assets/css/archive.css", array(), $version, 'all');
@@ -35,7 +40,7 @@ function learninglab_register_styles()
         wp_enqueue_style('learninglab_404_style', get_template_directory_uri() . "/assets/css/404.css", array(), $version, 'all');
     }
 
-    if (is_page() || is_singular('curso')) {
+    if (is_page() || is_singular('curso') || is_singular('subprojetos')) {
         wp_enqueue_style('learninglab_curso_style', get_template_directory_uri() . "/assets/css/page.css", array(), $version, 'all');
     }
 
@@ -54,7 +59,7 @@ wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bu
         wp_enqueue_style('swiper-noticias-style', get_template_directory_uri() . "/assets/css/swiper-styles-noticias.css", array('swiper-css'), $version, 'all');
     }
 
-    if (is_singular('post') || is_page()) {
+    if (is_singular('post') || is_page() || is_singular('subprojetos')) {
         wp_enqueue_style('learninglab_membro_style', get_template_directory_uri() . "/assets/css/membro.css", array(), $version, 'all');
     }
 

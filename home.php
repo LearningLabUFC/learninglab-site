@@ -8,35 +8,12 @@ get_header();
     </section>
 
     <?php
-    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
     if (have_posts()) :
-        if ($paged == 1) :
-            the_post();
     ?>
-            <a href="<?php the_permalink(); ?>" class="conteiner-destaque">
-                <?php get_template_part('template-parts/content', 'featured'); ?>
-            </a>
-        <?php
-        endif;
-
-        rewind_posts();
-
-        ?>
-        <section class="conteiner-conteudos">
+        <section class="conteiner-conteudos cards-grid">
             <?php
-            $post_count = 0;
             while (have_posts()) : the_post();
-                if ($paged == 1 && $post_count == 0) :
-                    $post_count++;
-                    continue;
-                endif;
-            ?>
-                <a href="<?php the_permalink(); ?>" class="painel-blogs">
-                    <?php get_template_part('template-parts/content', 'archive'); ?>
-                </a>
-            <?php
-                $post_count++;
+                get_template_part('template-parts/content', 'card');
             endwhile;
             ?>
         </section>
