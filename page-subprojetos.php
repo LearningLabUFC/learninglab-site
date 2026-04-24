@@ -13,7 +13,7 @@ get_header(); ?>
 
 <div class="container">
 
-    <div class="subprojetos-grid">
+    <div class="cards-grid">
         <?php
         $args = array(
             'post_type'      => 'subprojetos',
@@ -26,23 +26,11 @@ get_header(); ?>
         $query_subprojetos = new WP_Query( $args );
 
         if ( $query_subprojetos->have_posts() ) :
-            while ( $query_subprojetos->have_posts() ) : $query_subprojetos->the_post(); ?>
+            while ( $query_subprojetos->have_posts() ) : $query_subprojetos->the_post();
 
-                <div class="subprojeto-card">
-                    <a href="<?php the_permalink(); ?>" class="subprojeto-link">
-                        <div class="subprojeto-content">
-                            <?php if ( has_post_thumbnail() ) : ?>
-                                <?php the_post_thumbnail( 'medium' ); ?>
-                            <?php endif; ?>
-                            <div class="subprojeto-texto">
-                                <h3><?php the_title(); ?></h3>
-                                <?php the_excerpt(); ?>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                get_template_part('template-parts/content', 'card');
 
-            <?php endwhile;
+            endwhile;
             wp_reset_postdata();
         else : ?>
             <p>Nenhum subprojeto encontrado no momento.</p>

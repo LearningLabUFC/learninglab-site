@@ -19,110 +19,173 @@ get_header(); ?>
 
     <p><strong>Dica útil:</strong> clique ou toque sobre um curso para realizar a inscrição (caso ela esteja aberta) ou visualizar detalhes sobre ele.</p>
 
-    
-    <section class="cursos-futuros">
-        <h2>Cursos futuros</h2>
-        <div class="cursos-grid">
+
+    <?php
+    // ========================================
+    // SEÇÃO: Cursos em andamento
+    // ========================================
+    $andamento_args = array(
+        'post_type' => 'curso',
+        'posts_per_page' => -1,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'status_curso',
+                'field'    => 'slug',
+                'terms'    => 'curso-em-andamento',
+            ),
+        ),
+        'orderby' => 'date',
+        'order' => 'DESC',
+    );
+
+    $andamento_query = new WP_Query($andamento_args);
+
+    if ($andamento_query->have_posts()) :
+    ?>
+    <section class="cursos-em-andamento">
+        <h2>Cursos em andamento</h2>
+        <div class="cards-grid">
             <?php
-            
-            $futuros_args = array(
-                'post_type' => 'curso',
-                'posts_per_page' => -1,
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'status_curso',
-                        'field'    => 'slug',
-                        'terms'    => 'curso-futuro',
-                    ),
-                ),
-                'orderby' => 'date', 
-                'order' => 'DESC',   
-            );
+            while ($andamento_query->have_posts()) : $andamento_query->the_post();
 
-            $futuros_query = new WP_Query($futuros_args);
+                $terms = get_the_terms(get_the_ID(), 'status_curso');
+                $inscricoes_abertas = false;
+                $inscricoes_encerradas = false;
 
-            if ($futuros_query->have_posts()) :
-                while ($futuros_query->have_posts()) : $futuros_query->the_post();
-
-                    
-                    $terms = get_the_terms(get_the_ID(), 'status_curso');
-                    $inscricoes_abertas = false;
-
-                    if ($terms) {
-                        foreach ($terms as $term) {
-                            if ($term->slug === 'inscricoes-abertas') {
-                                $inscricoes_abertas = true;
-                                break;
-                            }
+                if ($terms) {
+                    foreach ($terms as $term) {
+                        if ($term->slug === 'inscricoes-abertas') {
+                            $inscricoes_abertas = true;
+                        }
+                        if ($term->slug === 'inscricoes-encerradas') {
+                            $inscricoes_encerradas = true;
                         }
                     }
-                    ?>
+                }
 
-                    <div class="curso-item">
-                        <a href="<?php the_permalink(); ?>" class="curso-link">
-                            <div class="curso-content">
-                                <?php the_post_thumbnail('medium'); ?>
-                                <div class="texto">
-                                    <h3><?php the_title(); ?></h3>
-                                    <p><?php the_excerpt(); ?></p>
+                if ($inscricoes_abertas) {
+                    $badge_text  = 'inscrições abertas';
+                    $badge_class = 'aberto';
+                } elseif ($inscricoes_encerradas) {
+                    $badge_text  = 'inscrições encerradas';
+                    $badge_class = 'encerrado';
+                } else {
+                    $badge_text  = 'em andamento';
+                    $badge_class = 'em-andamento';
+                }
 
-                                </div>
-                                <div class="curso-status">
-                                        <?php if ($inscricoes_abertas) : ?>
-                                            <span class="curso-badge aberto">inscrições abertas</span>
-                                        <?php else : ?>
-                                            <span class="curso-badge em-breve">em breve</span>
-                                        <?php endif; ?>
-                                    </div>
-                            </div>
-                        </a>
-                    </div>
+                get_template_part('template-parts/content', 'card', array(
+                    'show_badge'  => true,
+                    'badge_text'  => $badge_text,
+                    'badge_class' => $badge_class,
+                ));
 
-                <?php endwhile;
-                wp_reset_postdata();
-            else : ?>
-                <p>Não há cursos futuros disponíveis no momento.</p>
-            <?php endif; ?>
+            endwhile;
+            wp_reset_postdata();
+            ?>
         </div>
     </section>
+    <?php endif; ?>
 
-    
+
+    <?php
+    // ========================================
+    // SEÇÃO: Cursos futuros
+    // ========================================
+    $futuros_args = array(
+        'post_type' => 'curso',
+        'posts_per_page' => -1,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'status_curso',
+                'field'    => 'slug',
+                'terms'    => 'curso-futuro',
+            ),
+        ),
+        'orderby' => 'date',
+        'order' => 'DESC',
+    );
+
+    $futuros_query = new WP_Query($futuros_args);
+
+    if ($futuros_query->have_posts()) :
+    ?>
+    <section class="cursos-futuros">
+        <h2>Cursos futuros</h2>
+        <div class="cards-grid">
+            <?php
+            while ($futuros_query->have_posts()) : $futuros_query->the_post();
+
+                $terms = get_the_terms(get_the_ID(), 'status_curso');
+                $inscricoes_abertas = false;
+                $inscricoes_encerradas = false;
+
+                if ($terms) {
+                    foreach ($terms as $term) {
+                        if ($term->slug === 'inscricoes-abertas') {
+                            $inscricoes_abertas = true;
+                        }
+                        if ($term->slug === 'inscricoes-encerradas') {
+                            $inscricoes_encerradas = true;
+                        }
+                    }
+                }
+
+                if ($inscricoes_abertas) {
+                    $badge_text  = 'inscrições abertas';
+                    $badge_class = 'aberto';
+                } elseif ($inscricoes_encerradas) {
+                    $badge_text  = 'inscrições encerradas';
+                    $badge_class = 'encerrado';
+                } else {
+                    $badge_text  = 'em breve';
+                    $badge_class = 'em-breve';
+                }
+
+                get_template_part('template-parts/content', 'card', array(
+                    'show_badge'  => true,
+                    'badge_text'  => $badge_text,
+                    'badge_class' => $badge_class,
+                ));
+
+            endwhile;
+            wp_reset_postdata();
+            ?>
+        </div>
+    </section>
+    <?php endif; ?>
+
+
+    <?php
+    // ========================================
+    // SEÇÃO: Cursos passados (sempre exibe)
+    // ========================================
+    $passados_args = array(
+        'post_type' => 'curso',
+        'posts_per_page' => -1,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'status_curso',
+                'field'    => 'slug',
+                'terms'    => 'curso-passado',
+            ),
+        ),
+        'orderby' => 'title',
+        'order' => 'ASC',
+    );
+
+    $passados_query = new WP_Query($passados_args);
+    ?>
     <section class="cursos-passados">
         <h2>Cursos passados</h2>
-        <div class="cursos-grid">
+        <div class="cards-grid">
             <?php
-            
-            $passados_args = array(
-                'post_type' => 'curso',
-                'posts_per_page' => -1,
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'status_curso',
-                        'field'    => 'slug',
-                        'terms'    => 'curso-passado',
-                    ),
-                ),
-                'orderby' => 'title',
-                'order' => 'ASC',
-            );
-
-            $passados_query = new WP_Query($passados_args);
-
             if ($passados_query->have_posts()) :
-                while ($passados_query->have_posts()) : $passados_query->the_post(); ?>
+                while ($passados_query->have_posts()) : $passados_query->the_post();
 
-                    <div class="curso-item">
-                        <a href="<?php the_permalink(); ?>" class="curso-link">
-                            <div class="curso-content">
-                                <?php the_post_thumbnail('medium'); ?>
-                                <h3><?php the_title(); ?></h3>
-                                <p><?php the_excerpt(); ?></p>
+                    get_template_part('template-parts/content', 'card');
 
-                            </div>
-                        </a>
-                    </div>
-
-                <?php endwhile;
+                endwhile;
                 wp_reset_postdata();
             else : ?>
                 <p>Não há cursos passados disponíveis no momento.</p>
@@ -133,5 +196,3 @@ get_header(); ?>
 </div>
 
 <?php get_footer(); ?>
-
-
