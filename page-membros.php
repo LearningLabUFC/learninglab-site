@@ -13,61 +13,122 @@ get_header();
 
 <div class="container">
 
-    <p>Mesmo tendo iniciado suas atividades em 2020, o LearningLab já possui uma equipe bastante completa, com membros distribuídos em seus vários clãs e setores. Nessa página, você poderá conhecer todo o nosso time e entender melhor quais atividades cada um dos integrantes desempenha!</p>
-
-    <p>Dica: nossos membros ou ex-membros que já se formaram contam com uma borda verde em suas fotos!</p>
-
-    <section class="coordenador">
-        <h2>Nossa coordenadora</h2>
-        <p>Antes de conhecermos os membros líderes de cada setor, cabe destacar a principal posição de liderança no projeto, a nossa coordenadora:</p>
-
-        <?php
-        $egressos_query = new WP_Query([
-            'post_type' => 'membro',
-            'tax_query' => [
-                [
-                    'taxonomy' => 'tipo_de_membro',
-                    'field'    => 'slug',
-                    'terms'    => 'coordenador', 
+    <section class="gestao-topo">
+        <div class="membros-grid">
+            <?php
+            // 1. Coordenador
+            $coord_query = new WP_Query([
+                'post_type' => 'membro',
+                'tax_query' => [
+                    [
+                        'taxonomy' => 'tipo_de_membro',
+                        'field'    => 'slug',
+                        'terms'    => 'coordenador', 
+                    ],
                 ],
-            ],
-            'posts_per_page' => -1,
-            'orderby' => 'title',
-            'order'   => 'ASC',
-        ]);
-        if ($egressos_query->have_posts()) :
-        ?>
-            <div class="membros-grid">
-                <?php while ($egressos_query->have_posts()) : $egressos_query->the_post(); ?>
-                    <div class="membro-item">
+                'posts_per_page' => -1,
+                'orderby' => 'title',
+                'order'   => 'ASC',
+            ]);
+            
+            if ($coord_query->have_posts()) :
+                while ($coord_query->have_posts()) : $coord_query->the_post(); ?>
+                    <div class="membro-item <?php echo is_membro_formado(get_the_ID()) ? 'formado' : ''; ?>">
+                        <i class="fa-solid fa-graduation-cap icon-formado"></i>
                         <?php if (has_post_thumbnail()) : ?>
                             <div class="membro-avatar"><?php the_post_thumbnail('thumbnail'); ?></div>
                         <?php endif; ?>
-                        <h4 class="membro-nome"><?php the_title(); ?></h4>
+                        <h4 class="membro-nome"><?php learninglab_membro_nome_duas_linhas(); ?></h4>
                         <?php learninglab_render_membro_socials(get_the_ID()); ?>
+                        <div class="membro-setores">
+                            <span class="setor-coordenadora">Coordenadora</span>
+                        </div>
                     </div>
-                <?php endwhile; ?>
-            </div>
-        <?php
-        endif;
-        wp_reset_postdata();
-        ?>
+                <?php endwhile;
+            endif;
+            wp_reset_postdata();
+            ?>
+        </div>
+        
+        <div class="membros-grid row-administrativo" style="margin-top: -20px;">
+            <?php
+            // 2.A Cofundadoras (Primeiras na fila)
+            $cofund_query = new WP_Query([
+                'post_type' => 'membro',
+                'tax_query' => [
+                    [
+                        'taxonomy' => 'tipo_de_membro',
+                        'field'    => 'slug',
+                        'terms'    => 'cofundadora',
+                    ],
+                ],
+                'posts_per_page' => -1,
+                'orderby' => 'title',
+                'order'   => 'ASC',
+            ]);
+            
+            if ($cofund_query->have_posts()) :
+                while ($cofund_query->have_posts()) : $cofund_query->the_post(); ?>
+                    <div class="membro-item <?php echo is_membro_formado(get_the_ID()) ? 'formado' : ''; ?>">
+                        <i class="fa-solid fa-graduation-cap icon-formado"></i>
+                        <?php if (has_post_thumbnail()) : ?>
+                            <div class="membro-avatar"><?php the_post_thumbnail('thumbnail'); ?></div>
+                        <?php endif; ?>
+                        <h4 class="membro-nome"><?php learninglab_membro_nome_duas_linhas(); ?></h4>
+                        <?php learninglab_render_membro_socials(get_the_ID()); ?>
+                        
+                        <div class="membro-setores">
+                            <span class="setor-cofundadora">Cofundadora</span>
+                        </div>
+                    </div>
+                <?php endwhile;
+            endif;
+            wp_reset_postdata();
+
+            // 2.B Administrativo (Logo em seguida)
+            $admin_query = new WP_Query([
+                'post_type' => 'membro',
+                'tax_query' => [
+                    [
+                        'taxonomy' => 'tipo_de_membro',
+                        'field'    => 'slug',
+                        'terms'    => 'administrativo',
+                    ],
+                ],
+                'posts_per_page' => -1,
+                'orderby' => 'title',
+                'order'   => 'ASC',
+            ]);
+            
+            if ($admin_query->have_posts()) :
+                while ($admin_query->have_posts()) : $admin_query->the_post(); ?>
+                    <div class="membro-item <?php echo is_membro_formado(get_the_ID()) ? 'formado' : ''; ?>">
+                        <i class="fa-solid fa-graduation-cap icon-formado"></i>
+                        <?php if (has_post_thumbnail()) : ?>
+                            <div class="membro-avatar"><?php the_post_thumbnail('thumbnail'); ?></div>
+                        <?php endif; ?>
+                        <h4 class="membro-nome"><?php learninglab_membro_nome_duas_linhas(); ?></h4>
+                        <?php learninglab_render_membro_socials(get_the_ID()); ?>
+                        
+                        <div class="membro-setores">
+                            <span class="setor-administrativo">Administrativo</span>
+                        </div>
+                    </div>
+                <?php endwhile;
+            endif;
+            wp_reset_postdata();
+            ?>
+        </div>
     </section>
 
     <section class="membros-lideres">
         <h2>Líderes</h2>
 
-        <p>Cada setor ou clã no LearningLab conta com posições bem estabelecidas de liderança, as quais servem para auxiliar e orientar o trabalho dos demais integrantes na equipe.</p>
-        <p>Conheça abaixo os líderes do LearningLab, bem como os setores os quais eles lideram.</p>
-
         <?php
-        
         $lider_categoria = get_term_by('slug', 'lider', 'tipo_de_membro');
 
         if ($lider_categoria) {
-            
             $lider_subcategorias = get_term_children($lider_categoria->term_id, 'tipo_de_membro');
-
             
             $lideres_query = new WP_Query([
                 'post_type' => 'membro',
@@ -86,17 +147,14 @@ get_header();
 
             if ($lideres_query->have_posts()) :
         ?>
-
                 <div class="membros-grid">
                     <?php while ($lideres_query->have_posts()) : $lideres_query->the_post(); ?>
                         <div class="membro-item <?php echo is_membro_formado(get_the_ID()) ? 'formado' : ''; ?>">
+                            <i class="fa-solid fa-graduation-cap icon-formado"></i>
                             <?php if (has_post_thumbnail()) : ?>
                                 <div class="membro-avatar"><?php the_post_thumbnail('thumbnail'); ?></div>
                             <?php endif; ?>
-                            <div class="membro-nome-wrapper">
-                                <h4 class="membro-nome"><?php the_title(); ?></h4>
-                                <i class="fa-solid fa-graduation-cap icon-formado"></i>
-                            </div>
+                            <h4 class="membro-nome"><?php learninglab_membro_nome_duas_linhas(); ?></h4>
                             <?php learninglab_render_membro_socials(get_the_ID()); ?>
                             
                             <?php
@@ -130,15 +188,10 @@ get_header();
         ?>
     </section>
 
-
-
-    
     <section class="membros-atuais">
         <h2>Membros atuais</h2>
-        <p>Nesta seção, vamos conhecer todos os membros que fazem parte atualmente do LearningLab (inclusive os líderes), bem como quais os setores nos quais eles fazem parte!</p>
 
         <?php
-        
         $atuais_query = new WP_Query([
             'post_type' => 'membro',
             'tax_query' => [
@@ -155,18 +208,14 @@ get_header();
 
         if ($atuais_query->have_posts()) :
         ?>
-
-
             <div class="membros-grid">
                 <?php while ($atuais_query->have_posts()) : $atuais_query->the_post(); ?>
                     <div class="membro-item <?php echo is_membro_formado(get_the_ID()) ? 'formado' : ''; ?>">
+                        <i class="fa-solid fa-graduation-cap icon-formado"></i>
                         <?php if (has_post_thumbnail()) : ?>
                             <div class="membro-avatar"><?php the_post_thumbnail('thumbnail'); ?></div>
                         <?php endif; ?>
-                        <div class="membro-nome-wrapper">
-                            <h4 class="membro-nome"><?php the_title(); ?></h4>
-                            <i class="fa-solid fa-graduation-cap icon-formado"></i>
-                        </div>
+                        <h4 class="membro-nome"><?php learninglab_membro_nome_duas_linhas(); ?></h4>
                         <?php learninglab_render_membro_socials(get_the_ID()); ?>
                         
                         <?php
@@ -199,13 +248,10 @@ get_header();
         ?>
     </section>
 
-    
     <section class="membros-egressos">
         <h2>Egressos</h2>
-        <p>Ao longo desses aninhos de existência, muita gente boa já passou pelo Learning! Confira abaixo os membros egressos do projeto — ou seja, aqueles que já não fazem mais parte do nosso time.</p>
 
         <?php
-        
         $egressos_query = new WP_Query([
             'post_type' => 'membro',
             'tax_query' => [
@@ -224,14 +270,12 @@ get_header();
             <div class="membros-grid">
                 <?php while ($egressos_query->have_posts()) : $egressos_query->the_post(); ?>
                     <div class="membro-item <?php echo is_membro_formado(get_the_ID()) ? 'formado' : ''; ?>">
+                        <i class="fa-solid fa-graduation-cap icon-formado"></i>
                         <?php if (has_post_thumbnail()) : ?>
                             <div class="membro-avatar"><?php the_post_thumbnail('thumbnail'); ?></div>
                         <?php endif; ?>
-                        <div class="membro-nome-wrapper">
-                            <h4 class="membro-nome"><?php the_title(); ?></h4>
-                            <i class="fa-solid fa-graduation-cap icon-formado"></i>
-                        </div>
-<?php ?>                    </div>
+                        <h4 class="membro-nome"><?php learninglab_membro_nome_duas_linhas(); ?></h4>
+                    </div>
                 <?php endwhile; ?>
             </div>
         <?php

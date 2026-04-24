@@ -8,6 +8,7 @@
 
 
 .membro-item {
+  position: relative;
   border-radius: 8px;
   padding: 15px;
   text-align: center;
@@ -57,16 +58,6 @@
   box-sizing: border-box;
 }
 
-.membro-nome-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 0;
-}
-
-
-
 .membro-nome {
   font-size: 18px;
   font-weight: bold;
@@ -76,12 +67,15 @@
 
 .icon-formado {
   display: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
   color: #009a9a;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .membro-item.formado .icon-formado {
-  display: inline-block;
+  display: block;
 }
 
 
@@ -91,28 +85,84 @@
 }
 
 
+.membro-setores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
 .membro-setores span {
   display: inline-block;
-  margin: 5px 5px 0 0;
-  padding: 1px 5px;
-  border-radius: 20px;
-  background-color: #e0e0e0;
-  font-size: 0.7rem;
-  color: #000;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  background-color: #f0f0f0;
+  color: #555;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.membro-setores span:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .membro-item h4 {
   margin-bottom: 0;
 }
 
-.membros-lideres .membro-setores span {
-  background-color: #7f7f7f;
-  color: #fff;
+.gestao-topo .membros-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-.coordenadora .membro-setores span {
-  background-color: #323232;
+.gestao-topo .membro-item {
+  margin: 0;
+}
+
+/* Líderes: badges escuros para hierarquia, mas mais claros que topo */
+.membros-lideres .membro-setores span {
+  background-color: #8a8a8a;
   color: #fff;
+  border-color: transparent;
+}
+
+.membros-lideres .membro-setores span:hover {
+  background-color: #707070;
+  box-shadow: 0 2px 8px rgba(138, 138, 138, 0.3);
+}
+
+/* Administrativo e Cofundadora: nível intermediário, APENAS no topo */
+.gestao-topo .membro-setores span.setor-administrativo,
+.gestao-topo .membro-setores span.setor-cofundadora {
+  background-color: #5a5a5a !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+
+.gestao-topo .membro-setores span.setor-administrativo:hover,
+.gestao-topo .membro-setores span.setor-cofundadora:hover {
+  background-color: #454545 !important;
+  box-shadow: 0 2px 8px rgba(90, 90, 90, 0.4) !important;
+}
+
+/* Coordenadora: o badge mais forte (nível máximo) */
+.membro-setores span.setor-coordenadora {
+  background-color: #202020 !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+
+.membro-setores span.setor-coordenadora:hover {
+  background-color: #111111 !important;
+  box-shadow: 0 2px 8px rgba(32, 32, 32, 0.5) !important;
 }
 
 
@@ -140,6 +190,6 @@
 
 .membro-redes-sociais a.social-icon:hover {
   background-color: #009a9a;
-  
+
   color: #fff;
 }
