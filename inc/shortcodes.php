@@ -65,12 +65,41 @@ add_shortcode('membros', 'membros_shortcode');
 function instrutor_shortcode($atts, $content = null)
 {
     $atts = shortcode_atts(array(
-        'nome' => 'Nome do Instrutor',
+        'slug' => '',
+        'nome' => '',
         'imagem' => '',
         'descricao' => ''
     ), $atts, 'instrutor');
 
-    if (!filter_var($atts['imagem'], FILTER_VALIDATE_URL)) {
+    if (!empty($atts['slug'])) {
+        $args = array(
+            'name'        => $atts['slug'],
+            'post_type'   => 'membro',
+            'post_status' => 'publish',
+            'numberposts' => 1,
+        );
+        $membros = get_posts($args);
+
+        if ($membros) {
+            $membro = $membros[0];
+            if (empty($atts['nome'])) {
+                $atts['nome'] = get_the_title($membro->ID);
+            }
+            if (empty($atts['imagem'])) {
+                $atts['imagem'] = get_the_post_thumbnail_url($membro->ID, 'full');
+            }
+            if (empty($atts['descricao'])) {
+                $atts['descricao'] = get_the_excerpt($membro->ID);
+            }
+        }
+    }
+
+    // Valores padrão se ainda estiverem vazios
+    if (empty($atts['nome'])) {
+        $atts['nome'] = 'Nome do Instrutor';
+    }
+
+    if (!empty($atts['imagem']) && !filter_var($atts['imagem'], FILTER_VALIDATE_URL)) {
         $img = get_page_by_title($atts['imagem'], OBJECT, 'attachment');
         if ($img) {
             $atts['imagem'] = wp_get_attachment_url($img->ID);
