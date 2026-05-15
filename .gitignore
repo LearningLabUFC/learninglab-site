@@ -1,2 +1,28 @@
+# macOS
 .DS_Store
+
+# IDEs
 .vscode/
+.idea/
+
+# Dependencies
+/vendor/
+
+# Node 
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Build files
+dist/
+build/
+
+# Logs
+*.log
+
+# Env files
+.env
+.env.*
+
+# OS / misc
+Thumbs.db
