@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   min-height: 7rem;
-  background-color: #f2637e;
+  background-color: var(--ll-accent);
   width: 100%;
   margin-bottom: 2rem;
   padding: 1rem;
@@ -51,14 +51,14 @@
 }
 
 h2 {
-  color: #f2637e;
+  color: var(--ll-accent);
   font-weight: 700;
   font-size: 2rem;
   margin-block: 2rem;
 }
 
 h3 {
-  color: #f2637e;
+  color: var(--ll-accent);
   font-weight: 600;
   font-size: 1.5rem;
   padding-top: 1rem;
@@ -66,7 +66,7 @@ h3 {
 
 /* Impede que o h3 global override o estilo dos cards */
 .card-body h3 {
-  color: #2d2d2d;
+  color: var(--ll-text);
   font-size: 1.25rem;
   padding-top: 0;
 }
@@ -80,7 +80,7 @@ article img {
 .container p:not(.card-body p) {
   font-size: 1.2rem;
   line-height: 1.7;
-  color: #414141;
+  color: var(--ll-text);
   margin-bottom: 1.5rem;
   padding: 0;
   text-align: justify;
@@ -105,7 +105,7 @@ article img {
 .container li {
   font-size: 1.2rem;
   line-height: 1.7;
-  color: #414141;
+  color: var(--ll-text);
   margin-bottom: 0.5rem;
 }
 
@@ -171,7 +171,7 @@ article img {
 .wp-block-gallery.has-nested-images figure.wp-block-image figcaption {
   border-radius: 0 0 15px 15px; 
 
-  background: linear-gradient(#f2637d, #f2637e);
+  background: linear-gradient(color-mix(in srgb, var(--ll-accent), #000 2%), var(--ll-accent));
 }
 
 .content ul li {
@@ -180,17 +180,17 @@ article img {
 }
 
 .content a {
-  color: #f2637e;
+  color: var(--ll-accent);
 }
 
 .content a:hover {
-  color: #04bfbf;
+  color: var(--ll-accent-soft);
 }
 
 .container-citacao {
   display: flex;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--ll-surface);
   
   padding: 30px;
   border-radius: 40px;
@@ -220,7 +220,7 @@ article img {
 
 .nome {
   font-weight: bold;
-  color: #f2637e;
+  color: var(--ll-accent);
 }
 
 

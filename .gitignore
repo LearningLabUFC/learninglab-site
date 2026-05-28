@@ -2,8 +2,14 @@
 .DS_Store
 
 # IDEs
-.vscode/
 .idea/
+
+# VS Code (keep shared workspace config)
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
 
 # Dependencies
 /vendor/

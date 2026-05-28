@@ -1,6 +1,6 @@
 .background-container-inicial {
-    background-color: rgb(242, 99, 126);
-    width: 100%;
+	    background-color: var(--ll-accent);
+	    width: 100%;
 }
 
 
@@ -20,17 +20,21 @@
     font-weight: 700;
     font-size: 45px;
     margin: auto;
-    color: white;
+    color: var(--ll-on-accent);
+    flex: 1;
+    max-width: 45%;
 }
 
 .container-inicial img {
+    flex: 1;
+    max-width: 55%;
     width: 100%;
 }
 
 #circulo {
     position: absolute;
     display: flex;
-    background-color: #04bfbfb3;
+    background-color: var(--ll-accent-soft);
     width: 5vw;
     height: 20vh;
     border-radius: 0px 150px 150px 0px;
@@ -65,7 +69,7 @@
 }
 
 .container-sobre h2 {
-    color: #009a9a;
+    color: var(--ll-accent);
     font-weight: 700;
     line-height: 50px;
 }
@@ -79,7 +83,7 @@
     height: auto;
     object-fit: cover;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	    box-shadow: var(--ll-shadow-2);
 
 }
 
@@ -90,15 +94,15 @@
     font-size: 20px;
     line-height: 30px;
     letter-spacing: 0.15px;
-    color: #464646;
-    opacity: 0.9;
-    margin-top: 30px;
-    margin-bottom: 30px;
+	    color: var(--ll-text);
+	    opacity: 0.9;
+	    margin-top: 30px;
+	    margin-bottom: 30px;
 }
 
 .container-sobre button {
-    background-color: #009a9a;
-    color: #fff;
+    background-color: var(--ll-accent);
+    color: var(--ll-on-accent);
 
 }
 
@@ -117,7 +121,7 @@
 }
 
 .background-container-cursos {
-    background-color: #f2637e;
+    background-color: var(--ll-accent);
     width: 85%;
     height: 620px;
 }
@@ -195,17 +199,17 @@
 .status .em-breve {
     font-size: 0.9rem;
     padding: 3px 7px;
-    color: #fff;
+    color: var(--ll-on-accent);
     border-radius: 20px;
 }
 
 
 .status .inscricoes-abertas {
-    background-color: #f2637e;
+    background-color: var(--ll-accent);
 }
 
 .status .em-breve {
-    background-color: #b0b0b0;
+	    background-color: var(--ll-gray-500);
 }
 
 .mais-cursos {
@@ -220,25 +224,25 @@
 
 .mais-cursos button,
 .container-leitura button {
-    background-color: #fff;
-    color: #f2637e;
+	    background-color: var(--ll-surface);
+	    color: var(--ll-accent);
 }
 
 .mais-cursos button:hover,
 .container-leitura button:hover {
-    background-color: #f2f2f2;
-    color: #c05266;
+	    background-color: var(--ll-surface-subtle);
+	    color: var(--ll-accent);
 }
 
 
 .container-leitura button {
-    background-color: #009a9a;
-    color: #fff;
+    background-color: var(--ll-accent);
+    color: var(--ll-on-accent);
 }
 
 .container-leitura button:hover {
-    background-color: #018989;
-    color: #fff;
+    background-color: var(--ll-accent-hover);
+    color: var(--ll-on-accent);
 }
 
 .container-leitura button {
@@ -253,13 +257,13 @@
 }
 
 .container-leitura h3 {
-    color: #009a9a;
+    color: var(--ll-accent);
 }
 
 .background-container-avaliacoes {
     width: 100%;
     height: 500px;
-    background-color: #f2637e;
+    background-color: var(--ll-accent);
 }
 
 .quadro-de-avaliacoes {
@@ -271,7 +275,7 @@
 }
 
 .conteudo-avaliacoes h3 {
-    color: #009a9a;
+    color: var(--ll-accent);
 }
 
 
@@ -282,7 +286,7 @@
 
 .mais-noticias h2 {
     padding-top: 40px;
-    color: #009a9a;
+    color: var(--ll-accent);
 }
 
 

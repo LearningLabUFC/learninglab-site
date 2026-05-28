@@ -47,7 +47,7 @@ header .custom-logo {
 
 .menu-item .sub-menu a:hover{
   border-bottom:  none;
-  color: #025656;
+  color: var(--ll-accent-hover);
 }
 
 .nav-menu .sub-menu li a{
@@ -97,11 +97,11 @@ button#search-btn {
 }
 
 #search-form button {
-  background: #f2637e;
+  background: var(--ll-accent);
   border: none;
   cursor: pointer;
   padding: 8px;
-  color: #fff;
+  color: var(--ll-on-accent);
   transition: color 0.3s;
 }
 
@@ -225,13 +225,13 @@ button#search-btn {
   .nav-menu li a {
     color: black;
     font-weight: 500;
-    border-left: 3px solid #f2637e;
+    border-left: 3px solid var(--ll-accent);
     padding-left: .5rem;
   }
 
   .nav-menu .current-menu-item a,
   .nav-menu .current_page_item a {
-    color: #f2637e;
+    color: var(--ll-accent);
     font-weight: 700;
   }
 
@@ -280,7 +280,7 @@ button#search-btn {
     height: 5px;
     width: 30px;
     border-radius: 30px;
-    background-color: #04bfbf;
+    background-color: var(--ll-accent-soft);
     transition: 0.25s ease-in-out;
   }
 
