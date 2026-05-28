@@ -12,7 +12,7 @@
   border-radius: 8px;
   padding: 15px;
   text-align: center;
-  background-color: #ffffff;
+  background-color: var(--ll-surface);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, box-shadow 0.2s;
   width: 100%;
@@ -54,7 +54,7 @@
 }
 
 .membro-item.formado .membro-avatar img {
-  border: 4px solid #009a9a;
+  border: 4px solid var(--ll-accent);
   box-sizing: border-box;
 }
 
@@ -70,7 +70,7 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  color: #009a9a;
+  color: var(--ll-accent);
   font-size: 16px;
 }
 
@@ -80,7 +80,7 @@
 
 
 .membro-item.formado .membro-avatar img {
-  border: 4px solid #009a9a;
+  border: 4px solid var(--ll-accent);
   box-sizing: border-box;
 }
 
@@ -102,7 +102,7 @@
   letter-spacing: 0.02em;
   text-transform: lowercase;
   background-color: #f0f0f0;
-  color: #555;
+  color: var(--ll-text-muted);
   border: 1px solid rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -129,21 +129,21 @@
 
 /* Líderes: badges escuros para hierarquia, mas mais claros que topo */
 .membros-lideres .membro-setores span {
-  background-color: #8a8a8a;
-  color: #fff;
+  background-color: var(--ll-gray-600);
+  color: var(--ll-on-accent);
   border-color: transparent;
 }
 
 .membros-lideres .membro-setores span:hover {
-  background-color: #707070;
+  background-color: var(--ll-gray-700);
   box-shadow: 0 2px 8px rgba(138, 138, 138, 0.3);
 }
 
 /* Administrativo e Cofundadora: nível intermediário, APENAS no topo */
 .gestao-topo .membro-setores span.setor-administrativo,
 .gestao-topo .membro-setores span.setor-cofundadora {
-  background-color: #5a5a5a !important;
-  color: #fff !important;
+  background-color: var(--ll-gray-800) !important;
+  color: var(--ll-on-accent) !important;
   border-color: transparent !important;
 }
 
@@ -156,7 +156,7 @@
 /* Coordenadora: o badge mais forte (nível máximo) */
 .membro-setores span.setor-coordenadora {
   background-color: #202020 !important;
-  color: #fff !important;
+  color: var(--ll-on-accent) !important;
   border-color: transparent !important;
 }
 
@@ -181,15 +181,15 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: #e0e0e0;
-  color: #333;
+  background-color: var(--ll-border);
+  color: var(--ll-text);
   text-decoration: none;
   font-size: 14px;
   transition: all 0.3s ease;
 }
 
 .membro-redes-sociais a.social-icon:hover {
-  background-color: #009a9a;
+  background-color: var(--ll-accent);
 
-  color: #fff;
+  color: var(--ll-on-accent);
 }

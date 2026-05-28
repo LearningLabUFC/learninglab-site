@@ -1,9 +1,9 @@
 body .cabecalho {
-  background-color: #009a9a;
+  background-color: var(--ll-accent);
 }
 
 .cabecalho #search-form button {
-  background: #009a9a;
+  background: var(--ll-accent);
 }
 
 .container {
@@ -12,7 +12,7 @@ body .cabecalho {
 }
 
 .container-header {
-  background-color: #009a9a;
+  background-color: var(--ll-accent);
   width: 100%;
 }
 
@@ -72,7 +72,7 @@ body .cabecalho {
 .content h4,
 .content h5,
 .content h6 {
-  color: #009a9a;
+  color: var(--ll-accent);
   margin-bottom: 1rem;
 }
 
@@ -95,11 +95,11 @@ body .cabecalho {
   justify-content: center;
   align-items: center;
   line-height: 2rem;
-  color: #3d3d3d;
+  color: var(--ll-text);
 }
 
 .content li {
-  color: #3d3d3d;
+  color: var(--ll-text);
   font-size: 1.2rem;
   line-height: 2rem;
 }
@@ -196,41 +196,41 @@ body .cabecalho {
 }
 
 .content a {
-  color: #009a9a;
+  color: var(--ll-accent);
 }
 
 .content a:hover {
-  color: #f2637e;
+  color: var(--ll-accent);
 }
 
 .nome {
   font-weight: bold;
-  color: #009a9a;
+  color: var(--ll-accent);
 }
 
 .conteiner-footer h4 {
-  color: #009a9a;
+  color: var(--ll-accent);
   margin-bottom: 1rem;
 }
 .social-media a:hover {
-  color: #009a9a;
+  color: var(--ll-accent);
   
 }
 
 button {
-  background-color: #009a9a;
+  background-color: var(--ll-accent);
 }
 
 .wp-block-search__input:focus {
-  border-color: #007a7a;
+  border-color: var(--ll-accent-hover);
 }
 
 .wp-block-search__button {
-  background-color: #009a9a;
+  background-color: var(--ll-accent);
 }
 
 .wp-block-search__button:hover {
-  background-color: #009a9a;
+  background-color: var(--ll-accent);
 }
 
 
@@ -238,11 +238,11 @@ blockquote {
   width: 85%;
   font-size: 1.5rem;
   font-style: italic;
-  color: #555;
-  border-left: 5px solid #009a9a;
+  color: var(--ll-text-muted);
+  border-left: 5px solid var(--ll-accent);
   padding: 1rem 1.5rem;
   margin: 2rem auto;
-  background-color: #f9f9f9;
+  background-color: var(--ll-surface-muted);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -251,7 +251,7 @@ blockquote:before {
   content: "“";
   font-size: 4rem;
   font-weight: bold;
-  color: #009a9a;
+  color: var(--ll-accent);
   position: absolute;
   top: 0px;
   left: 15px;
@@ -262,7 +262,7 @@ blockquote:after {
   content: "”";
   font-size: 4rem;
   font-weight: bold;
-  color: #009a9a;
+  color: var(--ll-accent);
   position: absolute;
   bottom: -30px;
   right: 24px;
@@ -277,14 +277,14 @@ cite {
   display: block;
   margin-top: 1rem;
   font-size: 1rem;
-  color: #777;
+  color: var(--ll-text-faint);
   text-align: left;
   font-style: normal;
 }
 cite:before {
   content: "— ";
   font-weight: bold;
-  color: #555;
+  color: var(--ll-text-muted);
 }
 
 @media only screen and (max-width: 768px) {

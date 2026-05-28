@@ -11,7 +11,7 @@
 
 /* Card base */
 .card {
-    background-color: #fff;
+    background-color: var(--ll-surface);
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -88,7 +88,7 @@
 .card-body h3 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #2d2d2d;
+    color: var(--ll-text);
     line-height: 1.35;
     margin: 0;
     padding: 0;
@@ -101,13 +101,13 @@
 }
 
 .card:hover .card-body h3 {
-    color: #f2637e;
+    color: var(--ll-accent);
 }
 
 .card-body p,
 .card-body .card-excerpt {
     font-size: 0.95rem;
-    color: #6b6b6b;
+    color: var(--ll-text-subtle);
     line-height: 1.6;
     margin: 0;
     text-align: left;
@@ -129,33 +129,33 @@
     font-size: 0.8rem;
     font-weight: 600;
     padding: 5px 14px;
-    color: #fff;
+    color: var(--ll-on-accent);
     border-radius: 50px;
     text-transform: lowercase;
     letter-spacing: 0.02em;
 }
 
 .card-badge.aberto {
-    background-color: #f2637e;
+    background-color: var(--ll-accent);
 }
 
 .card-badge.em-breve {
-    background-color: #a0a0a0;
+    background-color: var(--ll-gray-500);
 }
 
 .card-badge.encerrado {
-    background-color: #c28a3a;
+    background-color: var(--ll-accent);
 }
 
 .card-badge.em-andamento {
-    background-color: #009a9a;
+    background-color: var(--ll-accent);
 }
 
 /* Indicador de "ler mais" sutil */
 .card-body::after {
     content: '→';
     font-size: 1.1rem;
-    color: #d4d4d4;
+    color: var(--ll-gray-200);
     margin-top: auto;
     padding-top: 0.5rem;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -164,7 +164,7 @@
 }
 
 .card:hover .card-body::after {
-    color: #f2637e;
+    color: var(--ll-accent);
     transform: translateX(4px);
 }
 
