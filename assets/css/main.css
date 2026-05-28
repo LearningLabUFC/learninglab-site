@@ -1,6 +1,39 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Montserrat:wght@700&display=swap");
 
+:root {
+    --ll-accent: #8204EE;
+    --ll-accent-hover: color-mix(in srgb, var(--ll-accent), #000 15%);
+    --ll-accent-soft: color-mix(in srgb, var(--ll-accent) 70%, transparent);
+    --ll-accent-focus: color-mix(in srgb, var(--ll-accent), #fff 10%);
+    --ll-accent-focus-shadow: color-mix(in srgb, var(--ll-accent) 50%, transparent);
+    --ll-on-accent: #fff;
+
+    --ll-bg: #eff6f5;
+    --ll-surface: #fff;
+    --ll-surface-muted: #f9f9f9;
+    --ll-surface-subtle: #f2f2f2;
+    --ll-border: #e0e0e0;
+    --ll-border-strong: #ccc;
+    --ll-border-subtle: #eee;
+
+    --ll-gray-200: #e5e7eb;
+    --ll-gray-500: #b0b0b0;
+    --ll-gray-600: #8a8a8a;
+    --ll-gray-700: #707070;
+    --ll-gray-800: #5a5a5a;
+    --ll-gray-900: #222;
+
+    --ll-text: #2d2d2d;
+    --ll-text-strong: #222;
+    --ll-text-muted: #555;
+    --ll-text-subtle: #666;
+    --ll-text-faint: #777;
+
+    --ll-shadow-1: 0 2px 6px rgba(0, 0, 0, 0.1);
+    --ll-shadow-2: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 html,
 body {
     max-width: 100%;
@@ -15,11 +48,11 @@ body {
 }
 
 body .cabecalho {
-    background-color: #f2637e;
+    background-color: var(--ll-accent);
 }
 
 body {
-    background-color: #eff6f5;
+    background-color: var(--ll-bg);
     font-family: "montserrat";
 }
 
@@ -41,8 +74,8 @@ button {
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
-    background-color: #f2637e;
-    color: #fff;
+    background-color: var(--ll-accent);
+    color: var(--ll-on-accent);
 }
 
 button:active {
@@ -56,7 +89,7 @@ button:hover {
 }
 
 .wp-block-search__input {
-    border: 1px solid #ccc;
+    border: 1px solid var(--ll-border-strong);
     border-radius: 5px;
     padding: 10px;
     font-size: 16px;
@@ -66,14 +99,14 @@ button:hover {
 
 .wp-block-search__input:focus {
     outline: none;
-    border-color: #e76f81;
-    box-shadow: 0 0 5px rgba(231, 111, 129, 0.5);
+    border-color: var(--ll-accent-focus);
+    box-shadow: 0 0 5px var(--ll-accent-focus-shadow);
 }
 
 .wp-block-search__button {
     display: flex;
     align-items: center;
-    background-color: #e76f81;
+    background-color: var(--ll-accent-focus);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -83,7 +116,7 @@ button:hover {
 
 
 .wp-block-search__button:hover {
-    background-color: #d35465;
+    background-color: var(--ll-accent-hover);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -92,21 +125,21 @@ button:hover {
 .instrutor-bloco {
     display: flex;
     flex-direction: row;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: var(--ll-surface);
+    box-shadow: var(--ll-shadow-2);
     padding-inline: 3rem;
     padding-top: 1rem;
     padding-bottom: 0.3rem;
 
     margin: 20px auto;
-    
+
     border-radius: 8px;
     align-items: center;
     gap: 20px;
     max-width: 1000px;
-    
+
     width: 90%;
-    
+
 }
 
 .instrutor-imagem img {
@@ -114,7 +147,7 @@ button:hover {
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
-    
+
     margin-bottom: 0;
 }
 

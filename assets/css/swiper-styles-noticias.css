@@ -35,7 +35,7 @@
     font-weight: inherit;
     max-width: 300px;
     height: 100%;
-    background-color: #fff;
+    background-color: var(--ll-surface);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -89,7 +89,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #009a9a;
+    background-color: var(--ll-accent);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,7 +99,7 @@
 .container-leitura .swiper-button-next::after,
 .container-leitura .swiper-button-prev::after {
     font-size: 17px;
-    color: #fff;
+    color: var(--ll-on-accent);
 }
 
 .container-leitura .swiper-pagination {
@@ -114,7 +114,7 @@
     width: 12px;
     height: 12px;
     margin: 0 6px;
-    background-color: #009a9a;
+    background-color: var(--ll-accent);
     opacity: 0.5;
 }
 
@@ -148,5 +148,4 @@
         display: none;
     }
 }
-
 

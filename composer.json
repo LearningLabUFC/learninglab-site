@@ -1,0 +1,12 @@
+{
+  "name": "learninglab/theme",
+  "description": "LearningLab WordPress theme (dev tooling only).",
+  "type": "project",
+  "require": {},
+  "require-dev": {
+    "php-stubs/wordpress-stubs": "^6.5"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

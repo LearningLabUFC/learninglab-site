@@ -33,3 +33,22 @@ Este é um tema do WordPress para o site do projeto de extensão LearningLab, da
 ### Personalização
 
 Para personalizar o tema, acesse o painel **Aparência > Personalizar** e ajuste as opções disponíveis.
+
+## Desenvolvimento (VSCode / IntelliSense)
+
+Se você abre **apenas a pasta do tema** no VSCode, o autocomplete de funções do WordPress (ex.: `have_posts()`, `get_header()`) depende de *stubs* PHP.
+
+### Requisitos
+- Composer instalado na máquina
+- Extensão VSCode: **PHP Intelephense** (`bmewburn.vscode-intelephense-client`)
+
+### Passos
+1. Na raiz do tema, rode:
+   ```bash
+   composer install
+   ```
+2. No VSCode:
+   - `Cmd/Ctrl+Shift+P` → `Intelephense: Clear Cache`
+   - `Cmd/Ctrl+Shift+P` → `Developer: Reload Window`
+
+Observação: a pasta `vendor/` é gerada pelo Composer (não é pra editar manualmente). Se você apagá-la, é só rodar `composer install` novamente.

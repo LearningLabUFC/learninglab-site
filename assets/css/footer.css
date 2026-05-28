@@ -42,7 +42,7 @@ footer {
 }
 
 .conteiner-footer h4 {
-    color: #f2637e;
+    color: var(--ll-accent);
     margin-bottom: 1rem;
 }
 
@@ -82,7 +82,7 @@ footer p {
 }
 
 .social-media a:hover {
-    color: #f2637e;
+    color: var(--ll-accent);
 }
 
 @media (max-width: 768px) {

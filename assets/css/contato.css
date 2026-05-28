@@ -14,7 +14,7 @@
     display: flex; 
     align-items: center; 
     text-decoration: none;
-    color: #f2637e; 
+    color: var(--ll-accent); 
     font-size: 1.2rem;
 }
 
@@ -44,12 +44,12 @@
     width: 100%;
     padding: 12px 15px;
     margin: 8px 0;
-    border: 1px solid #e0e0e0;
+	    border: 1px solid var(--ll-border);
     border-radius: 5px;
     font-size: 16px;
     transition: all 0.3s ease;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(80, 80, 80, 0.1);
+	    background-color: var(--ll-surface);
+	    box-shadow: var(--ll-shadow-2);
 
 }
 
@@ -57,7 +57,7 @@
 .wpcf7-form input[type="text"]:hover,
 .wpcf7-form input[type="email"]:hover,
 .wpcf7-form textarea:hover {
-    border-color: #f2637e;
+    border-color: var(--ll-accent);
 }
 
 
@@ -65,13 +65,13 @@
 .wpcf7-form input[type="email"]:focus,
 .wpcf7-form textarea:focus {
     outline: none;
-    border-color: #f2637e;
+    border-color: var(--ll-accent);
     box-shadow: 0 0 5px rgba(242, 99, 126, 0.3);
 }
 
 
 .wpcf7-submit {
-    background-color: #f2637e;
+    background-color: var(--ll-accent);
     color: white;
     padding: 12px 30px;
     border: none;
@@ -86,7 +86,7 @@
 
 
 .wpcf7-submit:hover {
-    background-color: #e0526d;
+    background-color: var(--ll-accent-hover);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(242, 99, 126, 0.3);
 }
@@ -113,8 +113,8 @@
 
 .wpcf7-form input::placeholder,
 .wpcf7-form textarea::placeholder {
-    color: #666;
-    opacity: 1;
+	    color: var(--ll-text-subtle);
+	    opacity: 1;
 }
 
 

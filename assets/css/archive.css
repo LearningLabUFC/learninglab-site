@@ -4,11 +4,11 @@
 
 
 body .cabecalho {
-    background-color: #009a9a;
+    background-color: var(--ll-accent);
 }
 
 .cabecalho #search-form button {
-    background: #009a9a;
+    background: var(--ll-accent);
 }
 
 .content {
@@ -21,7 +21,7 @@ body .cabecalho {
 .content p {
     font-size: 1.2rem;
     line-height: 1.7;
-    color: #414141;
+    color: var(--ll-text);
     margin-block: 1.5rem;
     padding: 0;
     text-align: justify;
@@ -29,17 +29,17 @@ body .cabecalho {
 }
 
 .content p>a {
-    color: #04bfbf;
+    color: var(--ll-accent-soft);
     font-weight: bold;
 }
 
 .content p>a:hover {
-    color: #f2637e;
+    color: var(--ll-accent);
 }
 
 
 .container-inicial-blog {
-    background-color: #009a9a;
+    background-color: var(--ll-accent);
     height: 250px;
     width: 100%;
     margin-top: -100px;
@@ -94,18 +94,18 @@ body .cabecalho {
 
 .conteiner-destaque .descricao a {
     font-size: 2rem;
-    color: #009a9a;
+    color: var(--ll-accent);
     text-decoration: none;
 }
 
 .conteiner-destaque .descricao h1 {
-    color: #009a9a;
+    color: var(--ll-accent);
     text-decoration: none;
     font-size: 1.9rem;
 }
 
 .descricao p {
-    color: #5a5a5a;
+    color: var(--ll-gray-800);
     text-decoration: none;
 }
 
@@ -153,11 +153,11 @@ body .cabecalho {
 .painel-blogs .descricao h1 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #009a9a;
+    color: var(--ll-accent);
 }
 
 .painel-blogs .descricao a {
-    color: #009a9a;
+    color: var(--ll-accent);
     text-decoration: none;
 }
 
@@ -180,23 +180,23 @@ body .cabecalho {
 .nav-links .page-numbers {
     display: inline-block;
     padding: 10px 15px;
-    border: 1px solid #009a9a;
+    border: 1px solid var(--ll-accent);
     border-radius: 5px;
-    color: #009a9a;
+    color: var(--ll-accent);
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .nav-links .current {
-    background-color: #009a9a;
-    color: #fff;
-    border-color: #009a9a;
+    background-color: var(--ll-accent);
+    color: var(--ll-on-accent);
+    border-color: var(--ll-accent);
     font-weight: bold;
 }
 
 .nav-links .page-numbers:hover {
-    background-color: #009a9a;
-    color: #fff;
+    background-color: var(--ll-accent);
+    color: var(--ll-on-accent);
 }
 
 .nav-links .prev,
@@ -205,29 +205,29 @@ body .cabecalho {
 }
 
 .conteiner-footer h4 {
-    color: #04bfbf;
+    color: var(--ll-accent-soft);
     margin-bottom: 1rem;
 }
 
 .social-media a:hover {
-    color: #04bfbf;
+    color: var(--ll-accent-soft);
 }
 
 button {
-    background-color: #009a9a;
+    background-color: var(--ll-accent);
 }
 
 .wp-block-search__input:focus {
-    border-color: #009a9a;
+    border-color: var(--ll-accent);
 }
 
 .wp-block-search__button {
-    background-color: #009a9a;
+    background-color: var(--ll-accent);
 }
 
 
 .wp-block-search__button:hover {
-    background-color: #009a9a;
+    background-color: var(--ll-accent);
 }
 
 
