@@ -302,6 +302,13 @@
     .container-inicial h2 {
         font-size: 2rem;
         margin-bottom: 1rem;
+        max-width: 100%;
+        flex: none;
+    }
+
+    .container-inicial img {
+        max-width: 100%;
+        flex: none;
     }
 
     #circulo {
