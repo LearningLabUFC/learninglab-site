@@ -52,20 +52,20 @@ function salvar_meta_boxes_membros($post_id)
     if (isset($_POST['email'])) {
         update_post_meta($post_id, 'email', sanitize_email($_POST['email']));
     }
-    if (isset($_POST['instagram_url'])) {
-        update_post_meta($post_id, 'instagram_url', esc_url_raw($_POST['instagram_url']));
-    }
-    if (isset($_POST['linkedin_url'])) {
-        update_post_meta($post_id, 'linkedin_url', esc_url_raw($_POST['linkedin_url']));
-    }
-    if (isset($_POST['github_url'])) {
-        update_post_meta($post_id, 'github_url', esc_url_raw($_POST['github_url']));
-    }
-    if (isset($_POST['site_url'])) {
-        update_post_meta($post_id, 'site_url', esc_url_raw($_POST['site_url']));
-    }
-    if (isset($_POST['lattes_url'])) {
-        update_post_meta($post_id, 'lattes_url', esc_url_raw($_POST['lattes_url']));
+
+    $urls = array('instagram_url', 'linkedin_url', 'github_url', 'site_url', 'lattes_url');
+    foreach ($urls as $url_key) {
+        if (isset($_POST[$url_key])) {
+            $url = esc_url_raw($_POST[$url_key]);
+            if ($url === '') {
+                update_post_meta($post_id, $url_key, '');
+            } else {
+                $scheme = wp_parse_url($url, PHP_URL_SCHEME);
+                if ($scheme === 'http' || $scheme === 'https') {
+                    update_post_meta($post_id, $url_key, $url);
+                }
+            }
+        }
     }
 }
 add_action('save_post_membro', 'salvar_meta_boxes_membros');

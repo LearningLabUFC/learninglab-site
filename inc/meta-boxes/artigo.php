@@ -247,9 +247,14 @@ function salvar_autores_artigo($post_id)
 {
     if (!isset($_POST['autores_artigo_nonce']) || !wp_verify_nonce($_POST['autores_artigo_nonce'], 'salvar_autores_artigo')) return;
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $post_id)) return;
 
     if (isset($_POST['artigo_autores'])) {
         $autores = array_map('intval', $_POST['artigo_autores']);
+        $autores = array_filter($autores, function($autor_id) {
+            return get_post_type($autor_id) === 'membro' && get_post_status($autor_id) === 'publish';
+        });
+        $autores = array_values($autores);
         update_post_meta($post_id, '_artigo_autores', $autores);
     } else {
         delete_post_meta($post_id, '_artigo_autores');

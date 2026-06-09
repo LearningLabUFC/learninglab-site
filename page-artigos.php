@@ -13,6 +13,9 @@ get_header();
 
 <div class="container">
   <?php
+  if (isset($_GET['artigos_nonce']) && !wp_verify_nonce($_GET['artigos_nonce'], 'artigos_filter')) {
+    wp_die('Requisição inválida.');
+  }
   
   $ano_get    = isset($_GET['ano']) ? sanitize_text_field($_GET['ano']) : '';
   $autor_get  = isset($_GET['autor']) ? sanitize_text_field($_GET['autor']) : '';
@@ -21,6 +24,7 @@ get_header();
   ?>
 
   <form id="filter-form" method="get" action="<?php echo esc_url(get_permalink()); ?>">
+    <?php wp_nonce_field('artigos_filter', 'artigos_nonce'); ?>
     <div class="artigos-filters">
 
       
