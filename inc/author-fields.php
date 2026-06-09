@@ -65,11 +65,22 @@ function learninglab_save_author_fields($user_id) {
         return false;
     }
     
-    $fields = array('user_title', 'facebook', 'twitter', 'instagram', 'linkedin');
+    if (isset($_POST['user_title'])) {
+        update_user_meta($user_id, 'user_title', sanitize_text_field($_POST['user_title']));
+    }
     
-    foreach ($fields as $field) {
+    $social_fields = array('facebook', 'twitter', 'instagram', 'linkedin');
+    foreach ($social_fields as $field) {
         if (isset($_POST[$field])) {
-            update_user_meta($user_id, $field, sanitize_text_field($_POST[$field]));
+            $url = esc_url_raw($_POST[$field]);
+            if ($url === '') {
+                update_user_meta($user_id, $field, '');
+            } else {
+                $scheme = wp_parse_url($url, PHP_URL_SCHEME);
+                if ($scheme === 'http' || $scheme === 'https') {
+                    update_user_meta($user_id, $field, $url);
+                }
+            }
         }
     }
 }

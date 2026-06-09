@@ -4,7 +4,7 @@ get_header();
 
 <div class="container-blog">
     <section class="container-inicial-blog">
-        <h1>Exibindo resultados para "<?php echo get_search_query(); ?>"</h1>
+        <h1>Exibindo resultados para "<?php echo esc_html(get_search_query()); ?>"</h1>
     </section>
 
     <?php
